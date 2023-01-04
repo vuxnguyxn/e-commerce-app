@@ -4,6 +4,7 @@ import 'package:e_commerce_app/screens/homes/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
+  static const String route = '/Splash';
   const SplashScreen({super.key});
 
   @override
@@ -19,15 +20,8 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _navigator() {
-    Timer(
-      const Duration(seconds: 3),
-      () => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
-        ),
-      ),
-    );
+    Timer(const Duration(seconds: 3),
+        () => Navigator.pushNamed(context, HomeScreen.route));
   }
 
   // int val = 3;
