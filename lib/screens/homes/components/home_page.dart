@@ -3,7 +3,10 @@ import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
+import 'banner_special_offer.dart';
 import 'icon_button_with_counter.dart';
+import 'search_and_filter.dart';
+import 'title_offer_and_see_all.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,6 +24,7 @@ class _HomePageState extends State<HomePage> {
 
   final time = DateTime.now().hour;
   String notifiaction = "";
+  int currentIndex = 0;
 
   bool lightMode =
       SchedulerBinding.instance.window.platformBrightness == Brightness.light;
@@ -44,113 +48,59 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             headerHomePage(),
-            Container(
-              margin:
-                  EdgeInsets.all(getProportionateScreenWidth(kDefaultPadding)),
-              width: double.infinity,
-              height: getProportionateScreenHeight(kDefaultPadding * 2),
-              decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(.3),
-                borderRadius: BorderRadius.circular(kDefaultPadding),
-              ),
-              child: Row(
-                children: [
-                  Container(
-                      padding: EdgeInsets.all(
-                          getProportionateScreenWidth(kDefaultPadding * .5)),
-                      width: getProportionateScreenWidth(48),
-                      height: getProportionateScreenHeight(48),
-                      child: const Icon(Icons.search)),
-                  const Text(
-                    "Search...",
-                    style: TextStyle(color: Colors.black26),
-                  ),
-                  const Spacer(),
-                  Container(
-                      padding: EdgeInsets.all(
-                          getProportionateScreenWidth(kDefaultPadding * .5)),
-                      width: getProportionateScreenWidth(48),
-                      height: getProportionateScreenHeight(48),
-                      child: const Icon(Icons.filter_list)),
-                ],
-              ),
+            const SearchAndFilter(),
+            TitleOfferAndSeeAll(
+              title: "Special Offer",
+              press: () {},
             ),
-            Container(
-              padding: EdgeInsets.only(
-                left: getProportionateScreenWidth(kDefaultPadding),
-                top: getProportionateScreenWidth(kDefaultPadding),
-                right: getProportionateScreenWidth(kDefaultPadding),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const Text(
-                    "Special Offer",
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: const Text(
-                      "See All",
-                      style: TextStyle(fontSize: 12),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            AspectRatio(
-              aspectRatio: 16 / 9,
-              child: Container(
-                width: double.infinity,
-                margin: EdgeInsets.all(
-                    getProportionateScreenWidth(kDefaultPadding)),
-                decoration: BoxDecoration(
-                  image: const DecorationImage(
-                      image: AssetImage('assets/images/image_banner.png'),
-                      fit: BoxFit.cover),
-                  borderRadius: BorderRadius.circular(kDefaultPadding),
-                ),
-                child: Container(
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.symmetric(
-                      horizontal: getProportionateScreenWidth(kDefaultPadding)),
-                  child: Text.rich(
-                    TextSpan(
-                      style: const TextStyle(color: Colors.black),
-                      children: [
-                        TextSpan(
-                          text: '30%\n',
-                          style: TextStyle(
-                            fontSize: getProportionateScreenWidth(
-                                kDefaultPadding * 1.5),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        TextSpan(
-                          text: "Today's special\n",
-                          style: TextStyle(
-                            fontSize: getProportionateScreenWidth(
-                                kDefaultPadding * 1),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        TextSpan(
-                          text:
-                              'Get discount for every order,\n only valid for today',
-                          style: TextStyle(
-                            fontSize: getProportionateScreenWidth(
-                                kDefaultPadding * .7),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            bannerOfferAndDot(),
           ],
         ),
+      ),
+    );
+  }
+
+  SizedBox bannerOfferAndDot() {
+    return SizedBox(
+      width: double.infinity,
+      height: getProportionateScreenHeight(220),
+      child: Stack(
+        children: [
+          PageView.builder(
+            onPageChanged: (value) {
+              setState(() {
+                currentIndex = value;
+              });
+            },
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) => const BannerSpecialOffer(),
+            itemCount: 5,
+          ),
+          Container(
+            alignment: Alignment.bottomCenter,
+            padding: EdgeInsets.only(
+                bottom: getProportionateScreenWidth(kDefaultPadding * 2)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                5,
+                (index) => AnimatedContainer(
+                  margin:
+                      EdgeInsets.only(right: getProportionateScreenWidth(8)),
+                  duration: const Duration(seconds: 1),
+                  height: 6,
+                  width: currentIndex == index ? 20 : 6,
+                  alignment: Alignment.bottomCenter,
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: Colors.white, width: 1),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -228,3 +178,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+
