@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 import 'banner_special_offer.dart';
+import 'category_item_card.dart';
 import 'icon_button_with_counter.dart';
 import 'search_and_filter.dart';
 import 'title_offer_and_see_all.dart';
@@ -54,6 +55,18 @@ class _HomePageState extends State<HomePage> {
               press: () {},
             ),
             bannerOfferAndDot(),
+            SizedBox(
+              width: double.infinity,
+              height: getProportionateScreenHeight(200),
+              child: GridView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 10,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                ),
+                itemBuilder: (context, index) => const CategoryItemCard(),
+              ),
+            ),
           ],
         ),
       ),
@@ -178,5 +191,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
 
