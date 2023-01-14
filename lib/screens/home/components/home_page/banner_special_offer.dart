@@ -1,7 +1,7 @@
 import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import '../../../../constants.dart';
 
 class BannerSpecialOffer extends StatelessWidget {
   const BannerSpecialOffer({

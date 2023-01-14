@@ -1,5 +1,5 @@
 import 'package:e_commerce_app/components/item_bar.dart';
-import 'package:e_commerce_app/screens/homes/components/home_page.dart';
+import 'package:e_commerce_app/screens/home/components/home_page/home_page.dart';
 import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 

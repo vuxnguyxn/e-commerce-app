@@ -1,11 +1,15 @@
-import 'package:e_commerce_app/constants.dart';
-import 'package:e_commerce_app/size_config.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
+import 'package:e_commerce_app/constants.dart';
+import 'package:e_commerce_app/size_config.dart';
+
+import '../../../../components/simple_data.dart';
 import 'banner_special_offer.dart';
 import 'category_item_card.dart';
 import 'icon_button_with_counter.dart';
+import 'most_popular_tabbar.dart';
 import 'search_and_filter.dart';
 import 'title_offer_and_see_all.dart';
 
@@ -67,6 +71,23 @@ class _HomePageState extends State<HomePage> {
                 itemBuilder: (context, index) => const CategoryItemCard(),
               ),
             ),
+            TitleOfferAndSeeAll(title: 'Most Popular', press: () {}),
+            Container(
+              width: double.infinity,
+              height: getProportionateScreenWidth(kDefaultPadding * 2),
+              margin: EdgeInsets.only(
+                  top: getProportionateScreenWidth(kDefaultPadding),
+                  left: getProportionateScreenWidth(kDefaultPadding),
+                  right: getProportionateScreenWidth(kDefaultPadding / 2)),
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: dataTitleMostPopular.length,
+                itemBuilder: (context, index) => MostPopularTabBar(
+                  data: dataTitleMostPopular[index],
+                  press: () {},
+                ),
+              ),
+            )
           ],
         ),
       ),
