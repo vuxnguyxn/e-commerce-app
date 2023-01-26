@@ -4,11 +4,13 @@ import 'package:flutter/scheduler.dart';
 
 import 'package:e_commerce_app/constants.dart';
 import 'package:e_commerce_app/size_config.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../components/simple_data.dart';
 import 'banner_special_offer.dart';
 import 'category_item_card.dart';
 import 'icon_button_with_counter.dart';
+import 'most_popular_item_cart.dart';
 import 'most_popular_tabbar.dart';
 import 'search_and_filter.dart';
 import 'title_offer_and_see_all.dart';
@@ -46,6 +48,8 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  DataItemMostPopular data = dataItemMostPopular[0];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -72,23 +76,46 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             TitleOfferAndSeeAll(title: 'Most Popular', press: () {}),
+            mostPopularTabbar(),
             Container(
-              width: double.infinity,
-              height: getProportionateScreenWidth(kDefaultPadding * 2),
-              margin: EdgeInsets.only(
-                  top: getProportionateScreenWidth(kDefaultPadding),
-                  left: getProportionateScreenWidth(kDefaultPadding),
-                  right: getProportionateScreenWidth(kDefaultPadding / 2)),
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: dataTitleMostPopular.length,
-                itemBuilder: (context, index) => MostPopularTabBar(
-                  data: dataTitleMostPopular[index],
-                  press: () {},
-                ),
+              height: SizeConfig.screenHeight-200,
+              padding: EdgeInsets.only(
+                top: getProportionateScreenWidth(20),
+                right: getProportionateScreenWidth(20),
+                left: getProportionateScreenWidth(20),
               ),
-            )
+              child: GridView.builder(
+                itemCount: 8,
+                scrollDirection: Axis.vertical,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: .63,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20),
+                itemBuilder: (context, index) =>
+                    MostPopularItemCard(data: data),
+              ),
+            ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Container mostPopularTabbar() {
+    return Container(
+      width: double.infinity,
+      height: getProportionateScreenWidth(kDefaultPadding * 2),
+      margin: EdgeInsets.only(
+          top: getProportionateScreenWidth(kDefaultPadding),
+          left: getProportionateScreenWidth(kDefaultPadding),
+          right: getProportionateScreenWidth(kDefaultPadding / 2)),
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: dataTitleMostPopular.length,
+        itemBuilder: (context, index) => MostPopularTabBar(
+          data: dataTitleMostPopular[index],
+          press: () {},
         ),
       ),
     );
