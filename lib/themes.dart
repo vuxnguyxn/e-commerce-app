@@ -4,22 +4,24 @@ import 'constants.dart';
 ThemeData lightThemeData(BuildContext context) {
   return ThemeData.light().copyWith(
     scaffoldBackgroundColor: kContentColorDarkTheme,
-    appBarTheme: appBarTheme,
+    appBarTheme: const AppBarTheme(
+      // centerTitle: true,
+      elevation: 0,
+      backgroundColor: kContentColorDarkTheme,
+      toolbarTextStyle: TextStyle(color: kContentColorLightTheme),
+      iconTheme: IconThemeData(color: kContentColorLightTheme),
+      titleTextStyle: TextStyle(color: kContentColorLightTheme, fontSize: 20,  fontWeight: FontWeight.bold),
+    ),
     primaryColor: kPrimaryColor,
     iconTheme: const IconThemeData(color: kContentColorLightTheme),
-    // textTheme: GoogleFonts.interTextTheme(Theme.of(context).textTheme)
-    //     .apply(bodyColor: kContentColorLightTheme),
+    textTheme: const TextTheme(
+      bodyText1: TextStyle(color: kContentColorLightTheme),
+      bodyText2: TextStyle(color: kContentColorLightTheme),
+    ),
     colorScheme: const ColorScheme.light(
       primary: kPrimaryColor,
       secondary: kSecondaryColor,
       error: kErrorColor,
-    ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: Colors.white,
-      selectedItemColor: kContentColorLightTheme.withOpacity(0.7),
-      unselectedItemColor: kContentColorLightTheme.withOpacity(0.32),
-      selectedIconTheme: const IconThemeData(color: kPrimaryColor),
-      showUnselectedLabels: true,
     ),
   );
 }
@@ -28,26 +30,25 @@ ThemeData darkThemeData(BuildContext context) {
   // Bydefault flutter provie us light and dark theme
   // we just modify it as our need
   return ThemeData.dark().copyWith(
-    primaryColor: kPrimaryColor,
+    primaryColor: kContentColorLightTheme,
     scaffoldBackgroundColor: kContentColorLightTheme,
-    appBarTheme: appBarTheme,
+    appBarTheme: const AppBarTheme(
+      // centerTitle: true,
+      elevation: 0,
+      backgroundColor: kContentColorLightTheme,
+      toolbarTextStyle: TextStyle(color: kContentColorDarkTheme),
+      iconTheme: IconThemeData(color: kContentColorDarkTheme),
+      titleTextStyle: TextStyle(color: kContentColorDarkTheme, fontSize: 20, fontWeight: FontWeight.bold),
+    ),
     iconTheme: const IconThemeData(color: kContentColorDarkTheme),
-    // textTheme: GoogleFonts.interTextTheme(Theme.of(context).textTheme)
-    //     .apply(bodyColor: kContentColorDarkTheme),
+    textTheme: const TextTheme(
+      bodyText1: TextStyle(color: kContentColorDarkTheme),
+      bodyText2: TextStyle(color: kContentColorDarkTheme),
+    ),
     colorScheme: const ColorScheme.dark().copyWith(
-      primary: kPrimaryColor,
+      primary: kContentColorLightTheme,
       secondary: kSecondaryColor,
       error: kErrorColor,
     ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: kContentColorLightTheme,
-      selectedItemColor: Colors.white70,
-      unselectedItemColor: kContentColorDarkTheme.withOpacity(0.32),
-      selectedIconTheme: const IconThemeData(color: kPrimaryColor),
-      showUnselectedLabels: true,
-    ),
   );
 }
-
-const appBarTheme = AppBarTheme(
-    centerTitle: true, backgroundColor: Colors.transparent, elevation: 0);

@@ -12,6 +12,7 @@ import 'category_item_card.dart';
 import 'icon_button_with_counter.dart';
 import 'most_popular_item_cart.dart';
 import 'most_popular_tabbar.dart';
+import 'notifications_screen.dart';
 import 'search_and_filter.dart';
 import 'title_offer_and_see_all.dart';
 
@@ -78,7 +79,7 @@ class _HomePageState extends State<HomePage> {
             TitleOfferAndSeeAll(title: 'Most Popular', press: () {}),
             mostPopularTabbar(),
             Container(
-              height: SizeConfig.screenHeight-200,
+              height: SizeConfig.screenHeight - 200,
               padding: EdgeInsets.only(
                 top: getProportionateScreenWidth(20),
                 right: getProportionateScreenWidth(20),
@@ -184,7 +185,9 @@ class _HomePageState extends State<HomePage> {
                     ? 'assets/icons/Bell_light.svg'
                     : 'assets/icons/Bell_light.svg',
                 numOfItems: 2,
-                press: () {},
+                press: () {
+                  Navigator.pushNamed(context, NotificationsScreen.route);
+                },
               ),
               IconButtonWithCounter(
                 svg: lightMode
@@ -219,10 +222,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             Text(
               notifiaction.toString(),
-              style: TextStyle(
-                  color: Colors.black54,
-                  fontSize: getProportionateScreenWidth(16)),
-            ),
+              style: const TextTheme().bodySmall),
             SizedBox(
               height: getProportionateScreenHeight(5),
             ),
@@ -239,4 +239,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-

@@ -28,7 +28,6 @@ class BannerSpecialOffer extends StatelessWidget {
                 horizontal: getProportionateScreenWidth(kDefaultPadding)),
             child: Text.rich(
               TextSpan(
-                style: const TextStyle(color: Colors.black),
                 children: [
                   TextSpan(
                     text: '30%\n',
