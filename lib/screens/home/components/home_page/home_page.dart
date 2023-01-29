@@ -12,7 +12,7 @@ import 'category_item_card.dart';
 import 'icon_button_with_counter.dart';
 import 'most_popular_item_cart.dart';
 import 'most_popular_tabbar.dart';
-import 'notifications_screen.dart';
+import '../../notifications_screen.dart';
 import 'search_and_filter.dart';
 import 'title_offer_and_see_all.dart';
 

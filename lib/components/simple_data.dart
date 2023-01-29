@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+
 class DataTitleMostPopular {
   String title;
   bool? isSelested;
@@ -73,4 +73,62 @@ List dataItemMostPopular = [
       sold: 1000,
       star: 4.5,
       price: 650),
+];
+
+class Notification {
+  String title;
+  String content;
+  String image;
+  Notification({
+    required this.title,
+    required this.content,
+    required this.image,
+  });
+}
+
+class Notifiactions {
+  String date;
+  List<Notification> notifications;
+  Notifiactions({
+    required this.date,
+    required this.notifications,
+  });
+}
+
+List dataNotifications = [
+  Notifiactions(
+    date: "Today",
+    notifications: [
+      Notification(
+          title: "30% Special Discount!",
+          content: "Special promotion only valid today.",
+          image: "discount"),
+    ],
+  ),
+  Notifiactions(
+    date: "Yesterday",
+    notifications: [
+      Notification(
+          title: "Top Up E-Wallet Succesful!",
+          content: "You have to top up your e-wallet",
+          image: "wallet"),
+      Notification(
+          title: "New Service Available!",
+          content: "Now you can track orders is real time",
+          image: "location"),
+    ],
+  ),
+  Notifiactions(
+    date: "December 22, 2023",
+    notifications: [
+      Notification(
+          title: "Credit Card Conected!",
+          content: "Credit Card has been linked!",
+          image: "credit"),
+      Notification(
+          title: "Account Setup Successful!",
+          content: "Your account has been created!",
+          image: "account"),
+    ],
+  ),
 ];
