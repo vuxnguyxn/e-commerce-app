@@ -49,7 +49,9 @@ class MostPopularItemCard extends StatelessWidget {
                     border: Border.all(color: Colors.black, width: 1),
                     color: Colors.black,
                   ),
-                  child: SvgPicture.asset("assets/icons/Heart_dark.svg"),
+                  child: data.isFavorited!
+                      ? SvgPicture.asset("assets/icons/Favorited.svg")
+                      : SvgPicture.asset("assets/icons/Heart_dark.svg"),
                 ),
               ),
             ],

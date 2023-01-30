@@ -1,10 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:e_commerce_app/features/home/presentation/pages/my_wishlist_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../data/simple_data.dart';
 import '../widgets/banner_special_offer.dart';
@@ -91,8 +91,8 @@ class _HomePageState extends State<HomePage> {
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     childAspectRatio: .63,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 20),
+                    crossAxisSpacing: kDefaultPadding,
+                    mainAxisSpacing: kDefaultPadding),
                 itemBuilder: (context, index) =>
                     MostPopularItemCard(data: data),
               ),
@@ -185,16 +185,15 @@ class _HomePageState extends State<HomePage> {
                     ? 'assets/icons/Bell_light.svg'
                     : 'assets/icons/Bell_light.svg',
                 numOfItems: 2,
-                press: () {
-                  Navigator.pushNamed(context, NotificationsScreen.route);
-                },
+                press: () =>
+                    Navigator.pushNamed(context, NotificationsPage.route),
               ),
               IconButtonWithCounter(
                 svg: lightMode
                     ? 'assets/icons/Heart_light.svg'
                     : 'assets/icons/Heart_light.svg',
                 numOfItems: 1,
-                press: () {},
+                press: () => Navigator.pushNamed(context, MyWishlistPage.route),
               ),
             ],
           ),
@@ -220,9 +219,7 @@ class _HomePageState extends State<HomePage> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              notifiaction.toString(),
-              style: const TextTheme().bodySmall),
+            Text(notifiaction.toString(), style: const TextTheme().bodySmall),
             SizedBox(
               height: getProportionateScreenHeight(5),
             ),

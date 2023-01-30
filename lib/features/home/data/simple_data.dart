@@ -40,6 +40,7 @@ List dataItemMostPopular = [
   DataItemMostPopular(
       image: 'assets/images/bag_1.png',
       title: 'Snake Leather Bag',
+      
       sold: 1000,
       star: 4.5,
       price: 650),
@@ -72,6 +73,50 @@ List dataItemMostPopular = [
       title: 'Wolf Leather Bag',
       sold: 1000,
       star: 4.5,
+      price: 650),
+];
+List dataItemFavorited = [
+  DataItemMostPopular(
+      image: 'assets/images/bag_1.png',
+      title: 'Snake Leather Bag',
+      isFavorited: true,
+      sold: 1000,
+      star: 4.5,
+      price: 650),
+  DataItemMostPopular(
+      image: 'assets/images/bag_2.png',
+      title: 'Eagle Leather Bag',
+      sold: 1000,
+      isFavorited: true,
+      star: 4.5,
+      price: 650),
+  DataItemMostPopular(
+      image: 'assets/images/bag_3.png',
+      title: 'Crocodie Leather Bag',
+      sold: 1000,
+      star: 4.5,
+      isFavorited: true,
+      price: 650),
+  DataItemMostPopular(
+      image: 'assets/images/bag_4.png',
+      title: 'Bears Leather Bag',
+      sold: 1000,
+      star: 4.5,
+      isFavorited: true,
+      price: 650),
+  DataItemMostPopular(
+      image: 'assets/images/bag_5.png',
+      title: 'Tiger Leather Bag',
+      sold: 1000,
+      isFavorited: true,
+      star: 4.5,
+      price: 650),
+  DataItemMostPopular(
+      image: 'assets/images/bag_6.png',
+      title: 'Wolf Leather Bag',
+      sold: 1000,
+      star: 4.5,
+      isFavorited: true,
       price: 650),
 ];
 
