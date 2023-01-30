@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:e_commerce_app/features/home/presentation/pages/most_popular_page.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/my_wishlist_page.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/special_offer_page.dart';
 import 'package:flutter/material.dart';
@@ -78,7 +79,10 @@ class _HomePageState extends State<HomePage> {
                 itemBuilder: (context, index) => const CategoryItemCard(),
               ),
             ),
-            TitleOfferAndSeeAll(title: 'Most Popular', press: () {}),
+            TitleOfferAndSeeAll(
+                title: 'Most Popular',
+                press: () =>
+                    Navigator.pushNamed(context, MostPopularPage.route)),
             mostPopularTabbar(),
             Container(
               height: SizeConfig.screenHeight - 200,
@@ -215,4 +219,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
