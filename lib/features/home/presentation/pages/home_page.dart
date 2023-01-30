@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:e_commerce_app/features/home/presentation/pages/my_wishlist_page.dart';
+import 'package:e_commerce_app/features/home/presentation/pages/special_offer_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
@@ -9,6 +10,7 @@ import 'package:e_commerce_app/core/size_config.dart';
 import '../../data/simple_data.dart';
 import '../widgets/banner_special_offer.dart';
 import '../widgets/category_item_card.dart';
+import '../widgets/dot_color.dart';
 import '../widgets/icon_button_with_counter.dart';
 import '../widgets/most_popular_item_cart.dart';
 import '../widgets/most_popular_tabbar.dart';
@@ -61,7 +63,7 @@ class _HomePageState extends State<HomePage> {
             const SearchAndFilter(),
             TitleOfferAndSeeAll(
               title: "Special Offer",
-              press: () {},
+              press: () => Navigator.pushNamed(context, SpecialOfferPage.route),
             ),
             bannerOfferAndDot(),
             SizedBox(
@@ -138,30 +140,7 @@ class _HomePageState extends State<HomePage> {
             itemBuilder: (context, index) => const BannerSpecialOffer(),
             itemCount: 5,
           ),
-          Container(
-            alignment: Alignment.bottomCenter,
-            padding: EdgeInsets.only(
-                bottom: getProportionateScreenWidth(kDefaultPadding * 2)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                5,
-                (index) => AnimatedContainer(
-                  margin:
-                      EdgeInsets.only(right: getProportionateScreenWidth(8)),
-                  duration: const Duration(seconds: 1),
-                  height: 6,
-                  width: currentIndex == index ? 20 : 6,
-                  alignment: Alignment.bottomCenter,
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.white, width: 1),
-                  ),
-                ),
-              ),
-            ),
-          ),
+          DotColor(currentIndex: currentIndex),
         ],
       ),
     );
@@ -236,3 +215,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
