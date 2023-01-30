@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../components/simple_data.dart';
-import '../../../../constants.dart';
-import '../../../../size_config.dart';
+import '../../data/simple_data.dart';
+import '../../../../core/constants.dart';
+import '../../../../core/size_config.dart';
 
 class MostPopularItemCard extends StatelessWidget {
   const MostPopularItemCard({

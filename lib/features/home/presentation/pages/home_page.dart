@@ -2,19 +2,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
-import 'package:e_commerce_app/constants.dart';
-import 'package:e_commerce_app/size_config.dart';
+import 'package:e_commerce_app/core/constants.dart';
+import 'package:e_commerce_app/core/size_config.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../components/simple_data.dart';
-import 'banner_special_offer.dart';
-import 'category_item_card.dart';
-import 'icon_button_with_counter.dart';
-import 'most_popular_item_cart.dart';
-import 'most_popular_tabbar.dart';
-import '../../notifications_screen.dart';
-import 'search_and_filter.dart';
-import 'title_offer_and_see_all.dart';
+import '../../data/simple_data.dart';
+import '../widgets/banner_special_offer.dart';
+import '../widgets/category_item_card.dart';
+import '../widgets/icon_button_with_counter.dart';
+import '../widgets/most_popular_item_cart.dart';
+import '../widgets/most_popular_tabbar.dart';
+import 'notifications_page.dart';
+import '../widgets/search_and_filter.dart';
+import '../widgets/title_offer_and_see_all.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../components/simple_data.dart';
-import '../../../../constants.dart';
-import '../../../../size_config.dart';
+import '../../data/simple_data.dart';
+import '../../../../core/constants.dart';
+import '../../../../core/size_config.dart';
 
 class MostPopularTabBar extends StatelessWidget {
   const MostPopularTabBar(

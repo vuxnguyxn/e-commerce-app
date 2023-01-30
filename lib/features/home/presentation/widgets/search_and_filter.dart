@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../constants.dart';
-import '../../../../size_config.dart';
+import '../../../../core/constants.dart';
+import '../../../../core/size_config.dart';
 
 class SearchAndFilter extends StatelessWidget {
   const SearchAndFilter({

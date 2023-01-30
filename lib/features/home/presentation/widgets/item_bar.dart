@@ -1,5 +1,5 @@
-import 'package:e_commerce_app/constants.dart';
-import 'package:e_commerce_app/size_config.dart';
+import 'package:e_commerce_app/core/constants.dart';
+import 'package:e_commerce_app/core/size_config.dart';
 import 'package:flutter/material.dart';
 
 class ItemBar extends StatelessWidget {
