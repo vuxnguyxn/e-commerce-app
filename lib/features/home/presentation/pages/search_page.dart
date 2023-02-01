@@ -30,8 +30,8 @@ class _SearchPageState extends State<SearchPage> {
               SizedBox(
                 height: getProportionateScreenHeight(kDefaultPadding),
               ),
-               const RecentHistoryCard(),
-              
+              // const RecentHistoryCard(),
+              ResultForSearchCard(textSearch: textSearch, foundsSearch: foundsSearch)
             ],
           ),
         ),
@@ -40,6 +40,60 @@ class _SearchPageState extends State<SearchPage> {
   }
 }
 
+class ResultForSearchCard extends StatelessWidget {
+  const ResultForSearchCard({
+    Key? key,
+    required this.textSearch,
+    required this.foundsSearch,
+  }) : super(key: key);
+
+  final String textSearch;
+  final String foundsSearch;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Text(
+                'Result for "$textSearch"',
+                overflow: textSearch.length > 10
+                    ? TextOverflow.ellipsis
+                    : null,
+                style: const TextStyle(
+                    fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const Spacer(),
+              Text(
+                '$foundsSearch founds',
+                style: const TextStyle(
+                    fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: getProportionateScreenHeight(kDefaultPadding),
+          ),
+          Expanded(
+            child: GridView.builder(
+              itemBuilder: (context, index) => MostPopularItemCard(
+                  data: dataItemMostPopular[index]),
+              gridDelegate:
+                  const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: .6,
+                      mainAxisSpacing: kDefaultPadding,
+                      crossAxisSpacing: kDefaultPadding),
+              itemCount: dataItemMostPopular.length,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
 
 class RecentHistoryCard extends StatelessWidget {
   const RecentHistoryCard({
