@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/features/home/presentation/pages/categories_page.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/most_popular_page.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/my_wishlist_page.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/notifications_page.dart';
@@ -15,5 +16,6 @@ final Map<String, WidgetBuilder> routes = {
    SpecialOfferPage.route: (context) => const SpecialOfferPage(),
    MostPopularPage.route: (context) => const MostPopularPage(),
    SearchPage.route: (context) => const SearchPage(),
+   CategoriesPage.route: (context) => const CategoriesPage(),
 };
 

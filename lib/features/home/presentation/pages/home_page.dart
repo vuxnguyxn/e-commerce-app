@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:e_commerce_app/features/home/presentation/pages/categories_page.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/most_popular_page.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/my_wishlist_page.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/search_page.dart';
@@ -122,7 +123,9 @@ class _HomePageState extends State<HomePage> {
         itemCount: dataTitleMostPopular.length,
         itemBuilder: (context, index) => MostPopularTabBar(
           data: dataTitleMostPopular[index],
-          press: () {},
+          press: () {
+            Navigator.pushNamed(context, CategoriesPage.route);
+          },
         ),
       ),
     );
