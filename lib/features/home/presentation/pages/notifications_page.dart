@@ -39,7 +39,7 @@ class NotificationCard extends StatelessWidget {
     required this.data,
   }) : super(key: key);
 
-  final Notifiactions data;
+  final Notifications data;
 
   @override
   Widget build(BuildContext context) {

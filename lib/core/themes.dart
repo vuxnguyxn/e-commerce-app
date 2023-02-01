@@ -15,8 +15,8 @@ ThemeData lightThemeData(BuildContext context) {
     primaryColor: kPrimaryColor,
     iconTheme: const IconThemeData(color: kContentColorLightTheme),
     textTheme: const TextTheme(
-      bodyText1: TextStyle(color: kContentColorLightTheme),
-      bodyText2: TextStyle(color: kContentColorLightTheme),
+      bodyText1: TextStyle(color: kContentColorLightTheme, fontSize: 16),
+      bodyText2: TextStyle(color: kContentColorLightTheme, fontSize: 16),
     ),
     colorScheme: const ColorScheme.light(
       primary: kPrimaryColor,
@@ -42,8 +42,8 @@ ThemeData darkThemeData(BuildContext context) {
     ),
     iconTheme: const IconThemeData(color: kContentColorDarkTheme),
     textTheme: const TextTheme(
-      bodyText1: TextStyle(color: kContentColorDarkTheme),
-      bodyText2: TextStyle(color: kContentColorDarkTheme),
+      bodyText1: TextStyle(color: kContentColorDarkTheme, fontSize: 16),
+      bodyText2: TextStyle(color: kContentColorDarkTheme, fontSize: 16),
     ),
     colorScheme: const ColorScheme.dark().copyWith(
       primary: kContentColorLightTheme,

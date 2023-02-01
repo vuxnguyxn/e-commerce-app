@@ -1,4 +1,3 @@
-
 class DataTitleMostPopular {
   String title;
   bool? isSelested;
@@ -23,7 +22,7 @@ class DataItemMostPopular {
   String title;
   int sold;
   double star;
-  bool? isFavorited;
+  bool? isFavorites;
   int price;
 
   DataItemMostPopular({
@@ -31,7 +30,7 @@ class DataItemMostPopular {
     required this.title,
     required this.sold,
     required this.star,
-    this.isFavorited = false,
+    this.isFavorites = false,
     required this.price,
   });
 }
@@ -40,7 +39,6 @@ List dataItemMostPopular = [
   DataItemMostPopular(
       image: 'assets/images/bag_1.png',
       title: 'Snake Leather Bag',
-      
       sold: 1000,
       star: 4.5,
       price: 650),
@@ -75,11 +73,11 @@ List dataItemMostPopular = [
       star: 4.5,
       price: 650),
 ];
-List dataItemFavorited = [
+List dataItemFavorites = [
   DataItemMostPopular(
       image: 'assets/images/bag_1.png',
       title: 'Snake Leather Bag',
-      isFavorited: true,
+      isFavorites: true,
       sold: 1000,
       star: 4.5,
       price: 650),
@@ -87,28 +85,28 @@ List dataItemFavorited = [
       image: 'assets/images/bag_2.png',
       title: 'Eagle Leather Bag',
       sold: 1000,
-      isFavorited: true,
+      isFavorites: true,
       star: 4.5,
       price: 650),
   DataItemMostPopular(
       image: 'assets/images/bag_3.png',
-      title: 'Crocodie Leather Bag',
+      title: 'Crocodile Leather Bag',
       sold: 1000,
       star: 4.5,
-      isFavorited: true,
+      isFavorites: true,
       price: 650),
   DataItemMostPopular(
       image: 'assets/images/bag_4.png',
       title: 'Bears Leather Bag',
       sold: 1000,
       star: 4.5,
-      isFavorited: true,
+      isFavorites: true,
       price: 650),
   DataItemMostPopular(
       image: 'assets/images/bag_5.png',
       title: 'Tiger Leather Bag',
       sold: 1000,
-      isFavorited: true,
+      isFavorites: true,
       star: 4.5,
       price: 650),
   DataItemMostPopular(
@@ -116,7 +114,7 @@ List dataItemFavorited = [
       title: 'Wolf Leather Bag',
       sold: 1000,
       star: 4.5,
-      isFavorited: true,
+      isFavorites: true,
       price: 650),
 ];
 
@@ -131,17 +129,17 @@ class Notification {
   });
 }
 
-class Notifiactions {
+class Notifications {
   String date;
   List<Notification> notifications;
-  Notifiactions({
+  Notifications({
     required this.date,
     required this.notifications,
   });
 }
 
 List dataNotifications = [
-  Notifiactions(
+  Notifications(
     date: "Today",
     notifications: [
       Notification(
@@ -150,7 +148,7 @@ List dataNotifications = [
           image: "discount"),
     ],
   ),
-  Notifiactions(
+  Notifications(
     date: "Yesterday",
     notifications: [
       Notification(
@@ -163,7 +161,7 @@ List dataNotifications = [
           image: "location"),
     ],
   ),
-  Notifiactions(
+  Notifications(
     date: "December 22, 2023",
     notifications: [
       Notification(
@@ -176,4 +174,19 @@ List dataNotifications = [
           image: "account"),
     ],
   ),
+];
+
+List historySearch = [
+  'Snack Skin Bag',
+  'Casual Shirt',
+  'Black Nike Shoes',
+  'HeadPhone Whites',
+  'Nikon Camera',
+  'Silver Watch',
+  'Snack Skin Bag',
+  'Casual Shirt',
+  'Black Nike Shoes',
+  'HeadPhone Whites',
+  'Nikon Camera',
+  'Silver Watch'
 ];

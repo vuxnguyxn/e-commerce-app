@@ -29,13 +29,13 @@ class MyWishlistPage extends StatelessWidget {
                 right: getProportionateScreenWidth(kDefaultPadding / 2)),
             child: GridView.builder(
               itemBuilder: (context, index) =>
-                  MostPopularItemCard(data: dataItemFavorited[index]),
+                  MostPopularItemCard(data: dataItemFavorites[index]),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   childAspectRatio: .63,
                   mainAxisSpacing: kDefaultPadding,
                   crossAxisSpacing: kDefaultPadding),
-              itemCount: dataItemFavorited.length,
+              itemCount: dataItemFavorites.length,
             ),
           )
         ],
