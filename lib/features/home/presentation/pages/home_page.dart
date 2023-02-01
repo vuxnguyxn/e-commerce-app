@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   final time = DateTime.now().hour;
-  String notifiaction = "";
+  String notification = "";
   int currentIndex = 0;
 
   bool lightMode =
@@ -43,17 +43,15 @@ class _HomePageState extends State<HomePage> {
 
   void greeting() {
     if (time < 6) {
-      notifiaction = "Good Night,";
+      notification = "Good Night,";
     } else if (time < 12) {
-      notifiaction = "Good Morning,";
+      notification = "Good Morning,";
     } else if (time < 18) {
-      notifiaction = "Good Afternoom,";
+      notification = "Good Afternoon,";
     } else if (time < 24) {
-      notifiaction = "Good Evening,";
+      notification = "Good Evening,";
     }
   }
-
-  DataItemMostPopular data = dataItemMostPopular[0];
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                 title: 'Most Popular',
                 press: () =>
                     Navigator.pushNamed(context, MostPopularPage.route)),
-            mostPopularTabbar(),
+            mostPopularTabBar(),
             Container(
               height: SizeConfig.screenHeight - 200,
               padding: EdgeInsets.only(
@@ -94,15 +92,15 @@ class _HomePageState extends State<HomePage> {
                 left: getProportionateScreenWidth(20),
               ),
               child: GridView.builder(
-                itemCount: 8,
+                itemCount: dataItemMostPopular.length,
                 scrollDirection: Axis.vertical,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: .63,
+                    childAspectRatio: .6,
                     crossAxisSpacing: kDefaultPadding,
                     mainAxisSpacing: kDefaultPadding),
                 itemBuilder: (context, index) =>
-                    MostPopularItemCard(data: data),
+                    MostPopularItemCard(data: dataItemMostPopular[index]),
               ),
             ),
           ],
@@ -111,7 +109,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Container mostPopularTabbar() {
+  Container mostPopularTabBar() {
     return Container(
       width: double.infinity,
       height: getProportionateScreenWidth(kDefaultPadding * 2),
@@ -204,7 +202,7 @@ class _HomePageState extends State<HomePage> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(notifiaction.toString(), style: const TextTheme().bodySmall),
+            Text(notification.toString(), style: const TextTheme().bodySmall),
             SizedBox(
               height: getProportionateScreenHeight(5),
             ),

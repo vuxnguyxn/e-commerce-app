@@ -27,12 +27,12 @@ class MostPopularTabBar extends StatelessWidget {
             horizontal: getProportionateScreenWidth(kDefaultPadding)),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
-          color: data.isSelested ==true ? Colors.black : Colors.white,
+          color: data.isSelected ==true ? Colors.black : Colors.white,
           border: Border.all(color: Colors.black, width: 2),
         ),
         child: Text(
           data.title,
-          style: TextStyle(color: data.isSelested ==true ? Colors.white : Colors.black),
+          style: TextStyle(color: data.isSelected ==true ? Colors.white : Colors.black),
         ),
       ),
     );

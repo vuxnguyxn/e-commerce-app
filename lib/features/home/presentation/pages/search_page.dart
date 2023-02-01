@@ -1,6 +1,8 @@
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
 import 'package:e_commerce_app/features/home/data/simple_data.dart';
+import 'package:e_commerce_app/features/home/presentation/widgets/most_popular_tabbar.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/most_popular_item_cart.dart';
@@ -15,23 +17,131 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   String textSearch = "Electronic";
-  String foundsSearch = "20,220";
+  String resultFound = "20,220";
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  void _showSortAndFilterModalSheet() {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      builder: (builder) {
+        return Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: getProportionateScreenWidth(kDefaultPadding),
+            vertical: getProportionateScreenWidth(kDefaultPadding),
+          ),
+          height: SizeConfig.screenHeight - 150,
+          decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
+              ),
+              color: Colors.white),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Center(
+                child: Text(
+                  'Soft And Filter',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ),
+              SizedBox(
+                height: getProportionateScreenHeight(kDefaultPadding),
+              ),
+              titleAndListFilter("Categories", dataTitleMostPopular),
+              titleAndListFilter("Price Range", dataPriceRange),
+              titleAndListFilter("Sort by", dataSortBy),
+              titleAndListFilter("Rating", dataRating),
+              SizedBox(
+                height: getProportionateScreenHeight(kDefaultPadding * 2),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  buttonSortAndFilter(
+                      'Reset', Colors.grey.shade200, Colors.black54, () {}),
+                  buttonSortAndFilter(
+                      'Apply', Colors.black, Colors.white, () {}),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Container buttonSortAndFilter(
+      String title, Color color, Color colorText, VoidCallback press) {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: getProportionateScreenWidth(kDefaultPadding * 2),
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(50),
+        color: color,
+      ),
+      child: TextButton(
+        onPressed: press,
+        child: Text(
+          title,
+          style: TextStyle(color: colorText),
+        ),
+      ),
+    );
+  }
+
+  Column titleAndListFilter(String title,  List data) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Container(
+          width: double.infinity,
+          height: getProportionateScreenWidth(kDefaultPadding * 2),
+          margin: EdgeInsets.symmetric(
+              vertical: getProportionateScreenWidth(kDefaultPadding)),
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: data.length,
+            itemBuilder: (context, index) => MostPopularTabBar(
+              data: data[index],
+              press: () {},
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.all(getProportionateScreenWidth(kDefaultPadding)),
           child: Column(
             children: [
               SearchAndFilterBar(
-                filterPress: () {},
+                filterPress: () {
+                  _showSortAndFilterModalSheet();
+                },
               ),
               SizedBox(
                 height: getProportionateScreenHeight(kDefaultPadding),
               ),
               // const RecentHistoryCard(),
-              ResultForSearchCard(textSearch: textSearch, foundsSearch: foundsSearch)
+              ResultForSearchCard(
+                  textSearch: textSearch, resultFound: resultFound)
             ],
           ),
         ),
@@ -44,11 +154,11 @@ class ResultForSearchCard extends StatelessWidget {
   const ResultForSearchCard({
     Key? key,
     required this.textSearch,
-    required this.foundsSearch,
+    required this.resultFound,
   }) : super(key: key);
 
   final String textSearch;
-  final String foundsSearch;
+  final String resultFound;
 
   @override
   Widget build(BuildContext context) {
@@ -59,17 +169,15 @@ class ResultForSearchCard extends StatelessWidget {
             children: [
               Text(
                 'Result for "$textSearch"',
-                overflow: textSearch.length > 10
-                    ? TextOverflow.ellipsis
-                    : null,
-                style: const TextStyle(
-                    fontSize: 18, fontWeight: FontWeight.bold),
+                overflow: textSearch.length > 10 ? TextOverflow.ellipsis : null,
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const Spacer(),
               Text(
-                '$foundsSearch founds',
-                style: const TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.bold),
+                '$resultFound found',
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -78,14 +186,13 @@ class ResultForSearchCard extends StatelessWidget {
           ),
           Expanded(
             child: GridView.builder(
-              itemBuilder: (context, index) => MostPopularItemCard(
-                  data: dataItemMostPopular[index]),
-              gridDelegate:
-                  const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: .6,
-                      mainAxisSpacing: kDefaultPadding,
-                      crossAxisSpacing: kDefaultPadding),
+              itemBuilder: (context, index) =>
+                  MostPopularItemCard(data: dataItemMostPopular[index]),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: .6,
+                  mainAxisSpacing: kDefaultPadding,
+                  crossAxisSpacing: kDefaultPadding),
               itemCount: dataItemMostPopular.length,
             ),
           )

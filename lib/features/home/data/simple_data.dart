@@ -1,20 +1,48 @@
 class DataTitleMostPopular {
   String title;
-  bool? isSelested;
+  bool? isSelected;
   DataTitleMostPopular({
     required this.title,
-    this.isSelested = false,
+    this.isSelected = false,
   });
 }
 
 List dataTitleMostPopular = [
-  DataTitleMostPopular(title: 'All', isSelested: true),
-  DataTitleMostPopular(title: 'Clother', isSelested: false),
-  DataTitleMostPopular(title: 'T-Shirt', isSelested: false),
-  DataTitleMostPopular(title: 'Hat', isSelested: false),
-  DataTitleMostPopular(title: 'Hoodie', isSelested: false),
-  DataTitleMostPopular(title: 'Leggeng', isSelested: false),
-  DataTitleMostPopular(title: 'Sweater', isSelested: false),
+  DataTitleMostPopular(title: 'All', isSelected: false),
+  DataTitleMostPopular(title: 'Clothes', isSelected: true),
+  DataTitleMostPopular(title: 'T-Shirt', isSelected: false),
+  DataTitleMostPopular(title: 'Hat', isSelected: false),
+  DataTitleMostPopular(title: 'Hoodie', isSelected: false),
+  DataTitleMostPopular(title: 'Legging', isSelected: false),
+  DataTitleMostPopular(title: 'Sweater', isSelected: false),
+];
+
+List dataPriceRange = [
+  DataTitleMostPopular(title: 'All', isSelected: false),
+  DataTitleMostPopular(title: '<10\$', isSelected: false),
+  DataTitleMostPopular(title: '10 - 20\$', isSelected: true),
+  DataTitleMostPopular(title: '20 - 30\$', isSelected: false),
+  DataTitleMostPopular(title: '30 - 40\$', isSelected: false),
+  DataTitleMostPopular(title: '50 - 100\$', isSelected: false),
+  DataTitleMostPopular(title: '>100\$', isSelected: false),
+];
+
+List dataSortBy = [
+  DataTitleMostPopular(title: 'All', isSelected: false),
+  DataTitleMostPopular(title: 'Popular', isSelected: false),
+  DataTitleMostPopular(title: 'Most Recent', isSelected: true),
+  DataTitleMostPopular(title: 'Price High', isSelected: false),
+  DataTitleMostPopular(title: 'Discount', isSelected: false),
+  DataTitleMostPopular(title: 'Trending', isSelected: false),
+];
+
+List dataRating = [
+  DataTitleMostPopular(title: 'All', isSelected: false),
+  DataTitleMostPopular(title: '5*', isSelected: false),
+  DataTitleMostPopular(title: '4*', isSelected: true),
+  DataTitleMostPopular(title: '3*', isSelected: false),
+  DataTitleMostPopular(title: '2*', isSelected: false),
+  DataTitleMostPopular(title: '1*', isSelected: false),
 ];
 
 class DataItemMostPopular {
@@ -50,7 +78,7 @@ List dataItemMostPopular = [
       price: 650),
   DataItemMostPopular(
       image: 'assets/images/bag_3.png',
-      title: 'Crocodie Leather Bag',
+      title: 'Crocodile Leather Bag',
       sold: 1000,
       star: 4.5,
       price: 650),
@@ -152,7 +180,7 @@ List dataNotifications = [
     date: "Yesterday",
     notifications: [
       Notification(
-          title: "Top Up E-Wallet Succesful!",
+          title: "Top Up E-Wallet Successful!",
           content: "You have to top up your e-wallet",
           image: "wallet"),
       Notification(
@@ -165,7 +193,7 @@ List dataNotifications = [
     date: "December 22, 2023",
     notifications: [
       Notification(
-          title: "Credit Card Conected!",
+          title: "Credit Card Connected!",
           content: "Credit Card has been linked!",
           image: "credit"),
       Notification(
