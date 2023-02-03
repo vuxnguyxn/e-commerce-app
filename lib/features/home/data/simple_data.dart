@@ -1,3 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/material.dart';
+
 class DataTitleMostPopular {
   String title;
   bool? isSelected;
@@ -217,4 +220,47 @@ List historySearch = [
   'HeadPhone Whites',
   'Nikon Camera',
   'Silver Watch'
+];
+
+class Size {
+  String size;
+  bool isSelected;
+  Size({
+    required this.size,
+    required this.isSelected,
+  });
+}
+
+List dataLetterSize = [
+  Size(size: "X", isSelected: false),
+  Size(size: "M", isSelected: false),
+  Size(size: "L", isSelected: false),
+  Size(size: "XL", isSelected: true),
+  Size(size: "2XL", isSelected: false),
+  Size(size: "3XL", isSelected: false),
+];
+List dataNumberSize = [
+  Size(size: "37", isSelected: false),
+  Size(size: "38", isSelected: false),
+  Size(size: "39", isSelected: false),
+  Size(size: "40", isSelected: true),
+  Size(size: "41", isSelected: false),
+  Size(size: "42", isSelected: false),
+];
+
+class ChooseColor {
+  Color color;
+  bool isSelected;
+  ChooseColor({
+    required this.color,
+    required this.isSelected,
+  });
+}
+
+List dataChooseColor = [
+  ChooseColor(color: Colors.green, isSelected: false),
+  ChooseColor(color: Colors.blue, isSelected: true),
+  ChooseColor(color: Colors.yellowAccent, isSelected: false),
+  ChooseColor(color: Colors.grey, isSelected: false),
+  ChooseColor(color: Colors.pinkAccent, isSelected: false),
 ];

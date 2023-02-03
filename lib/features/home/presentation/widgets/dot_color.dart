@@ -15,8 +15,6 @@ class DotColor extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.bottomCenter,
-      padding: EdgeInsets.only(
-          bottom: getProportionateScreenWidth(kDefaultPadding * 2)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(

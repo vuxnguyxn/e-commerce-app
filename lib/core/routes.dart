@@ -3,6 +3,7 @@ import 'package:e_commerce_app/features/home/presentation/pages/most_popular_pag
 import 'package:e_commerce_app/features/home/presentation/pages/my_wishlist_page.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/notifications_page.dart';
 import 'package:e_commerce_app/features/home/presentation/home.dart';
+import 'package:e_commerce_app/features/home/presentation/pages/product_detail_page.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/search_page.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/special_offer_page.dart';
 import 'package:e_commerce_app/features/splash/splash_screen.dart';
@@ -17,5 +18,6 @@ final Map<String, WidgetBuilder> routes = {
    MostPopularPage.route: (context) => const MostPopularPage(),
    SearchPage.route: (context) => const SearchPage(),
    CategoriesPage.route: (context) => const CategoriesPage(),
+   ProductDetailPage.route: (context) => const ProductDetailPage(),
 };
 

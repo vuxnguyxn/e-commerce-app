@@ -16,7 +16,7 @@ import '../widgets/category_item_card.dart';
 import '../widgets/dot_color.dart';
 import '../widgets/icon_button_with_counter.dart';
 import '../widgets/most_popular_item_cart.dart';
-import '../widgets/most_popular_tabbar.dart';
+import '../widgets/most_popular_tab_bar.dart';
 import 'notifications_page.dart';
 import '../widgets/search_and_filter.dart';
 import '../widgets/title_offer_and_see_all.dart';
@@ -136,6 +136,7 @@ class _HomePageState extends State<HomePage> {
       width: double.infinity,
       height: getProportionateScreenHeight(220),
       child: Stack(
+        alignment: Alignment.center,
         children: [
           PageView.builder(
             onPageChanged: (value) {
@@ -147,7 +148,7 @@ class _HomePageState extends State<HomePage> {
             itemBuilder: (context, index) => const BannerSpecialOffer(),
             itemCount: 5,
           ),
-          DotColor(currentIndex: currentIndex),
+          Positioned(bottom: kDefaultPadding* 2,child: DotColor(currentIndex: currentIndex)),
         ],
       ),
     );
@@ -210,7 +211,7 @@ class _HomePageState extends State<HomePage> {
               height: getProportionateScreenHeight(5),
             ),
             Text(
-              "Chường Dũ",
+              'Kaedehara Kazuha',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: getProportionateScreenWidth(18),

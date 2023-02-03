@@ -1,6 +1,6 @@
 import 'package:e_commerce_app/features/home/data/simple_data.dart';
 import 'package:e_commerce_app/features/home/presentation/widgets/most_popular_item_cart.dart';
-import 'package:e_commerce_app/features/home/presentation/widgets/most_popular_tabbar.dart';
+import 'package:e_commerce_app/features/home/presentation/widgets/most_popular_tab_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants.dart';
