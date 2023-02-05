@@ -123,9 +123,7 @@ class _HomePageState extends State<HomePage> {
         itemCount: dataTitleMostPopular.length,
         itemBuilder: (context, index) => MostPopularTabBar(
           data: dataTitleMostPopular[index],
-          press: () {
-            Navigator.pushNamed(context, CategoriesPage.route);
-          },
+          press: () {},
         ),
       ),
     );
@@ -148,7 +146,9 @@ class _HomePageState extends State<HomePage> {
             itemBuilder: (context, index) => const BannerSpecialOffer(),
             itemCount: 5,
           ),
-          Positioned(bottom: kDefaultPadding* 2,child: DotColor(currentIndex: currentIndex)),
+          Positioned(
+              bottom: kDefaultPadding * 2,
+              child: DotColor(currentIndex: currentIndex)),
         ],
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/features/home/presentation/pages/categories_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants.dart';
@@ -15,7 +16,9 @@ class CategoryItemCard extends StatelessWidget {
       child: Column(
         children: [
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, CategoriesPage.route);
+            },
             child: Container(
                 padding: const EdgeInsets.all(kDefaultPadding / 2),
                 decoration: BoxDecoration(

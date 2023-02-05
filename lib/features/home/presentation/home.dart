@@ -1,3 +1,5 @@
+import 'package:e_commerce_app/features/cart/presentation/cart.dart';
+import 'package:e_commerce_app/features/cart/presentation/pages/cart_page.dart';
 import 'package:e_commerce_app/features/home/presentation/widgets/item_bar.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/home_page.dart';
 import 'package:e_commerce_app/core/size_config.dart';
@@ -18,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> page = [
     const HomePage(),
-    const HomePage(),
+    const Cart(),
     const HomePage(),
     const HomePage(),
     const HomePage(),
