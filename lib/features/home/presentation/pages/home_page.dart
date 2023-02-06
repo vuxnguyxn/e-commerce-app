@@ -1,12 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:e_commerce_app/features/home/presentation/pages/categories_page.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/most_popular_page.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/my_wishlist_page.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/search_page.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/special_offer_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
 
@@ -39,9 +35,6 @@ class _HomePageState extends State<HomePage> {
   String notification = "";
   int currentIndex = 0;
 
-  bool lightMode =
-      SchedulerBinding.instance.window.platformBrightness == Brightness.light;
-
   void greeting() {
     if (time < 6) {
       notification = "Good Night,";
@@ -56,55 +49,58 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            headerHomePage(),
-            SearchAndFilter(
-                press: () => Navigator.pushNamed(context, SearchPage.route)),
-            TitleOfferAndSeeAll(
-              title: "Special Offer",
-              press: () => Navigator.pushNamed(context, SpecialOfferPage.route),
-            ),
-            bannerOfferAndDot(),
-            SizedBox(
-              width: double.infinity,
-              height: getProportionateScreenHeight(200),
-              child: GridView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 10,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                ),
-                itemBuilder: (context, index) => const CategoryItemCard(),
-              ),
-            ),
-            TitleOfferAndSeeAll(
-                title: 'Most Popular',
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              headerHomePage(),
+              SearchAndFilter(
+                  press: () => Navigator.pushNamed(context, SearchPage.route)),
+              TitleOfferAndSeeAll(
+                title: "Special Offer",
                 press: () =>
-                    Navigator.pushNamed(context, MostPopularPage.route)),
-            mostPopularTabBar(),
-            Container(
-              height: SizeConfig.screenHeight - 200,
-              padding: EdgeInsets.only(
-                top: getProportionateScreenWidth(20),
-                right: getProportionateScreenWidth(20),
-                left: getProportionateScreenWidth(20),
+                    Navigator.pushNamed(context, SpecialOfferPage.route),
               ),
-              child: GridView.builder(
-                itemCount: dataItemMostPopular.length,
-                scrollDirection: Axis.vertical,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              bannerOfferAndDot(),
+              SizedBox(
+                width: double.infinity,
+                height: getProportionateScreenHeight(200),
+                child: GridView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 10,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: .6,
-                    crossAxisSpacing: kDefaultPadding,
-                    mainAxisSpacing: kDefaultPadding),
-                itemBuilder: (context, index) =>
-                    MostPopularItemCard(data: dataItemMostPopular[index]),
+                  ),
+                  itemBuilder: (context, index) => const CategoryItemCard(),
+                ),
               ),
-            ),
-          ],
+              TitleOfferAndSeeAll(
+                  title: 'Most Popular',
+                  press: () =>
+                      Navigator.pushNamed(context, MostPopularPage.route)),
+              mostPopularTabBar(),
+              Container(
+                height: SizeConfig.screenHeight - 200,
+                padding: EdgeInsets.only(
+                  top: getProportionateScreenWidth(20),
+                  right: getProportionateScreenWidth(20),
+                  left: getProportionateScreenWidth(20),
+                ),
+                child: GridView.builder(
+                  itemCount: dataItemMostPopular.length,
+                  scrollDirection: Axis.vertical,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: .6,
+                      crossAxisSpacing: kDefaultPadding,
+                      mainAxisSpacing: kDefaultPadding),
+                  itemBuilder: (context, index) =>
+                      MostPopularItemCard(data: dataItemMostPopular[index]),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -155,6 +151,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Container headerHomePage() {
+    final lightMode = MediaQuery.of(context).platformBrightness;
     return Container(
       padding: EdgeInsets.only(
         top: getProportionateScreenWidth(10),
@@ -168,17 +165,17 @@ class _HomePageState extends State<HomePage> {
           Row(
             children: [
               IconButtonWithCounter(
-                svg: lightMode
+                svg: lightMode == Brightness.light
                     ? 'assets/icons/Bell_light.svg'
-                    : 'assets/icons/Bell_light.svg',
+                    : 'assets/icons/Bell_dark.svg',
                 numOfItems: 2,
                 press: () =>
                     Navigator.pushNamed(context, NotificationsPage.route),
               ),
               IconButtonWithCounter(
-                svg: lightMode
+                svg: lightMode == Brightness.light
                     ? 'assets/icons/Heart_light.svg'
-                    : 'assets/icons/Heart_light.svg',
+                    : 'assets/icons/Heart_dark.svg',
                 numOfItems: 1,
                 press: () => Navigator.pushNamed(context, MyWishlistPage.route),
               ),

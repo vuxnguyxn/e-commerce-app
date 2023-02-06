@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:e_commerce_app/features/cart/presentation/cart.dart';
 import 'package:e_commerce_app/features/cart/presentation/pages/cart_page.dart';
 import 'package:e_commerce_app/features/home/presentation/widgets/item_bar.dart';
@@ -30,73 +31,30 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      body: page[selectedIndex],
-      bottomNavigationBar: customBottomNavigationBar(),
-    );
-  }
-
-  SizedBox customBottomNavigationBar() {
-    return SizedBox(
-      width: double.infinity,
-      height: getProportionateScreenWidth(kDefaultPadding * 4),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          // ...List.generate(5, (index) => )
-          ItemBar(
-            title: 'Home',
-            isSelected: selectedIndex == 0,
-            icon: selectedIndex == 0 ? Icons.home : Icons.home_outlined,
-            press: () {
-              setState(() {
-                selectedIndex = 0;
-              });
-            },
-          ),
-          ItemBar(
-            title: 'Cart',
-            isSelected: selectedIndex == 1,
-            icon: selectedIndex == 1
-                ? Icons.shopping_bag
-                : Icons.shopping_bag_outlined,
-            press: () {
-              setState(() {
-                selectedIndex = 1;
-              });
-            },
-          ),
-          ItemBar(
-            title: 'Order',
-            isSelected: selectedIndex == 2,
-            icon: selectedIndex == 2
-                ? Icons.shopping_cart
-                : Icons.shopping_cart_outlined,
-            press: () {
-              setState(() {
-                selectedIndex = 2;
-              });
-            },
-          ),
-          ItemBar(
-            title: 'Wallet',
-            isSelected: selectedIndex == 3,
-            icon: selectedIndex == 3 ? Icons.add_card : Icons.add_card_outlined,
-            press: () {
-              setState(() {
-                selectedIndex = 3;
-              });
-            },
-          ),
-          ItemBar(
-            title: 'Profile',
-            isSelected: selectedIndex == 4,
-            icon: selectedIndex == 4 ? Icons.person : Icons.person_outline,
-            press: () {
-              setState(() {
-                selectedIndex = 4;
-              });
-            },
-          ),
+      body: PageTransitionSwitcher(
+        transitionBuilder: (child, primaryAnimation, secondaryAnimation) =>
+            FadeThroughTransition(
+          animation: primaryAnimation,
+          secondaryAnimation: secondaryAnimation,
+          child: child,
+        ),
+        child: page[selectedIndex],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectedIndex,
+        onTap: (value) {
+          setState(() {
+            selectedIndex = value;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_bag), label: 'Cart'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart), label: 'Order'),
+          BottomNavigationBarItem(icon: Icon(Icons.add_card), label: 'Wallet'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),
     );

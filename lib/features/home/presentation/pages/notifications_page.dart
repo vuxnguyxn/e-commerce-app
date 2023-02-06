@@ -3,6 +3,8 @@ import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/notification_cart.dart';
+
 class NotificationsPage extends StatelessWidget {
   const NotificationsPage({super.key});
 
@@ -28,92 +30,6 @@ class NotificationsPage extends StatelessWidget {
               itemBuilder: (context, index) =>
                   NotificationCard(data: data[index])),
         ),
-      ),
-    );
-  }
-}
-
-class NotificationCard extends StatelessWidget {
-  const NotificationCard({
-    Key? key,
-    required this.data,
-  }) : super(key: key);
-
-  final Notifications data;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin:
-          EdgeInsets.only(bottom: getProportionateScreenWidth(kDefaultPadding)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            data.date,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-          ),
-          SizedBox(
-            height: getProportionateScreenHeight(kDefaultPadding),
-          ),
-          Column(
-            children: List.generate(
-              data.notifications.length,
-              (index) => notificationItem(index),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Container notificationItem(int index) {
-    Map<String, IconData> iconNoti = {
-      'wallet': Icons.wallet,
-      'account': Icons.account_circle,
-      'location': Icons.location_on,
-      'discount': Icons.discount,
-      'credit': Icons.credit_card,
-    };
-
-    return Container(
-      margin:
-          EdgeInsets.only(bottom: getProportionateScreenWidth(kDefaultPadding)),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            width: getProportionateScreenWidth(60),
-            height: getProportionateScreenHeight(60),
-            padding: EdgeInsets.all(
-                getProportionateScreenWidth(kDefaultPadding / 2)),
-            decoration: const BoxDecoration(
-                shape: BoxShape.circle, color: Colors.black),
-            child: Icon(
-              iconNoti[data.notifications[index].image],
-              color: Colors.white,
-            ),
-          ),
-          SizedBox(
-            width: getProportionateScreenWidth(kDefaultPadding),
-          ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  data.notifications[index].title,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 16),
-                ),
-                SizedBox(
-                  height: getProportionateScreenHeight(kDefaultPadding / 2),
-                ),
-                Text(data.notifications[index].content),
-              ],
-            ),
-          )
-        ],
       ),
     );
   }

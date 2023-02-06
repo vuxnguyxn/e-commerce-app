@@ -5,10 +5,7 @@ import '../../../../core/constants.dart';
 import '../../../../core/size_config.dart';
 
 class MostPopularTabBar extends StatelessWidget {
-  const MostPopularTabBar(
-      {Key? key,
-      required this.press,
-      required this.data})
+  const MostPopularTabBar({Key? key, required this.press, required this.data})
       : super(key: key);
 
   final DataTitleMostPopular data;
@@ -16,6 +13,7 @@ class MostPopularTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final lightMode = MediaQuery.of(context).platformBrightness;
     return InkWell(
       onTap: press,
       borderRadius: BorderRadius.circular(30),
@@ -27,12 +25,24 @@ class MostPopularTabBar extends StatelessWidget {
             horizontal: getProportionateScreenWidth(kDefaultPadding)),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
-          color: data.isSelected ==true ? Colors.black : Colors.white,
-          border: Border.all(color: Colors.black, width: 2),
+          color: lightMode == Brightness.light
+              ? data.isSelected == true
+                  ? Colors.black
+                  : Colors.white
+              : data.isSelected == true
+                  ? Colors.blueGrey.withOpacity(.2)
+                  : kContentColorLightTheme,
+          border: lightMode == Brightness.light
+              ? Border.all(color: Colors.black, width: 2)
+              : Border.all(color: Colors.blueGrey.withOpacity(.2), width: 2),
         ),
         child: Text(
           data.title,
-          style: TextStyle(color: data.isSelected ==true ? Colors.white : Colors.black),
+          style: lightMode == Brightness.light
+              ? TextStyle(
+                  color: data.isSelected == true ? Colors.white : Colors.black)
+              : TextStyle(
+                  color: data.isSelected == true ? Colors.white : Colors.white),
         ),
       ),
     );

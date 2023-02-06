@@ -7,7 +7,7 @@ import '../widgets/dot_color.dart';
 class SpecialOfferPage extends StatefulWidget {
   const SpecialOfferPage({super.key});
 
-  static const route = '/special_ofer';
+  static const route = '/special_offer';
 
   @override
   State<SpecialOfferPage> createState() => _SpecialOfferPageState();
@@ -36,6 +36,7 @@ class _SpecialOfferPageState extends State<SpecialOfferPage> {
       width: double.infinity,
       height: getProportionateScreenHeight(220),
       child: Stack(
+        alignment: Alignment.center,
         children: [
           PageView.builder(
             onPageChanged: (value) {
@@ -47,7 +48,7 @@ class _SpecialOfferPageState extends State<SpecialOfferPage> {
             itemBuilder: (context, index) => const BannerSpecialOffer(),
             itemCount: 5,
           ),
-          DotColor(currentIndex: currentIndex),
+          Positioned(bottom: 40, child: DotColor(currentIndex: currentIndex)),
         ],
       ),
     );

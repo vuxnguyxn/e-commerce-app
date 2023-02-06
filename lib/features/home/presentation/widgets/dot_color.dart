@@ -13,6 +13,7 @@ class DotColor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final lightMode = MediaQuery.of(context).platformBrightness;
     return Container(
       alignment: Alignment.bottomCenter,
       child: Row(
@@ -20,16 +21,23 @@ class DotColor extends StatelessWidget {
         children: List.generate(
           5,
           (index) => AnimatedContainer(
-            margin:
-                EdgeInsets.only(right: getProportionateScreenWidth(8)),
+            margin: EdgeInsets.only(right: getProportionateScreenWidth(8)),
             duration: const Duration(seconds: 1),
             height: 6,
             width: currentIndex == index ? 20 : 6,
             alignment: Alignment.bottomCenter,
             decoration: BoxDecoration(
-              color: Colors.black,
+              color: lightMode == Brightness.light
+                  ? Colors.black
+                  : currentIndex == index
+                      ? Colors.white
+                      : Colors.black,
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.white, width: 1),
+              border: Border.all(
+                  color:
+                       Colors.white
+                      ,
+                  width: 1),
             ),
           ),
         ),

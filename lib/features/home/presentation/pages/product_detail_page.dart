@@ -4,6 +4,10 @@ import 'package:e_commerce_app/features/home/data/simple_data.dart';
 import 'package:e_commerce_app/features/home/presentation/widgets/dot_color.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/product_color_card.dart';
+import '../widgets/product_size_card.dart';
+import '../widgets/total_price_and_add_to_cart.dart';
+
 class ProductDetailPage extends StatefulWidget {
   const ProductDetailPage({super.key});
 
@@ -16,8 +20,11 @@ class ProductDetailPage extends StatefulWidget {
 class _ProductDetailPageState extends State<ProductDetailPage> {
   int currentIndex = 0;
   int quantity = 1;
+
   @override
   Widget build(BuildContext context) {
+    final lightMode = MediaQuery.of(context).platformBrightness;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -58,7 +65,9 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.05),
+                            color: lightMode == Brightness.light
+                                ? Colors.black.withOpacity(0.05)
+                                : Colors.blueGrey.withOpacity(.2),
                             borderRadius: BorderRadius.circular(50)),
                         child: Row(
                           children: [
@@ -125,13 +134,16 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
   }
 
   Row soldAndReviews() {
+    final lightMode = MediaQuery.of(context).platformBrightness;
     return Row(
       children: [
         Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              color: Colors.grey.shade200),
+              color: lightMode == Brightness.light
+                  ? Colors.grey.shade200
+                  : Colors.blueGrey.withOpacity(.2)),
           child: const Text(
             "3,200 sold",
             style: TextStyle(fontSize: 12),
@@ -193,153 +205,6 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
         Positioned(
             bottom: kDefaultPadding,
             child: DotColor(currentIndex: currentIndex))
-      ],
-    );
-  }
-}
-
-class TotalPriceAndAddToCart extends StatelessWidget {
-  const TotalPriceAndAddToCart({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Total Price",
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.grey.shade500,
-                ),
-              ),
-              const Text(
-                "\$800",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-        ),
-        Container(
-          padding: EdgeInsets.symmetric(
-              horizontal: getProportionateScreenWidth(kDefaultPadding * 2.5)),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50), color: Colors.black),
-          child: TextButton.icon(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.shopping_basket,
-              size: 16,
-              color: Colors.white,
-            ),
-            label: const Text(
-              'Add to Cart',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        )
-      ],
-    );
-  }
-}
-
-class ProductSizeCard extends StatelessWidget {
-  const ProductSizeCard({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'Size',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        SizedBox(
-          height: getProportionateScreenWidth(kDefaultPadding / 2),
-        ),
-        SizedBox(
-          width: double.infinity,
-          height: getProportionateScreenWidth(kDefaultPadding * 2),
-          child: GridView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: dataLetterSize.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1,
-                crossAxisSpacing: 10,
-                childAspectRatio: 1,
-                mainAxisSpacing: 10),
-            itemBuilder: (context, index) => Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: dataLetterSize[index].isSelected ? Colors.black : null,
-                border: Border.all(width: 1, color: Colors.black),
-              ),
-              child: Center(
-                child: Text(
-                  dataLetterSize[index].size,
-                  style: TextStyle(
-                      color: dataLetterSize[index].isSelected
-                          ? Colors.white
-                          : null),
-                ),
-              ),
-            ),
-          ),
-        )
-      ],
-    );
-  }
-}
-
-class ProductColorCard extends StatelessWidget {
-  const ProductColorCard({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'Color',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        SizedBox(
-          height: getProportionateScreenWidth(kDefaultPadding / 2),
-        ),
-        SizedBox(
-          width: double.infinity,
-          height: getProportionateScreenWidth(kDefaultPadding * 2),
-          child: GridView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: dataChooseColor.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1,
-                crossAxisSpacing: 10,
-                childAspectRatio: 1,
-                mainAxisSpacing: 10),
-            itemBuilder: (context, index) => Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: dataChooseColor[index].color,
-              ),
-              child: Center(
-                child: dataChooseColor[index].isSelected
-                    ? const Icon(Icons.check, color: Colors.white)
-                    : null,
-              ),
-            ),
-          ),
-        ),
       ],
     );
   }

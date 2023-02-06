@@ -15,8 +15,14 @@ ThemeData lightThemeData(BuildContext context) {
     primaryColor: kPrimaryColor,
     iconTheme: const IconThemeData(color: kContentColorLightTheme),
     textTheme: const TextTheme(
-      bodyText1: TextStyle(color: kContentColorLightTheme, fontSize: 16),
-      bodyText2: TextStyle(color: kContentColorLightTheme, fontSize: 16),
+      bodyLarge: TextStyle(color: kContentColorLightTheme, fontSize: 16),
+      bodyMedium: TextStyle(color: kContentColorLightTheme, fontSize: 16),
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: kContentColorDarkTheme,
+      selectedItemColor: kContentColorLightTheme,
+      unselectedItemColor: kContentColorLightTheme.withOpacity(0.5),
     ),
     colorScheme: const ColorScheme.light(
       primary: kPrimaryColor,
@@ -27,10 +33,10 @@ ThemeData lightThemeData(BuildContext context) {
 }
 
 ThemeData darkThemeData(BuildContext context) {
-  // Bydefault flutter provie us light and dark theme
+  // By default flutter provide us light and dark theme
   // we just modify it as our need
   return ThemeData.dark().copyWith(
-    primaryColor: kContentColorLightTheme,
+    primaryColor: kPrimaryColor,
     scaffoldBackgroundColor: kContentColorLightTheme,
     appBarTheme: const AppBarTheme(
       // centerTitle: true,
@@ -42,11 +48,17 @@ ThemeData darkThemeData(BuildContext context) {
     ),
     iconTheme: const IconThemeData(color: kContentColorDarkTheme),
     textTheme: const TextTheme(
-      bodyText1: TextStyle(color: kContentColorDarkTheme, fontSize: 16),
-      bodyText2: TextStyle(color: kContentColorDarkTheme, fontSize: 16),
+      bodyLarge: TextStyle(color: kContentColorDarkTheme, fontSize: 16),
+      bodyMedium: TextStyle(color: kContentColorDarkTheme, fontSize: 16),
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: kContentColorLightTheme,
+      selectedItemColor: kContentColorDarkTheme,
+      unselectedItemColor: kContentColorDarkTheme.withOpacity(0.5),
     ),
     colorScheme: const ColorScheme.dark().copyWith(
-      primary: kContentColorLightTheme,
+      primary: kPrimaryColor,
       secondary: kSecondaryColor,
       error: kErrorColor,
     ),

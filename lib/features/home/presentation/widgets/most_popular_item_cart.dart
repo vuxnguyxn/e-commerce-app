@@ -16,6 +16,7 @@ class MostPopularItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final lightMode = MediaQuery.of(context).platformBrightness;
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, ProductDetailPage.route);
@@ -33,7 +34,9 @@ class MostPopularItemCard extends StatelessWidget {
                   margin: EdgeInsets.only(
                       bottom: getProportionateScreenWidth(kDefaultPadding)),
                   decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
+                      color: lightMode == Brightness.light
+                          ? Colors.grey.shade200
+                          : Colors.blueGrey.withOpacity(.2),
                       borderRadius: BorderRadius.circular(15)),
                   child: AspectRatio(
                     aspectRatio: 1,
@@ -76,7 +79,9 @@ class MostPopularItemCard extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.all(getProportionateScreenWidth(5)),
                   decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
+                      color: lightMode == Brightness.light
+                          ? Colors.grey.shade200
+                          : Colors.blueGrey.withOpacity(.2),
                       borderRadius: BorderRadius.circular(12)),
                   child: Text(
                     "${data.sold} sold",

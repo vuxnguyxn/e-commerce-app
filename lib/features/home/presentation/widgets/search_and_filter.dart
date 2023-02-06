@@ -5,13 +5,15 @@ import '../../../../core/size_config.dart';
 
 class SearchAndFilter extends StatelessWidget {
   const SearchAndFilter({
-    Key? key, required this.press,
+    Key? key,
+    required this.press,
   }) : super(key: key);
 
   final VoidCallback press;
 
   @override
   Widget build(BuildContext context) {
+    final lightMode = MediaQuery.of(context).platformBrightness;
     return InkWell(
       onTap: press,
       child: Container(
@@ -29,13 +31,18 @@ class SearchAndFilter extends StatelessWidget {
                     getProportionateScreenWidth(kDefaultPadding * .5)),
                 width: getProportionateScreenWidth(48),
                 height: getProportionateScreenHeight(48),
-                child: const Icon(
+                child: Icon(
                   Icons.search,
-                  color: Colors.black26,
+                  color: lightMode == Brightness.light
+                      ? Colors.black26
+                      : Colors.white54,
                 )),
-            const Text(
+            Text(
               "Search...",
-              style: TextStyle(color: Colors.black26),
+              style: TextStyle(
+                  color: lightMode == Brightness.light
+                      ? Colors.black26
+                      : Colors.white54),
             ),
             const Spacer(),
             Container(

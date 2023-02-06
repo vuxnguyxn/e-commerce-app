@@ -19,7 +19,7 @@ class MyWishlistPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          mostPopularTabbar(),
+          mostPopularTabBar(),
           Container(
             width: double.infinity,
             height: SizeConfig.screenHeight - getProportionateScreenWidth(160),
@@ -43,7 +43,7 @@ class MyWishlistPage extends StatelessWidget {
     );
   }
 
-  Container mostPopularTabbar() {
+  Container mostPopularTabBar() {
     return Container(
       width: double.infinity,
       height: getProportionateScreenWidth(kDefaultPadding * 2),

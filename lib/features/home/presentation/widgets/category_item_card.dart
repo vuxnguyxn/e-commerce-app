@@ -22,7 +22,10 @@ class CategoryItemCard extends StatelessWidget {
             child: Container(
                 padding: const EdgeInsets.all(kDefaultPadding / 2),
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
+                  color: MediaQuery.of(context).platformBrightness ==
+                          Brightness.light
+                      ? Colors.grey.shade200
+                      : Colors.blueGrey.withOpacity(.2),
                   borderRadius: BorderRadius.circular(kDefaultPadding),
                 ),
                 child: const Icon(Icons.shopping_bag)),
