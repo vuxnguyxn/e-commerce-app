@@ -24,7 +24,7 @@ class CartPage extends StatelessWidget {
             child: ListView.builder(
                 itemCount: dataCart.length,
                 itemBuilder: (context, index) => CartItem(
-                      data: dataCart[index],
+                      data: dataCart[index], index: index,
                     )),
           ),
         ),
@@ -59,7 +59,7 @@ class CartPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(50),
                     color:
                         // ignore: unrelated_type_equality_checks
-                        lightMode == Brightness ? Colors.black : Colors.white),
+                        lightMode == Brightness.light ? Colors.black : Colors.white),
                 child: TextButton.icon(
                   onPressed: () {},
                   label: Text(

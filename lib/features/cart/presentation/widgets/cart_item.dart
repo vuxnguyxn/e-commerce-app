@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/features/cart/presentation/widgets/cart_remove_item.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants.dart';
@@ -6,16 +7,17 @@ import '../../../../widgets/custom_button.dart';
 import '../../data/cart_data.dart';
 
 class CartItem extends StatefulWidget {
-  const CartItem({super.key, required this.data});
+  const CartItem({super.key, required this.data, required this.index});
 
   final Cart data;
+  final int index;
 
   @override
   State<CartItem> createState() => _CartItemState();
 }
 
 class _CartItemState extends State<CartItem> {
-  void _showDeleteModelBottomSheet() {
+  void _showDeleteModelBottomSheet(int index) {
     final lightMode = MediaQuery.of(context).platformBrightness;
     showModalBottomSheet(
       context: context,
@@ -34,12 +36,13 @@ class _CartItemState extends State<CartItem> {
                   ? Colors.white
                   : kContentColorLightTheme),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               const Text(
                 'Remove From Cart?',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
-              const Spacer(),
+              CartRemoveItem(data: dataCart[index]),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -51,7 +54,10 @@ class _CartItemState extends State<CartItem> {
                       colorText: lightMode == Brightness.light
                           ? Colors.black
                           : Colors.white,
-                      press: () {}),
+                      press: () {
+                        //hide model bottom sheet
+                        Navigator.pop(context);
+                      }),
                   CustomButton(
                       title: 'Yes, Remove',
                       color: lightMode == Brightness.light
@@ -73,6 +79,7 @@ class _CartItemState extends State<CartItem> {
   @override
   Widget build(BuildContext context) {
     int quantity = widget.data.quantity;
+    final lightMode = MediaQuery.of(context).platformBrightness;
     return Container(
       padding: EdgeInsets.symmetric(
           vertical: getProportionateScreenWidth(kDefaultPadding / 2)),
@@ -80,7 +87,13 @@ class _CartItemState extends State<CartItem> {
         children: [
           Container(
             padding: EdgeInsets.only(right: getProportionateScreenWidth(5)),
+            margin: EdgeInsets.only(right: getProportionateScreenWidth(10)),
             width: getProportionateScreenWidth(SizeConfig.screenWidth * 0.3),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: lightMode == Brightness.light
+                    ? Colors.grey.shade200
+                    : Colors.blueGrey.withOpacity(.2)),
             child: Image.asset(widget.data.image),
           ),
           Expanded(
@@ -100,7 +113,7 @@ class _CartItemState extends State<CartItem> {
                     ),
                     IconButton(
                       onPressed: () {
-                        _showDeleteModelBottomSheet();
+                        _showDeleteModelBottomSheet(widget.index);
                       },
                       icon: const Icon(Icons.delete_outline),
                     ),
