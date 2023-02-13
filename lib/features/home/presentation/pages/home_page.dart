@@ -109,7 +109,7 @@ class _HomePageState extends State<HomePage> {
   Container mostPopularTabBar() {
     return Container(
       width: double.infinity,
-      height: getProportionateScreenWidth(kDefaultPadding * 2),
+      height: getProportionateScreenWidth(45),
       margin: EdgeInsets.only(
           top: getProportionateScreenWidth(kDefaultPadding),
           left: getProportionateScreenWidth(kDefaultPadding),

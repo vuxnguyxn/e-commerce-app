@@ -1,8 +1,10 @@
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
 import 'package:e_commerce_app/features/cart/data/cart_data.dart';
+import 'package:e_commerce_app/features/cart/presentation/pages/check_out_page.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../widgets/custom_button_and_icon.dart';
 import '../widgets/cart_item.dart';
 
 class CartPage extends StatelessWidget {
@@ -12,7 +14,7 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lightMode = MediaQuery.of(context).platformBrightness;
+    final Brightness brightness = MediaQuery.of(context).platformBrightness;
     return Column(
       children: [
         Expanded(
@@ -24,7 +26,8 @@ class CartPage extends StatelessWidget {
             child: ListView.builder(
                 itemCount: dataCart.length,
                 itemBuilder: (context, index) => CartItem(
-                      data: dataCart[index], index: index,
+                      data: dataCart[index],
+                      index: index,
                     )),
           ),
         ),
@@ -51,34 +54,11 @@ class CartPage extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                padding: EdgeInsets.symmetric(
-                    horizontal:
-                        getProportionateScreenWidth(kDefaultPadding * 2.5)),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color:
-                        // ignore: unrelated_type_equality_checks
-                        lightMode == Brightness.light ? Colors.black : Colors.white),
-                child: TextButton.icon(
-                  onPressed: () {},
-                  label: Text(
-                    'Checkout',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        color: lightMode == Brightness.light
-                            ? Colors.white
-                            : Colors.black),
-                  ),
-                  icon: Icon(
-                    Icons.arrow_forward,
-                    size: 16,
-                    color: lightMode == Brightness.light
-                        ? Colors.white
-                        : Colors.black,
-                  ),
-                ),
+              CustomButtonAndIcon(
+                brightness: brightness,
+                title: 'Checkout',
+                icon: Icons.arrow_forward_outlined,
+                press: () => Navigator.pushNamed(context, CheckoutPage.route),
               ),
             ],
           ),

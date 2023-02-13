@@ -32,7 +32,7 @@ class MostPopularPage extends StatelessWidget {
                   MostPopularItemCard(data: dataItemMostPopular[index]),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: .63,
+                  childAspectRatio: .6,
                   mainAxisSpacing: kDefaultPadding,
                   crossAxisSpacing: kDefaultPadding),
               itemCount: dataItemMostPopular.length,
@@ -46,7 +46,7 @@ class MostPopularPage extends StatelessWidget {
   Container mostPopularTabBar() {
     return Container(
       width: double.infinity,
-      height: getProportionateScreenWidth(kDefaultPadding * 2),
+      height: getProportionateScreenWidth(45),
       margin: EdgeInsets.only(
           top: getProportionateScreenWidth(kDefaultPadding),
           left: getProportionateScreenWidth(kDefaultPadding),
