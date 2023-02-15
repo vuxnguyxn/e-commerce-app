@@ -1,6 +1,42 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
+class DeliveryShipping {
+  String title;
+  String content;
+  int price;
+  bool isSelected;
+  DeliveryShipping({
+    required this.title,
+    required this.content,
+    required this.price,
+    this.isSelected = false,
+  });
+}
+
+List dataChooseShippingAddress = [
+  DeliveryShipping(
+      price: 15,
+      title: 'Economy',
+      content: 'Estimated Arrival. Dec 20-23',
+      isSelected: true),
+  DeliveryShipping(
+      price: 20,
+      title: 'Regular',
+      content: 'Estimated Arrival. Dec 20-23',
+      isSelected: false),
+  DeliveryShipping(
+      price: 25,
+      title: 'Cargo',
+      content: 'Estimated Arrival. Dec 20-23',
+      isSelected: false),
+  DeliveryShipping(
+      price: 30,
+      title: "Express",
+      content: 'Estimated Arrival. Dec 20-23',
+      isSelected: false),
+];
+
 class DeliveryAddress {
   String title;
   String content;
@@ -13,10 +49,18 @@ class DeliveryAddress {
 }
 
 List dataShippingAddress = [
-  DeliveryAddress(title: 'Home', content: '640/4 Paris, French', isSelected: true),
-  DeliveryAddress(title: 'Office', content: '640/5 Hanoi, VietNam', isSelected: false),
-  DeliveryAddress(title: 'Apartment', content: '640/6 Los Angeles, American', isSelected: false),
-  DeliveryAddress(title: "Parent's House", content: '640/7 London, England', isSelected: false),
+  DeliveryAddress(
+      title: 'Home', content: '640/4 Paris, French', isSelected: true),
+  DeliveryAddress(
+      title: 'Office', content: '640/5 Hanoi, VietNam', isSelected: false),
+  DeliveryAddress(
+      title: 'Apartment',
+      content: '640/6 Los Angeles, American',
+      isSelected: false),
+  DeliveryAddress(
+      title: "Parent's House",
+      content: '640/7 London, England',
+      isSelected: false),
 ];
 
 List dataPromoCode = ['Discount 30% Off', 'Free Shipping', 'Discount 10% ATM'];

@@ -43,7 +43,7 @@ class ShippingAddressPage extends StatelessWidget {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           color: brightness == Brightness.light
-                              ? null
+                              ? Colors.blueGrey.withOpacity(.2)
                               : Colors.blueGrey.withOpacity(.3)),
                       child: TextButton(
                         child: Text(

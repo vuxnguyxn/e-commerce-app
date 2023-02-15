@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/features/cart/presentation/pages/choose_shipping_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants.dart';
@@ -26,8 +27,8 @@ class ChooseShipping extends StatelessWidget {
         children: <Widget>[
           Container(
               decoration: BoxDecoration(
-                  border: Border.all(
-                      color: Colors.grey.withOpacity(.2), width: 2),
+                  border:
+                      Border.all(color: Colors.grey.withOpacity(.2), width: 2),
                   shape: BoxShape.circle,
                   color: brightness == Brightness.light
                       ? Colors.black
@@ -50,8 +51,7 @@ class ChooseShipping extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               SizedBox(
-                height:
-                    getProportionateScreenWidth(kDefaultPadding / 4),
+                height: getProportionateScreenWidth(kDefaultPadding / 4),
               ),
               const Text(
                 'Estimated...Dec 22-10',
@@ -71,7 +71,9 @@ class ChooseShipping extends StatelessWidget {
                       ? Colors.black
                       : Colors.white,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, ChooseShippingPage.route);
+                },
               ),
             ],
           ),
