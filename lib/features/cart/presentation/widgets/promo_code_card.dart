@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/features/cart/presentation/pages/promo_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants.dart';
@@ -41,7 +42,9 @@ class PromoCodeCard extends StatelessWidget {
                     ? Colors.black
                     : Colors.white),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, PromoPage.route);
+              },
               icon: Icon(
                 Icons.add,
                 color: brightness == Brightness.light

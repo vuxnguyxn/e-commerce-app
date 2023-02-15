@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/features/cart/presentation/cart.dart';
 import 'package:e_commerce_app/features/cart/presentation/pages/check_out_page.dart';
 import 'package:e_commerce_app/features/cart/presentation/pages/choose_shipping_page.dart';
+import 'package:e_commerce_app/features/cart/presentation/pages/promo_page.dart';
 import 'package:e_commerce_app/features/cart/presentation/pages/shipping_address_page.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/categories_page.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/most_popular_page.dart';
@@ -27,4 +28,5 @@ final Map<String, WidgetBuilder> routes = {
   CheckoutPage.route: (context) => const CheckoutPage(),
   ShippingAddressPage.route:(context) => const ShippingAddressPage(),
   ChooseShippingPage.route:(context) => const ChooseShippingPage(),
+  PromoPage.route:(context) => const PromoPage(),
 };

@@ -1,6 +1,40 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
+class PromoCode {
+  String title;
+  String content;
+  bool isSelected;
+  PromoCode({
+    required this.title,
+    required this.content,
+    this.isSelected = false,
+  });
+}
+
+List dataPromo = [
+  PromoCode(
+      title: 'Special 25% Off',
+      content: 'Special promo only today',
+      isSelected: true),
+  PromoCode(
+      title: 'Discount 30% Off',
+      content: 'Special promo only today',
+      isSelected: false),
+  PromoCode(
+      title: 'Special 20% Off',
+      content: 'Special promo only valid today',
+      isSelected: false),
+  PromoCode(
+      title: "Discount 35% Off",
+      content: 'Special promo only valid today',
+      isSelected: false),
+  PromoCode(
+      title: "Discount 50% Off",
+      content: 'Special promo only valid today',
+      isSelected: false),
+];
+
 class DeliveryShipping {
   String title;
   String content;
