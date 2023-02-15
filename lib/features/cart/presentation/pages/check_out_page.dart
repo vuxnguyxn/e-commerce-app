@@ -2,7 +2,6 @@ import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
 import 'package:e_commerce_app/features/cart/data/cart_data.dart';
 import 'package:e_commerce_app/widgets/custom_button_and_icon.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../widgets/horizon_line.dart';

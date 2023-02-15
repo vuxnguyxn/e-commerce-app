@@ -5,7 +5,6 @@ import 'package:e_commerce_app/features/home/presentation/widgets/most_popular_t
 import 'package:e_commerce_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/most_popular_item_cart.dart';
 import '../widgets/result_for_search_card.dart';
 import '../widgets/search_and_filter_bar.dart';
 

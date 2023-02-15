@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/features/cart/presentation/pages/shipping_address_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants.dart';
@@ -66,7 +67,9 @@ class ShippingAddress extends StatelessWidget {
               color:
                   brightness == Brightness.light ? Colors.black : Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, ShippingAddressPage.route);
+            },
           ),
         ],
       ),

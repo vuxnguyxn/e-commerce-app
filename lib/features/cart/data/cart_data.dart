@@ -1,6 +1,24 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
+class DeliveryAddress {
+  String title;
+  String content;
+  bool isSelected;
+  DeliveryAddress({
+    required this.title,
+    required this.content,
+    this.isSelected = false,
+  });
+}
+
+List dataShippingAddress = [
+  DeliveryAddress(title: 'Home', content: '640/4 Paris, French', isSelected: true),
+  DeliveryAddress(title: 'Office', content: '640/5 Hanoi, VietNam', isSelected: false),
+  DeliveryAddress(title: 'Apartment', content: '640/6 Los Angeles, American', isSelected: false),
+  DeliveryAddress(title: "Parent's House", content: '640/7 London, England', isSelected: false),
+];
+
 List dataPromoCode = ['Discount 30% Off', 'Free Shipping', 'Discount 10% ATM'];
 
 class Cart {

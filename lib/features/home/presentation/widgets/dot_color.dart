@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants.dart';
 import '../../../../core/size_config.dart';
 
 class DotColor extends StatelessWidget {

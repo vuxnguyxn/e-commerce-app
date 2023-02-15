@@ -1,12 +1,9 @@
 import 'package:animations/animations.dart';
 import 'package:e_commerce_app/features/cart/presentation/cart.dart';
-import 'package:e_commerce_app/features/cart/presentation/pages/cart_page.dart';
-import 'package:e_commerce_app/features/home/presentation/widgets/item_bar.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/home_page.dart';
 import 'package:e_commerce_app/core/size_config.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/constants.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String route = '/home';

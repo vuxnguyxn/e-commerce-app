@@ -1,6 +1,5 @@
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
-import 'package:e_commerce_app/features/home/data/simple_data.dart';
 import 'package:e_commerce_app/features/home/presentation/widgets/dot_color.dart';
 import 'package:flutter/material.dart';
 
@@ -123,8 +122,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
         SizedBox(
           height: getProportionateScreenHeight(kDefaultPadding / 2),
         ),
-        const Text(
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        const Text("This is description",
           style: TextStyle(fontSize: 12),
           maxLines: 10,
           overflow: TextOverflow.ellipsis,
