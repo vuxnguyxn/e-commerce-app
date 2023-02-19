@@ -2,6 +2,7 @@ import 'package:animations/animations.dart';
 import 'package:e_commerce_app/features/cart/presentation/cart.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/home_page.dart';
 import 'package:e_commerce_app/core/size_config.dart';
+import 'package:e_commerce_app/features/profile/presentation/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 
 
@@ -21,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const Cart(),
     const HomePage(),
     const HomePage(),
-    const HomePage(),
+    const Profile(),
   ];
 
   @override
