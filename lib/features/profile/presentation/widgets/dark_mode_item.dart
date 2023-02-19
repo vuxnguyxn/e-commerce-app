@@ -1,4 +1,6 @@
+import 'package:e_commerce_app/features/profile/presentation/blocs/switch_bloc/switch_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/size_config.dart';
@@ -28,16 +30,22 @@ class _DarkThemeItemState extends State<DarkModeItem> {
             width: getProportionateScreenWidth(kDefaultPadding / 2),
           ),
           const Expanded(child: Text('Dark Mode')),
-          Switch(
-            value: switchValue,
-            activeColor: Colors.white,
-            activeTrackColor: Colors.grey,
-            inactiveThumbColor: Colors.white,
-            inactiveTrackColor: Colors.grey,
-            onChanged: (value) {
-              setState(() {
-                switchValue = value;
-              });
+          BlocBuilder<SwitchBloc, SwitchState>(
+            builder: (context, state) {
+              return Switch(
+                value: state.switchValue,
+                activeColor: Colors.white,
+                activeTrackColor: Colors.grey,
+                inactiveThumbColor: Colors.white,
+                inactiveTrackColor: Colors.grey,
+                onChanged: (newValue) {
+                  setState(() {
+                    newValue
+                        ? context.read<SwitchBloc>().add(SwitchOnEvent())
+                        : context.read<SwitchBloc>().add(SwitchOffEvent());
+                  });
+                },
+              );
             },
           ),
         ],
