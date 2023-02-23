@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
+import 'package:e_commerce_app/features/profile/presentation/pages/edit_profile_page.dart';
 import 'package:e_commerce_app/features/profile/presentation/widgets/dark_mode_item.dart';
 import 'package:e_commerce_app/widgets/horizon_line.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,7 @@ class Profile extends StatelessWidget {
                 ),
                 const HorizonLine(),
                 profileItem(
-                    press: () {},
+                    press: () => Navigator.pushNamed(context, EditProfilePage.route),
                     title: 'Edit profile',
                     icon: Icons.person_outline),
                 profileItem(

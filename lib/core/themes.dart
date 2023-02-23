@@ -4,6 +4,7 @@ import 'constants.dart';
 ThemeData lightThemeData(BuildContext context) {
   return ThemeData.light().copyWith(
     scaffoldBackgroundColor: kContentColorDarkTheme,
+    brightness: Brightness.light,
     appBarTheme: const AppBarTheme(
       // centerTitle: true,
       elevation: 0,
@@ -37,6 +38,7 @@ ThemeData darkThemeData(BuildContext context) {
   // we just modify it as our need
   return ThemeData.dark().copyWith(
     primaryColor: kPrimaryColor,
+     brightness: Brightness.dark,
     scaffoldBackgroundColor: kContentColorLightTheme,
     appBarTheme: const AppBarTheme(
       // centerTitle: true,

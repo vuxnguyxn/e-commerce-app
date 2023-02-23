@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'E-Commerce',
-            theme: state.switchValue
-                ? darkThemeData(context)
-                : lightThemeData(context),
+            themeMode: state.switchValue ? ThemeMode.dark : ThemeMode.light,
+            darkTheme: darkThemeData(context),
+            theme: lightThemeData(context),
             routes: routes,
             initialRoute: SplashScreen.route,
           );
