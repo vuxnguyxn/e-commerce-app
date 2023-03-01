@@ -9,10 +9,10 @@ import 'discount_card.dart';
 class PromoCodeCard extends StatelessWidget {
   const PromoCodeCard({
     super.key,
-    required this.brightness,
+    required this.isDarkMode,
   });
 
-  final Brightness brightness;
+  final bool isDarkMode;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class PromoCodeCard extends StatelessWidget {
               itemCount: dataPromoCode.length,
               itemBuilder: (context, index) => DiscountCard(
                 content: dataPromoCode[index],
-                brightness: brightness,
+                isDarkMode: isDarkMode,
               ),
               scrollDirection: Axis.horizontal,
             ),
@@ -38,18 +38,14 @@ class PromoCodeCard extends StatelessWidget {
                 left: getProportionateScreenWidth(kDefaultPadding / 2)),
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: brightness == Brightness.light
-                    ? Colors.black
-                    : Colors.white),
+                color: isDarkMode ? Colors.white : Colors.black),
             child: IconButton(
               onPressed: () {
                 Navigator.pushNamed(context, PromoPage.route);
               },
               icon: Icon(
                 Icons.add,
-                color: brightness == Brightness.light
-                    ? Colors.white
-                    : Colors.black,
+                color: isDarkMode ? Colors.black : Colors.white,
               ),
             ),
           ),

@@ -7,13 +7,14 @@ class SearchAndFilter extends StatelessWidget {
   const SearchAndFilter({
     Key? key,
     required this.press,
+    required this.darkMode,
   }) : super(key: key);
 
   final VoidCallback press;
+  final bool darkMode;
 
   @override
   Widget build(BuildContext context) {
-    final lightMode = MediaQuery.of(context).platformBrightness;
     return InkWell(
       onTap: press,
       child: Container(
@@ -27,30 +28,33 @@ class SearchAndFilter extends StatelessWidget {
         child: Row(
           children: [
             Container(
-                padding: EdgeInsets.all(
-                    getProportionateScreenWidth(kDefaultPadding * .5)),
-                width: getProportionateScreenWidth(48),
-                height: getProportionateScreenHeight(48),
-                child: Icon(
-                  Icons.search,
-                  color: lightMode == Brightness.light
-                      ? Colors.black26
-                      : Colors.white54,
-                )),
+              padding: EdgeInsets.all(
+                  getProportionateScreenWidth(kDefaultPadding * .5)),
+              width: getProportionateScreenWidth(48),
+              height: getProportionateScreenHeight(48),
+              child: Icon(
+                Icons.search,
+                color: Theme.of(context).iconTheme.color?.withOpacity(.5),
+              ),
+            ),
             Text(
               "Search...",
               style: TextStyle(
-                  color: lightMode == Brightness.light
-                      ? Colors.black26
-                      : Colors.white54),
+                color: Theme.of(context)
+                    .textTheme
+                    .bodyMedium
+                    ?.color
+                    ?.withOpacity(.5),
+              ),
             ),
             const Spacer(),
             Container(
-                padding: EdgeInsets.all(
-                    getProportionateScreenWidth(kDefaultPadding * .5)),
-                width: getProportionateScreenWidth(48),
-                height: getProportionateScreenHeight(48),
-                child: const Icon(Icons.filter_list)),
+              padding: EdgeInsets.all(
+                  getProportionateScreenWidth(kDefaultPadding * .5)),
+              width: getProportionateScreenWidth(48),
+              height: getProportionateScreenHeight(48),
+              child: const Icon(Icons.filter_list),
+            ),
           ],
         ),
       ),

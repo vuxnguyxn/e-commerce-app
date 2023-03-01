@@ -1,12 +1,15 @@
 import 'package:e_commerce_app/core/routes.dart';
-import 'package:e_commerce_app/features/profile/presentation/blocs/switch_bloc/switch_bloc.dart';
 import 'package:e_commerce_app/features/splash/splash_screen.dart';
 import 'package:e_commerce_app/core/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+   WidgetsFlutterBinding.ensureInitialized();
+  runApp(ChangeNotifierProvider<ThemeNotifier>(
+    create: (_) => ThemeNotifier(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -15,22 +18,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => SwitchBloc())
-      ],
-      child: BlocBuilder<SwitchBloc, SwitchState>(
-        builder: (context, state) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'E-Commerce',
-            themeMode: state.switchValue ? ThemeMode.dark : ThemeMode.light,
-            darkTheme: darkThemeData(context),
-            theme: lightThemeData(context),
-            routes: routes,
-            initialRoute: SplashScreen.route,
-          );
-        },
+    return Consumer<ThemeNotifier>(
+      builder: (context, theme, child) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'E-Commerce',
+        theme: theme.getTheme(),
+        routes: routes,
+        initialRoute: SplashScreen.route,
       ),
     );
   }

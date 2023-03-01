@@ -14,7 +14,10 @@ class MyWishlistPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Wishlist'),
+        title: const Text(
+          'My Wishlist',
+          style: TextStyle(fontSize: 20),
+        ),
         actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
       ),
       body: Column(

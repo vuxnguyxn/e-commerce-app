@@ -1,16 +1,15 @@
 import 'package:e_commerce_app/core/size_config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class IconButtonWithCounter extends StatelessWidget {
   const IconButtonWithCounter({
     Key? key,
-    required this.svg,
+    required this.icon,
     this.numOfItems,
     required this.press,
   }) : super(key: key);
 
-  final String svg;
+  final IconData icon;
   final int? numOfItems;
   final VoidCallback press;
 
@@ -22,14 +21,14 @@ class IconButtonWithCounter extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            padding:  EdgeInsets.all(getProportionateScreenWidth(12)),
+            padding: EdgeInsets.all(getProportionateScreenWidth(12)),
             width: getProportionateScreenWidth(48),
             height: getProportionateScreenWidth(48),
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
             ),
-            child: SvgPicture.asset(
-              svg,
+            child: Icon(
+              icon,
             ),
           ),
           if (numOfItems != 0)
@@ -46,7 +45,9 @@ class IconButtonWithCounter extends StatelessWidget {
                 child: Center(
                   child: Text(
                     "$numOfItems",
-                    style: TextStyle(color: Colors.white, fontSize: getProportionateScreenWidth(8)),
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: getProportionateScreenWidth(8)),
                   ),
                 ),
               ),

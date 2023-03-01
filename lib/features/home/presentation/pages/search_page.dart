@@ -21,9 +21,7 @@ class _SearchPageState extends State<SearchPage> {
   String resultFound = "20,220";
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  void _showSortAndFilterModalSheet() {
-    final lightMode = MediaQuery.of(context).platformBrightness;
-
+  void _showSortAndFilterModalSheet({required bool isDarkMode}) {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -34,15 +32,13 @@ class _SearchPageState extends State<SearchPage> {
             horizontal: getProportionateScreenWidth(kDefaultPadding),
             vertical: getProportionateScreenWidth(kDefaultPadding),
           ),
-          height: SizeConfig.screenHeight - 150,
+          height: SizeConfig.screenHeight - getProportionateScreenWidth(150),
           decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(30),
                 topRight: Radius.circular(30),
               ),
-              color: lightMode == Brightness.light
-                  ? Colors.white
-                  : kContentColorLightTheme),
+              color: isDarkMode ? kContentColorLightTheme : Colors.white),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -67,21 +63,15 @@ class _SearchPageState extends State<SearchPage> {
                 children: [
                   CustomButton(
                       title: 'Reset',
-                      color: lightMode == Brightness.light
-                          ? Colors.grey.shade200
-                          : Colors.blueGrey.withOpacity(.2),
-                      colorText: lightMode == Brightness.light
-                          ? Colors.black54
-                          : Colors.white,
+                      color: isDarkMode
+                          ? Colors.blueGrey.withOpacity(.2)
+                          : Colors.grey.shade200,
+                      colorText: isDarkMode ? Colors.white : Colors.black54,
                       press: () {}),
                   CustomButton(
                       title: 'Apply',
-                      color: lightMode == Brightness.light
-                          ? Colors.black
-                          : Colors.white,
-                      colorText: lightMode == Brightness.light
-                          ? Colors.white
-                          : Colors.black,
+                      color: isDarkMode ? Colors.white : Colors.black,
+                      colorText: isDarkMode ? Colors.black : Colors.white,
                       press: () {}),
                 ],
               ),
@@ -123,6 +113,9 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    bool isDarkMode = brightness == Brightness.dark;
+
     return Scaffold(
       key: _scaffoldKey,
       body: SafeArea(
@@ -131,8 +124,9 @@ class _SearchPageState extends State<SearchPage> {
           child: Column(
             children: [
               SearchAndFilterBar(
+                isDarkMode: isDarkMode,
                 filterPress: () {
-                  _showSortAndFilterModalSheet();
+                  _showSortAndFilterModalSheet(isDarkMode: isDarkMode);
                 },
               ),
               SizedBox(

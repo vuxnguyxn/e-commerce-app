@@ -16,17 +16,21 @@ class RecentHistoryCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Text(
+              Text(
                 'Recent',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: getProportionateScreenWidth(18),
+                    fontWeight: FontWeight.bold),
               ),
               const Spacer(),
               InkWell(
                 onTap: () {},
                 borderRadius: BorderRadius.circular(12),
-                child: const Text(
+                child: Text(
                   'Clear All',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: getProportionateScreenWidth(16),
+                      fontWeight: FontWeight.bold),
                 ),
               ),
             ],

@@ -7,10 +7,10 @@ import '../../../../core/size_config.dart';
 class ShippingAddress extends StatelessWidget {
   const ShippingAddress({
     super.key,
-    required this.brightness,
+    required this.isDarkMode,
   });
 
-  final Brightness brightness;
+  final bool isDarkMode;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +19,7 @@ class ShippingAddress extends StatelessWidget {
           vertical: getProportionateScreenWidth(kDefaultPadding / 2)),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: brightness == Brightness.light
-              ? null
-              : Colors.blueGrey.withOpacity(.2)),
+          color: isDarkMode ? Colors.blueGrey.withOpacity(.2) : null),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
@@ -30,15 +28,11 @@ class ShippingAddress extends StatelessWidget {
                   border:
                       Border.all(color: Colors.grey.withOpacity(.2), width: 2),
                   shape: BoxShape.circle,
-                  color: brightness == Brightness.light
-                      ? Colors.black
-                      : Colors.white),
+                  color: isDarkMode ? Colors.white : Colors.black),
               padding: EdgeInsets.all(getProportionateScreenWidth(8)),
               child: Icon(
                 Icons.location_on,
-                color: brightness == Brightness.light
-                    ? Colors.white
-                    : Colors.black,
+                color: isDarkMode ? Colors.black : Colors.white,
               )),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,8 +58,7 @@ class ShippingAddress extends StatelessWidget {
           IconButton(
             icon: Icon(
               Icons.edit,
-              color:
-                  brightness == Brightness.light ? Colors.black : Colors.white,
+              color: isDarkMode ? Colors.white : Colors.black,
             ),
             onPressed: () {
               Navigator.pushNamed(context, ShippingAddressPage.route);

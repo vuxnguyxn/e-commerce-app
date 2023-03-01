@@ -12,7 +12,8 @@ class DotColor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lightMode = MediaQuery.of(context).platformBrightness;
+    final brightness = Theme.of(context).brightness;
+    bool isDarkMode = brightness == Brightness.dark;
     return Container(
       alignment: Alignment.bottomCenter,
       child: Row(
@@ -26,17 +27,11 @@ class DotColor extends StatelessWidget {
             width: currentIndex == index ? 20 : 6,
             alignment: Alignment.bottomCenter,
             decoration: BoxDecoration(
-              color: lightMode == Brightness.light
-                  ? Colors.black
-                  : currentIndex == index
-                      ? Colors.white
-                      : Colors.black,
+              color: isDarkMode
+                  ? (currentIndex == index ? Colors.white : Colors.black)
+                  : (currentIndex == index ? Colors.black : Colors.white),
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                  color:
-                       Colors.white
-                      ,
-                  width: 1),
+              border: Border.all(color: Colors.white, width: 1),
             ),
           ),
         ),

@@ -19,7 +19,10 @@ class _SpecialOfferPageState extends State<SpecialOfferPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Special Offer'),
+        title: const Text(
+          'Special Offer',
+          style: TextStyle(fontSize: 20),
+        ),
         actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.menu))],
       ),
       body: SizedBox(

@@ -28,13 +28,17 @@ class TitleOfferAndSeeAll extends StatelessWidget {
         children: [
           Text(
             title,
-            style: const TextStyle(fontSize: 18),
+            style: TextStyle(
+                fontSize: getProportionateScreenWidth(18),
+                fontWeight: FontWeight.bold),
           ),
           InkWell(
             onTap: press,
-            child: const Text(
+            child: Text(
               "See All",
-              style: TextStyle(fontSize: 12),
+              style: TextStyle(
+                  fontSize: getProportionateScreenWidth(12),
+                  fontWeight: FontWeight.bold),
             ),
           ),
         ],

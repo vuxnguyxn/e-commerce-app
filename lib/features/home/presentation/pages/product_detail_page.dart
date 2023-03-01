@@ -22,7 +22,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    final lightMode = MediaQuery.of(context).platformBrightness;
+    final brightness = Theme.of(context).brightness;
+    bool isDarkMode = brightness == Brightness.dark;
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -40,8 +41,14 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(
+                      height:
+                          getProportionateScreenHeight(kDefaultPadding / 2)),
                   titleAndFavorites(),
-                  soldAndReviews(),
+                  SizedBox(
+                      height:
+                          getProportionateScreenHeight(kDefaultPadding / 2)),
+                  soldAndReviews(isDarkMode: isDarkMode),
                   SizedBox(
                       height: getProportionateScreenHeight(kDefaultPadding)),
                   description(),
@@ -64,9 +71,9 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                            color: lightMode == Brightness.light
-                                ? Colors.black.withOpacity(0.05)
-                                : Colors.blueGrey.withOpacity(.2),
+                            color: isDarkMode
+                                ? Colors.blueGrey.withOpacity(.2)
+                                : Colors.black.withOpacity(0.05),
                             borderRadius: BorderRadius.circular(50)),
                         child: Row(
                           children: [
@@ -96,7 +103,9 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   ),
                   SizedBox(
                       height: getProportionateScreenHeight(kDefaultPadding)),
-                  const TotalPriceAndAddToCart(),
+                  TotalPriceAndAddToCart(
+                    isDarkMode: isDarkMode,
+                  ),
                   SizedBox(
                       height:
                           getProportionateScreenHeight(kDefaultPadding * 2)),
@@ -122,7 +131,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
         SizedBox(
           height: getProportionateScreenHeight(kDefaultPadding / 2),
         ),
-        const Text("This is description",
+        const Text(
+          "This is description",
           style: TextStyle(fontSize: 12),
           maxLines: 10,
           overflow: TextOverflow.ellipsis,
@@ -131,17 +141,16 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     );
   }
 
-  Row soldAndReviews() {
-    final lightMode = MediaQuery.of(context).platformBrightness;
+  Row soldAndReviews({required bool isDarkMode}) {
     return Row(
       children: [
         Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              color: lightMode == Brightness.light
-                  ? Colors.grey.shade200
-                  : Colors.blueGrey.withOpacity(.2)),
+              color: isDarkMode
+                  ? Colors.blueGrey.withOpacity(.2)
+                  : Colors.grey.shade200),
           child: const Text(
             "3,200 sold",
             style: TextStyle(fontSize: 12),
@@ -162,14 +171,17 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
   Row titleAndFavorites() {
     return Row(
       children: [
-        const Text(
-          'Snake Leather Bag',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
+        Expanded(
+          child: Text(
+            'Snake Leather Bag Snake Leather Bag Snake Leather Bag Snake Leather Bag Snake Leather Bag',
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontSize: getProportionateScreenWidth(22),
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-        const Spacer(),
         IconButton(onPressed: () {}, icon: const Icon(Icons.favorite_border)),
       ],
     );

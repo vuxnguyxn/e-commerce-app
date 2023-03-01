@@ -6,11 +6,13 @@ import '../../../../core/size_config.dart';
 class TotalPriceAndAddToCart extends StatelessWidget {
   const TotalPriceAndAddToCart({
     Key? key,
+    required this.isDarkMode,
   }) : super(key: key);
+
+  final bool isDarkMode;
 
   @override
   Widget build(BuildContext context) {
-    final lightMode = MediaQuery.of(context).platformBrightness;
     return Row(
       children: [
         Expanded(
@@ -36,24 +38,20 @@ class TotalPriceAndAddToCart extends StatelessWidget {
               horizontal: getProportionateScreenWidth(kDefaultPadding * 2.5)),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
-              color:
-                  lightMode == Brightness.light ? Colors.black : Colors.white),
+              color: isDarkMode ? Colors.white : Colors.black),
           child: TextButton.icon(
             onPressed: () {},
             icon: Icon(
               Icons.shopping_basket,
               size: 16,
-              color:
-                  lightMode == Brightness.light ? Colors.white : Colors.black,
+              color: isDarkMode ? Colors.black : Colors.white,
             ),
             label: Text(
               'Add to Cart',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
-                  color: lightMode == Brightness.light
-                      ? Colors.white
-                      : Colors.black),
+                  color: isDarkMode ? Colors.black : Colors.white),
             ),
           ),
         )

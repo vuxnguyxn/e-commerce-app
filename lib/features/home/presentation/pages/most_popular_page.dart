@@ -14,7 +14,10 @@ class MostPopularPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Most Popular'),
+        title: const Text(
+          'Most Popular',
+          style: TextStyle(fontSize: 20),
+        ),
         actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
       ),
       body: Column(

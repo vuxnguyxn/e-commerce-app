@@ -11,6 +11,8 @@ class CategoryItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    bool isDarkMode = brightness == Brightness.dark;
     return SizedBox(
       width: getProportionateScreenWidth(80),
       child: Column(
@@ -22,10 +24,9 @@ class CategoryItemCard extends StatelessWidget {
             child: Container(
                 padding: const EdgeInsets.all(kDefaultPadding / 2),
                 decoration: BoxDecoration(
-                  color: MediaQuery.of(context).platformBrightness ==
-                          Brightness.light
-                      ? Colors.grey.shade200
-                      : Colors.blueGrey.withOpacity(.2),
+                  color: isDarkMode
+                      ? Colors.blueGrey.withOpacity(.2)
+                      : Colors.grey.shade200,
                   borderRadius: BorderRadius.circular(kDefaultPadding),
                 ),
                 child: const Icon(Icons.shopping_bag)),

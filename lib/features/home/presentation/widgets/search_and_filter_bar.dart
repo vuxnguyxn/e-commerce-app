@@ -4,26 +4,24 @@ import '../../../../core/constants.dart';
 import '../../../../core/size_config.dart';
 
 class SearchAndFilterBar extends StatelessWidget {
-  const SearchAndFilterBar({Key? key, required this.filterPress})
+  const SearchAndFilterBar(
+      {Key? key, required this.filterPress, required this.isDarkMode})
       : super(key: key);
 
   final VoidCallback filterPress;
+  final bool isDarkMode;
 
   @override
   Widget build(BuildContext context) {
-    final lightMode = MediaQuery.of(context).platformBrightness;
     return Container(
       width: double.infinity,
       height: getProportionateScreenWidth(kDefaultPadding * 2.5),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: lightMode == Brightness.light
-              ? Colors.grey.shade100
-              : kContentColorLightTheme,
+          color: isDarkMode ? kContentColorLightTheme : Colors.grey.shade100,
           border: Border.all(
-              color: lightMode == Brightness.light
-                  ? Colors.black
-                  : Colors.blueGrey.withOpacity(.2),
+              color:
+                  isDarkMode ? Colors.blueGrey.withOpacity(.2) : Colors.black,
               width: 1)),
       child: Row(
         children: [
@@ -50,11 +48,12 @@ class SearchAndFilterBar extends StatelessWidget {
           InkWell(
             onTap: filterPress,
             child: Container(
-                padding: EdgeInsets.all(
-                    getProportionateScreenWidth(kDefaultPadding * .5)),
-                width: getProportionateScreenWidth(48),
-                height: getProportionateScreenHeight(48),
-                child: const Icon(Icons.filter_list)),
+              padding: EdgeInsets.all(
+                  getProportionateScreenWidth(kDefaultPadding * .5)),
+              width: getProportionateScreenWidth(48),
+              height: getProportionateScreenHeight(48),
+              child: const Icon(Icons.filter_list),
+            ),
           ),
         ],
       ),

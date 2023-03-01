@@ -39,7 +39,8 @@ class NotificationCard extends StatelessWidget {
   }
 
   Container notificationItem(int index, BuildContext context) {
-    final lightMode = MediaQuery.of(context).platformBrightness;
+    final brightness = Theme.of(context).brightness;
+    bool isDarkMode = brightness == Brightness.dark;
     Map<String, IconData> iconNotification = {
       'wallet': Icons.wallet,
       'account': Icons.account_circle,
@@ -60,13 +61,10 @@ class NotificationCard extends StatelessWidget {
                 getProportionateScreenWidth(kDefaultPadding / 2)),
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: lightMode == Brightness.light
-                    ? Colors.black
-                    : Colors.white),
+                color: isDarkMode ? Colors.white : Colors.black),
             child: Icon(
               iconNotification[data.notifications[index].image],
-              color:
-                  lightMode == Brightness.light ? Colors.white : Colors.black,
+              color: isDarkMode ? Colors.black : Colors.white,
             ),
           ),
           SizedBox(

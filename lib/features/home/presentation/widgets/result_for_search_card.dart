@@ -25,14 +25,16 @@ class ResultForSearchCard extends StatelessWidget {
               Text(
                 'Result for "$textSearch"',
                 overflow: textSearch.length > 10 ? TextOverflow.ellipsis : null,
-                style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: getProportionateScreenWidth(18),
+                    fontWeight: FontWeight.bold),
               ),
               const Spacer(),
               Text(
                 '$resultFound found',
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: getProportionateScreenWidth(16),
+                    fontWeight: FontWeight.bold),
               ),
             ],
           ),

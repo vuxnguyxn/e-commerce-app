@@ -14,7 +14,10 @@ class CategoriesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Clothes"),
+        title: const Text(
+          "Clothes",
+          style: TextStyle(fontSize: 20),
+        ),
         actions: [
           IconButton(
             onPressed: () {},

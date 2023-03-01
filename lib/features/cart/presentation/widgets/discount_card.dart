@@ -7,11 +7,11 @@ class DiscountCard extends StatelessWidget {
   const DiscountCard({
     super.key,
     required this.content,
-    required this.brightness,
+    required this.isDarkMode,
   });
 
   final String content;
-  final Brightness brightness;
+  final bool isDarkMode;
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +31,7 @@ class DiscountCard extends StatelessWidget {
             onPressed: () {},
             icon: Icon(
               Icons.cancel_rounded,
-              color:
-                  brightness == Brightness.light ? Colors.black : Colors.white,
+              color: isDarkMode ? Colors.white : Colors.black,
             ),
           ),
         ],

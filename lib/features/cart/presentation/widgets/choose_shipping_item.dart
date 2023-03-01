@@ -7,12 +7,12 @@ import '../../../../core/size_config.dart';
 class ChooseShippingItem extends StatefulWidget {
   const ChooseShippingItem({
     super.key,
-    required this.brightness,
+    required this.isDarkMode,
     required this.data,
     required this.index,
   });
 
-  final Brightness brightness;
+  final bool isDarkMode;
   final DeliveryShipping data;
   final int index;
 
@@ -33,9 +33,7 @@ class _ShippingAddressItemState extends State<ChooseShippingItem> {
           vertical: getProportionateScreenWidth(kDefaultPadding / 2)),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: widget.brightness == Brightness.light
-              ? null
-              : Colors.blueGrey.withOpacity(.2)),
+          color: widget.isDarkMode ? Colors.blueGrey.withOpacity(.2) : null),
       child: Row(
         children: [
           Container(
@@ -45,15 +43,11 @@ class _ShippingAddressItemState extends State<ChooseShippingItem> {
                   border:
                       Border.all(color: Colors.grey.withOpacity(.2), width: 2),
                   shape: BoxShape.circle,
-                  color: widget.brightness == Brightness.light
-                      ? Colors.black
-                      : Colors.white),
+                  color: widget.isDarkMode ? Colors.white : Colors.black),
               padding: EdgeInsets.all(getProportionateScreenWidth(8)),
               child: Icon(
                 Icons.delivery_dining,
-                color: widget.brightness == Brightness.light
-                    ? Colors.white
-                    : Colors.black,
+                color: widget.isDarkMode ? Colors.black : Colors.white,
               )),
           Expanded(
             child: Column(
@@ -86,9 +80,7 @@ class _ShippingAddressItemState extends State<ChooseShippingItem> {
                 _selected = value!;
               });
             },
-            activeColor: widget.brightness == Brightness.light
-                ? Colors.black
-                : Colors.white,
+            activeColor: widget.isDarkMode ? Colors.white : Colors.black,
           ),
         ],
       ),

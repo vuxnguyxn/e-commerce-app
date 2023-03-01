@@ -1,6 +1,6 @@
-import 'package:e_commerce_app/features/profile/presentation/blocs/switch_bloc/switch_bloc.dart';
+import 'package:e_commerce_app/core/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/size_config.dart';
@@ -11,11 +11,10 @@ class DarkModeItem extends StatefulWidget {
   });
 
   @override
-  State<DarkModeItem> createState() => _DarkThemeItemState();
+  State<DarkModeItem> createState() => _DarkModeItemState();
 }
 
-class _DarkThemeItemState extends State<DarkModeItem> {
-  bool switchValue = true;
+class _DarkModeItemState extends State<DarkModeItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,19 +29,17 @@ class _DarkThemeItemState extends State<DarkModeItem> {
             width: getProportionateScreenWidth(kDefaultPadding / 2),
           ),
           const Expanded(child: Text('Dark Mode')),
-          BlocBuilder<SwitchBloc, SwitchState>(
-            builder: (context, state) {
+          Consumer<ThemeNotifier>(
+            builder: (context, theme, child) {
               return Switch(
-                value: state.switchValue,
+                value: theme.getSwitchValue(),
                 activeColor: Colors.white,
                 activeTrackColor: Colors.grey,
                 inactiveThumbColor: Colors.white,
                 inactiveTrackColor: Colors.grey,
                 onChanged: (newValue) {
                   setState(() {
-                    newValue
-                        ? context.read<SwitchBloc>().add(SwitchOnEvent())
-                        : context.read<SwitchBloc>().add(SwitchOffEvent());
+                    newValue ? theme.setDarkMode() : theme.setLightMode();
                   });
                 },
               );

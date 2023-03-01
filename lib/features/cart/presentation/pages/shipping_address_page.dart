@@ -13,10 +13,14 @@ class ShippingAddressPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Brightness brightness = MediaQuery.of(context).platformBrightness;
+    final brightness = Theme.of(context).brightness;
+    bool isDarkMode = brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Shipping Address'),
+        title: const Text(
+          'Shipping Address',
+          style: TextStyle(fontSize: 20),
+        ),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(
@@ -31,7 +35,7 @@ class ShippingAddressPage extends StatelessWidget {
                       dataShippingAddress.length,
                       (index) => ShippingAddressItem(
                         index: index,
-                        brightness: brightness,
+                        isDarkMode: isDarkMode,
                         data: dataShippingAddress[index],
                       ),
                     ),
@@ -42,16 +46,14 @@ class ShippingAddressPage extends StatelessWidget {
                               getProportionateScreenWidth(kDefaultPadding)),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
-                          color: brightness == Brightness.light
-                              ? Colors.blueGrey.withOpacity(.2)
-                              : Colors.blueGrey.withOpacity(.3)),
+                          color: isDarkMode
+                              ? Colors.blueGrey.withOpacity(.3)
+                              : Colors.blueGrey.withOpacity(.2)),
                       child: TextButton(
                         child: Text(
                           'Add New Address',
                           style: TextStyle(
-                              color: brightness == Brightness.light
-                                  ? Colors.black
-                                  : Colors.white),
+                              color: isDarkMode ? Colors.white : Colors.black),
                         ),
                         onPressed: () {},
                       ),
@@ -68,12 +70,8 @@ class ShippingAddressPage extends StatelessWidget {
                   bottom: getProportionateScreenWidth(kDefaultPadding)),
               child: CustomButton(
                   title: 'Apply',
-                  color: brightness == Brightness.light
-                      ? Colors.black
-                      : Colors.white,
-                  colorText: brightness == Brightness.light
-                      ? Colors.white
-                      : Colors.black,
+                  color: isDarkMode ? Colors.white : Colors.black,
+                  colorText: isDarkMode ? Colors.black : Colors.white,
                   press: () {}),
             )
           ],

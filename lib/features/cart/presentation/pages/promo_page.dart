@@ -14,10 +14,15 @@ class PromoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Brightness brightness = MediaQuery.of(context).platformBrightness;
+    final brightness = Theme.of(context).brightness;
+    bool isDarkMode = brightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Promo'),
+        title: const Text(
+          'Add Promo',
+          style: TextStyle(fontSize: 20),
+        ),
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
         ],
@@ -35,7 +40,7 @@ class PromoPage extends StatelessWidget {
                       dataPromo.length,
                       (index) => PromoItem(
                         index: index,
-                        brightness: brightness,
+                        isDarkMode: isDarkMode,
                         data: dataPromo[index],
                       ),
                     ),
@@ -51,12 +56,8 @@ class PromoPage extends StatelessWidget {
                   bottom: getProportionateScreenWidth(kDefaultPadding)),
               child: CustomButton(
                   title: 'Apply',
-                  color: brightness == Brightness.light
-                      ? Colors.black
-                      : Colors.white,
-                  colorText: brightness == Brightness.light
-                      ? Colors.white
-                      : Colors.black,
+                  color: isDarkMode ? Colors.white : Colors.black,
+                  colorText: isDarkMode ? Colors.black : Colors.white,
                   press: () {}),
             )
           ],

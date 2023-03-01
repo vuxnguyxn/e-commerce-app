@@ -17,6 +17,7 @@ class NotificationsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Notifications',
+          style: TextStyle(fontSize: 20),
         ),
       ),
       body: SafeArea(

@@ -17,10 +17,15 @@ class CheckoutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Brightness brightness = MediaQuery.of(context).platformBrightness;
+    final brightness = Theme.of(context).brightness;
+    bool isDarkMode = brightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Checkout'),
+        title: const Text(
+          'Checkout',
+          style: TextStyle(fontSize: 20),
+        ),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -37,7 +42,7 @@ class CheckoutPage extends StatelessWidget {
               SizedBox(
                 height: getProportionateScreenWidth(kDefaultPadding / 2),
               ),
-              ShippingAddress(brightness: brightness),
+              ShippingAddress(isDarkMode: isDarkMode),
               const HorizonLine(),
               const Text(
                 'Order List',
@@ -47,7 +52,7 @@ class CheckoutPage extends StatelessWidget {
                 dataCart.length,
                 (index) => OrderItem(
                   data: dataCart[index],
-                  brightness: brightness,
+                  isDarkMode: isDarkMode,
                 ),
               ),
               const HorizonLine(),
@@ -58,13 +63,15 @@ class CheckoutPage extends StatelessWidget {
               SizedBox(
                 height: getProportionateScreenWidth(kDefaultPadding / 2),
               ),
-              ChooseShipping(brightness: brightness),
+              ChooseShipping(isDarkMode: isDarkMode),
               const HorizonLine(),
               const Text(
                 'Promo Code',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              PromoCodeCard(brightness: brightness),
+              PromoCodeCard(
+                isDarkMode: isDarkMode,
+              ),
               Container(
                 width: double.infinity,
                 height: SizeConfig.screenHeight * .3,
@@ -92,7 +99,6 @@ class CheckoutPage extends StatelessWidget {
                 height: getProportionateScreenWidth(kDefaultPadding),
               ),
               CustomButtonAndIcon(
-                  brightness: brightness,
                   title: 'Continued to Payment',
                   icon: Icons.arrow_forward,
                   press: () {}),
@@ -115,6 +121,7 @@ class CheckoutPage extends StatelessWidget {
       ],
     );
   }
+
   Row titleAndPromo({required String title, required String content}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -11,7 +11,8 @@ class ProductSizeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lightMode = MediaQuery.of(context).platformBrightness;
+    final brightness = Theme.of(context).brightness;
+    bool isDarkMode = brightness == Brightness.dark;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,24 +39,17 @@ class ProductSizeCard extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: dataLetterSize[index].isSelected
-                    ? (lightMode == Brightness.light
-                        ? Colors.black
-                        : Colors.white)
+                    ? (isDarkMode ? Colors.white : Colors.black)
                     : null,
                 border: Border.all(
-                    width: 1,
-                    color: lightMode == Brightness.light
-                        ? Colors.black
-                        : Colors.white),
+                    width: 1, color: isDarkMode ? Colors.white : Colors.black),
               ),
               child: Center(
                 child: Text(
                   dataLetterSize[index].size,
                   style: TextStyle(
                       color: dataLetterSize[index].isSelected
-                          ? (lightMode == Brightness.light
-                              ? Colors.white
-                              : Colors.black)
+                          ? (isDarkMode ? Colors.black : Colors.white)
                           : null),
                 ),
               ),

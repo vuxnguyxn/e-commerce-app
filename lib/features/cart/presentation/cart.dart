@@ -10,7 +10,10 @@ class Cart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Cart'),
+        title: const Text(
+          'My Cart',
+          style: TextStyle(fontSize: 20),
+        ),
         automaticallyImplyLeading: false,
         actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
       ),

@@ -5,22 +5,21 @@ import '../../../../core/size_config.dart';
 import '../../data/cart_data.dart';
 
 class CartRemoveItem extends StatelessWidget {
-  const CartRemoveItem({super.key, required this.data});
+  const CartRemoveItem(
+      {super.key, required this.data, required this.isDarkMode});
 
   final Cart data;
+  final bool isDarkMode;
 
   @override
   Widget build(BuildContext context) {
-    final lightMode = MediaQuery.of(context).platformBrightness;
     return Container(
       padding: EdgeInsets.symmetric(
           vertical: getProportionateScreenWidth(kDefaultPadding),
           horizontal: getProportionateScreenWidth(kDefaultPadding / 2)),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: lightMode == Brightness.light
-              ? Colors.white
-              : Colors.black.withOpacity(.2)),
+          color: isDarkMode ? Colors.black.withOpacity(.2) : Colors.white),
       child: Row(
         children: [
           Container(
@@ -29,9 +28,9 @@ class CartRemoveItem extends StatelessWidget {
             width: getProportionateScreenWidth(SizeConfig.screenWidth * 0.3),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: lightMode == Brightness.light
-                    ? Colors.grey.shade200
-                    : Colors.blueGrey.withOpacity(.2)),
+                color: isDarkMode
+                    ? Colors.blueGrey.withOpacity(.2)
+                    : Colors.grey.shade200),
             child: Image.asset(data.image),
           ),
           Expanded(

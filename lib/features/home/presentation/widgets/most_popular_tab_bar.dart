@@ -13,7 +13,9 @@ class MostPopularTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lightMode = MediaQuery.of(context).platformBrightness;
+    final brightness = Theme.of(context).brightness;
+    bool darkMode = brightness == Brightness.dark;
+
     return InkWell(
       onTap: press,
       borderRadius: BorderRadius.circular(30),
@@ -21,28 +23,31 @@ class MostPopularTabBar extends StatelessWidget {
         margin: EdgeInsets.only(
             right: getProportionateScreenWidth(kDefaultPadding / 2)),
         padding: EdgeInsets.symmetric(
-            vertical: getProportionateScreenWidth(kDefaultPadding / 2),
             horizontal: getProportionateScreenWidth(kDefaultPadding)),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
-          color: lightMode == Brightness.light
+          color: darkMode
               ? data.isSelected == true
-                  ? Colors.black
-                  : Colors.white
-              : data.isSelected == true
                   ? Colors.blueGrey.withOpacity(.2)
-                  : kContentColorLightTheme,
-          border: lightMode == Brightness.light
-              ? Border.all(color: Colors.black, width: 2)
-              : Border.all(color: Colors.blueGrey.withOpacity(.2), width: 2),
+                  : kContentColorLightTheme
+              : data.isSelected == true
+                  ? Colors.black
+                  : Colors.white,
+          border: darkMode
+              ? Border.all(color: Colors.blueGrey.withOpacity(.2), width: 2)
+              : Border.all(color: Colors.black, width: 2),
         ),
-        child: Text(
-          data.title,
-          style: lightMode == Brightness.light
-              ? TextStyle(
-                  color: data.isSelected == true ? Colors.white : Colors.black)
-              : TextStyle(
-                  color: data.isSelected == true ? Colors.white : Colors.white),
+        child: Center(
+          child: Text(
+            data.title,
+            style: darkMode
+                ? TextStyle(
+                    color:
+                        data.isSelected == true ? Colors.white : Colors.white)
+                : TextStyle(
+                    color:
+                        data.isSelected == true ? Colors.white : Colors.black),
+          ),
         ),
       ),
     );

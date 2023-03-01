@@ -5,7 +5,6 @@ import 'package:e_commerce_app/core/size_config.dart';
 import 'package:e_commerce_app/features/profile/presentation/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 
-
 class HomeScreen extends StatefulWidget {
   static const String route = '/home';
   const HomeScreen({super.key});

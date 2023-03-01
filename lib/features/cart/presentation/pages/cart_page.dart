@@ -14,7 +14,6 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Brightness brightness = MediaQuery.of(context).platformBrightness;
     return Column(
       children: [
         Expanded(
@@ -24,11 +23,12 @@ class CartPage extends StatelessWidget {
               horizontal: getProportionateScreenWidth(kDefaultPadding),
             ),
             child: ListView.builder(
-                itemCount: dataCart.length,
-                itemBuilder: (context, index) => CartItem(
-                      data: dataCart[index],
-                      index: index,
-                    )),
+              itemCount: dataCart.length,
+              itemBuilder: (context, index) => CartItem(
+                data: dataCart[index],
+                index: index,
+              ),
+            ),
           ),
         ),
         Container(
@@ -55,7 +55,6 @@ class CartPage extends StatelessWidget {
                 ),
               ),
               CustomButtonAndIcon(
-                brightness: brightness,
                 title: 'Checkout',
                 icon: Icons.arrow_forward_outlined,
                 press: () => Navigator.pushNamed(context, CheckoutPage.route),

@@ -12,7 +12,9 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Brightness brightness = MediaQuery.of(context).platformBrightness;
+    final brightness = Theme.of(context).brightness;
+    bool isDarkMode = brightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
@@ -25,12 +27,12 @@ class Profile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                avatarWithEditIcon(brightness),
+                avatarWithEditIcon(isDarkMode: isDarkMode),
                 SizedBox(
                   height: getProportionateScreenWidth(kDefaultPadding / 2),
                 ),
                 const Text(
-                  'Kadehara Kazuha',
+                  'Peter Parker',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
@@ -42,7 +44,8 @@ class Profile extends StatelessWidget {
                 ),
                 const HorizonLine(),
                 profileItem(
-                    press: () => Navigator.pushNamed(context, EditProfilePage.route),
+                    press: () =>
+                        Navigator.pushNamed(context, EditProfilePage.route),
                     title: 'Edit profile',
                     icon: Icons.person_outline),
                 profileItem(
@@ -86,7 +89,7 @@ class Profile extends StatelessWidget {
     );
   }
 
-  Stack avatarWithEditIcon(Brightness brightness) {
+  Stack avatarWithEditIcon({required bool isDarkMode}) {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -104,16 +107,12 @@ class Profile extends StatelessWidget {
             height: getProportionateScreenWidth(32),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: brightness == Brightness.light
-                    ? Colors.black
-                    : Colors.white),
+                color: isDarkMode ? Colors.white : Colors.black),
             child: IconButton(
               onPressed: () {},
               icon: Icon(
                 Icons.edit,
-                color: brightness == Brightness.light
-                    ? Colors.white
-                    : Colors.black,
+                color: isDarkMode ? Colors.black : Colors.white,
                 size: 16,
               ),
             ),

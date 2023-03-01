@@ -32,8 +32,8 @@ class ItemBar extends StatelessWidget {
             ),
             Text(
               title,
-              style: TextStyle(
-                  color: isSelected ? Colors.black : Colors.black38),
+              style:
+                  TextStyle(color: isSelected ? Colors.black : Colors.black38),
             ),
           ],
         ),

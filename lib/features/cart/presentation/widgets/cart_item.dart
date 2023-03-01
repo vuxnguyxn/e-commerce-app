@@ -17,8 +17,8 @@ class CartItem extends StatefulWidget {
 }
 
 class _CartItemState extends State<CartItem> {
-  void _showDeleteModelBottomSheet(int index) {
-    final lightMode = MediaQuery.of(context).platformBrightness;
+  void _showDeleteModelBottomSheet(
+      {required int index, required bool isDarkMode}) {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -32,9 +32,7 @@ class _CartItemState extends State<CartItem> {
           decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(30), topRight: Radius.circular(30)),
-              color: lightMode == Brightness.light
-                  ? Colors.white
-                  : kContentColorLightTheme),
+              color: isDarkMode ? kContentColorLightTheme : Colors.white),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -42,30 +40,27 @@ class _CartItemState extends State<CartItem> {
                 'Remove From Cart?',
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
-              CartRemoveItem(data: dataCart[index]),
+              CartRemoveItem(
+                data: dataCart[index],
+                isDarkMode: isDarkMode,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomButton(
                       title: 'Cancel',
-                      color: lightMode == Brightness.light
-                          ? Colors.grey.shade100
-                          : Colors.blueGrey.withOpacity(.2),
-                      colorText: lightMode == Brightness.light
-                          ? Colors.black
-                          : Colors.white,
+                      color: isDarkMode
+                          ? Colors.blueGrey.withOpacity(.2)
+                          : Colors.grey.shade100,
+                      colorText: isDarkMode ? Colors.white : Colors.black,
                       press: () {
                         //hide model bottom sheet
                         Navigator.pop(context);
                       }),
                   CustomButton(
                       title: 'Yes, Remove',
-                      color: lightMode == Brightness.light
-                          ? Colors.black
-                          : Colors.white,
-                      colorText: lightMode == Brightness.light
-                          ? Colors.white
-                          : Colors.black,
+                      color: isDarkMode ? Colors.white : Colors.black,
+                      colorText: isDarkMode ? Colors.black : Colors.white,
                       press: () {}),
                 ],
               )
@@ -79,7 +74,9 @@ class _CartItemState extends State<CartItem> {
   @override
   Widget build(BuildContext context) {
     int quantity = widget.data.quantity;
-    final lightMode = MediaQuery.of(context).platformBrightness;
+    final brightness = Theme.of(context).brightness;
+    bool isDarkMode = brightness == Brightness.dark;
+
     return Container(
       padding: EdgeInsets.symmetric(
           vertical: getProportionateScreenWidth(kDefaultPadding / 2)),
@@ -91,9 +88,9 @@ class _CartItemState extends State<CartItem> {
             width: getProportionateScreenWidth(SizeConfig.screenWidth * 0.3),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: lightMode == Brightness.light
-                    ? Colors.grey.shade200
-                    : Colors.blueGrey.withOpacity(.2)),
+                color: isDarkMode
+                    ? Colors.blueGrey.withOpacity(.2)
+                    : Colors.grey.shade200),
             child: Image.asset(widget.data.image),
           ),
           Expanded(
@@ -113,7 +110,8 @@ class _CartItemState extends State<CartItem> {
                     ),
                     IconButton(
                       onPressed: () {
-                        _showDeleteModelBottomSheet(widget.index);
+                        _showDeleteModelBottomSheet(
+                            index: widget.index, isDarkMode: isDarkMode);
                       },
                       icon: const Icon(Icons.delete_outline),
                     ),

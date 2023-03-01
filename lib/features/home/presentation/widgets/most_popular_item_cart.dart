@@ -16,7 +16,8 @@ class MostPopularItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lightMode = MediaQuery.of(context).platformBrightness;
+    final brightness = Theme.of(context).brightness;
+    bool isDarkMode = brightness == Brightness.dark;
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, ProductDetailPage.route);
@@ -34,9 +35,9 @@ class MostPopularItemCard extends StatelessWidget {
                   margin: EdgeInsets.only(
                       bottom: getProportionateScreenWidth(kDefaultPadding)),
                   decoration: BoxDecoration(
-                      color: lightMode == Brightness.light
-                          ? Colors.grey.shade200
-                          : Colors.blueGrey.withOpacity(.2),
+                      color: isDarkMode
+                          ? Colors.blueGrey.withOpacity(.2)
+                          : Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(15)),
                   child: AspectRatio(
                     aspectRatio: 1,
@@ -67,6 +68,9 @@ class MostPopularItemCard extends StatelessWidget {
             Text(
               data.title,
               maxLines: 1,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: getProportionateScreenWidth(16)),
               overflow: TextOverflow.ellipsis,
             ),
             SizedBox(
@@ -79,9 +83,9 @@ class MostPopularItemCard extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.all(getProportionateScreenWidth(5)),
                   decoration: BoxDecoration(
-                      color: lightMode == Brightness.light
-                          ? Colors.grey.shade200
-                          : Colors.blueGrey.withOpacity(.2),
+                      color: isDarkMode
+                          ? Colors.blueGrey.withOpacity(.2)
+                          : Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(12)),
                   child: Text(
                     "${data.sold} sold",
@@ -95,7 +99,9 @@ class MostPopularItemCard extends StatelessWidget {
             ),
             Text(
               "\$${data.price}",
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: getProportionateScreenWidth(16)),
             )
           ],
         ),

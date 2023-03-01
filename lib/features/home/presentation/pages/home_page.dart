@@ -1,11 +1,7 @@
-import 'package:e_commerce_app/features/home/presentation/pages/most_popular_page.dart';
-import 'package:e_commerce_app/features/home/presentation/pages/my_wishlist_page.dart';
-import 'package:e_commerce_app/features/home/presentation/pages/search_page.dart';
-import 'package:e_commerce_app/features/home/presentation/pages/special_offer_page.dart';
 import 'package:flutter/material.dart';
-import 'package:e_commerce_app/core/constants.dart';
-import 'package:e_commerce_app/core/size_config.dart';
 
+import '../../../../core/constants.dart';
+import '../../../../core/size_config.dart';
 import '../../data/simple_data.dart';
 import '../widgets/banner_special_offer.dart';
 import '../widgets/category_item_card.dart';
@@ -13,9 +9,13 @@ import '../widgets/dot_color.dart';
 import '../widgets/icon_button_with_counter.dart';
 import '../widgets/most_popular_item_cart.dart';
 import '../widgets/most_popular_tab_bar.dart';
+import 'most_popular_page.dart';
+import 'my_wishlist_page.dart';
 import 'notifications_page.dart';
 import '../widgets/search_and_filter.dart';
 import '../widgets/title_offer_and_see_all.dart';
+import 'search_page.dart';
+import 'special_offer_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -25,12 +25,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  @override
-  void initState() {
-    super.initState();
-    greeting();
-  }
-
   final time = DateTime.now().hour;
   String notification = "";
   int currentIndex = 0;
@@ -48,7 +42,16 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    greeting();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    bool isDarkMode = brightness == Brightness.dark;
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -56,6 +59,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               headerHomePage(),
               SearchAndFilter(
+                  darkMode: isDarkMode,
                   press: () => Navigator.pushNamed(context, SearchPage.route)),
               TitleOfferAndSeeAll(
                 title: "Special Offer",
@@ -63,45 +67,53 @@ class _HomePageState extends State<HomePage> {
                     Navigator.pushNamed(context, SpecialOfferPage.route),
               ),
               bannerOfferAndDot(),
-              SizedBox(
-                width: double.infinity,
-                height: getProportionateScreenHeight(200),
-                child: GridView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 10,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                  ),
-                  itemBuilder: (context, index) => const CategoryItemCard(),
-                ),
-              ),
+              categoryCard(),
               TitleOfferAndSeeAll(
                   title: 'Most Popular',
                   press: () =>
                       Navigator.pushNamed(context, MostPopularPage.route)),
               mostPopularTabBar(),
-              Container(
-                height: SizeConfig.screenHeight - 200,
-                padding: EdgeInsets.only(
-                  top: getProportionateScreenWidth(20),
-                  right: getProportionateScreenWidth(20),
-                  left: getProportionateScreenWidth(20),
-                ),
-                child: GridView.builder(
-                  itemCount: dataItemMostPopular.length,
-                  scrollDirection: Axis.vertical,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: .6,
-                      crossAxisSpacing: kDefaultPadding,
-                      mainAxisSpacing: kDefaultPadding),
-                  itemBuilder: (context, index) =>
-                      MostPopularItemCard(data: dataItemMostPopular[index]),
-                ),
-              ),
+              mostPopularCard(),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Container mostPopularCard() {
+    return Container(
+      height: SizeConfig.screenHeight - getProportionateScreenHeight(200),
+      padding: EdgeInsets.only(
+        top: getProportionateScreenWidth(20),
+        right: getProportionateScreenWidth(20),
+        left: getProportionateScreenWidth(20),
+      ),
+      child: GridView.builder(
+        itemCount: dataItemMostPopular.length,
+        scrollDirection: Axis.vertical,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: .6,
+            crossAxisSpacing: getProportionateScreenWidth(kDefaultPadding),
+            mainAxisSpacing: getProportionateScreenWidth(kDefaultPadding)),
+        itemBuilder: (context, index) =>
+            MostPopularItemCard(data: dataItemMostPopular[index]),
+      ),
+    );
+  }
+
+  SizedBox categoryCard() {
+    return SizedBox(
+      width: double.infinity,
+      height: getProportionateScreenHeight(200),
+      child: GridView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 10,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+        ),
+        itemBuilder: (context, index) => const CategoryItemCard(),
       ),
     );
   }
@@ -151,7 +163,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   Container headerHomePage() {
-    final lightMode = MediaQuery.of(context).platformBrightness;
     return Container(
       padding: EdgeInsets.only(
         top: getProportionateScreenWidth(10),
@@ -165,17 +176,13 @@ class _HomePageState extends State<HomePage> {
           Row(
             children: [
               IconButtonWithCounter(
-                svg: lightMode == Brightness.light
-                    ? 'assets/icons/Bell_light.svg'
-                    : 'assets/icons/Bell_dark.svg',
+                icon: Icons.notifications_none,
                 numOfItems: 2,
                 press: () =>
                     Navigator.pushNamed(context, NotificationsPage.route),
               ),
               IconButtonWithCounter(
-                svg: lightMode == Brightness.light
-                    ? 'assets/icons/Heart_light.svg'
-                    : 'assets/icons/Heart_dark.svg',
+                icon: Icons.favorite_border,
                 numOfItems: 1,
                 press: () => Navigator.pushNamed(context, MyWishlistPage.route),
               ),
@@ -192,7 +199,7 @@ class _HomePageState extends State<HomePage> {
       children: [
         SizedBox(
           width: getProportionateScreenWidth(48),
-          height: getProportionateScreenHeight(48),
+          height: getProportionateScreenWidth(48),
           child: CircleAvatar(
             child: Image.asset("assets/images/profile_image.png"),
           ),
@@ -203,12 +210,21 @@ class _HomePageState extends State<HomePage> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(notification.toString(), style: const TextTheme().bodySmall),
+            Text(
+              notification.toString(),
+              style: TextStyle(
+                color: Theme.of(context)
+                    .textTheme
+                    .bodyMedium
+                    ?.color
+                    ?.withOpacity(.7),
+              ),
+            ),
             SizedBox(
               height: getProportionateScreenHeight(5),
             ),
             Text(
-              'Kaedehara Kazuha',
+              'Peter Parker',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: getProportionateScreenWidth(18),

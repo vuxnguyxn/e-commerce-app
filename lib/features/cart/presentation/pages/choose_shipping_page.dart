@@ -14,10 +14,15 @@ class ChooseShippingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Brightness brightness = MediaQuery.of(context).platformBrightness;
+    final brightness = Theme.of(context).brightness;
+    bool isDarkMode = brightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Choose Shipping'),
+        title: const Text(
+          'Choose Shipping',
+          style: TextStyle(fontSize: 20),
+        ),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(
@@ -32,7 +37,7 @@ class ChooseShippingPage extends StatelessWidget {
                       dataChooseShippingAddress.length,
                       (index) => ChooseShippingItem(
                         index: index,
-                        brightness: brightness,
+                        isDarkMode: isDarkMode,
                         data: dataChooseShippingAddress[index],
                       ),
                     ),
@@ -48,12 +53,8 @@ class ChooseShippingPage extends StatelessWidget {
                   bottom: getProportionateScreenWidth(kDefaultPadding)),
               child: CustomButton(
                   title: 'Apply',
-                  color: brightness == Brightness.light
-                      ? Colors.black
-                      : Colors.white,
-                  colorText: brightness == Brightness.light
-                      ? Colors.white
-                      : Colors.black,
+                  color: isDarkMode ? Colors.white : Colors.black,
+                  colorText: isDarkMode ? Colors.black : Colors.white,
                   press: () {}),
             )
           ],

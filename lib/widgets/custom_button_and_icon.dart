@@ -6,30 +6,32 @@ import '../core/size_config.dart';
 class CustomButtonAndIcon extends StatelessWidget {
   const CustomButtonAndIcon({
     super.key,
-    required this.brightness,
     required this.title,
-    required this.icon, required this.press,
+    required this.icon,
+    required this.press,
   });
 
-  final Brightness brightness;
   final String title;
   final IconData icon;
   final VoidCallback press;
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    bool isDarkMode = brightness == Brightness.dark;
+
     return InkWell(
       onTap: press,
       borderRadius: BorderRadius.circular(50),
       child: Container(
         padding: EdgeInsets.symmetric(
             horizontal: getProportionateScreenWidth(kDefaultPadding * 2.5),
-            vertical: kDefaultPadding *.75),
+            vertical: kDefaultPadding * .75),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50),
             color:
                 // ignore: unrelated_type_equality_checks
-                brightness == Brightness.light ? Colors.black : Colors.white),
+                isDarkMode ? Colors.white : Colors.black),
         child: Row(
           children: [
             Text(
@@ -37,9 +39,7 @@ class CustomButtonAndIcon extends StatelessWidget {
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
-                  color: brightness == Brightness.light
-                      ? Colors.white
-                      : Colors.black),
+                  color: isDarkMode ? Colors.black : Colors.white),
             ),
             SizedBox(
               width: getProportionateScreenWidth(kDefaultPadding / 2),
@@ -47,8 +47,7 @@ class CustomButtonAndIcon extends StatelessWidget {
             Icon(
               icon,
               size: 20,
-              color:
-                  brightness == Brightness.light ? Colors.white : Colors.black,
+              color: isDarkMode ? Colors.black : Colors.white,
             ),
           ],
         ),

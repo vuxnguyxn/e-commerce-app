@@ -8,11 +8,11 @@ class OrderItem extends StatelessWidget {
   const OrderItem({
     super.key,
     required this.data,
-    required this.brightness,
+    required this.isDarkMode,
   });
 
   final Cart data;
-  final Brightness brightness;
+  final bool isDarkMode;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +21,7 @@ class OrderItem extends StatelessWidget {
           top: getProportionateScreenWidth(kDefaultPadding / 2)),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: brightness == Brightness.light
-              ? null
-              : Colors.blueGrey.withOpacity(.2)),
+          color: isDarkMode ? Colors.blueGrey.withOpacity(.2) : null),
       padding: EdgeInsets.symmetric(
           horizontal: getProportionateScreenWidth(kDefaultPadding / 2),
           vertical: getProportionateScreenWidth(kDefaultPadding / 2)),
@@ -35,9 +33,9 @@ class OrderItem extends StatelessWidget {
             width: getProportionateScreenWidth(SizeConfig.screenWidth * 0.3),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: brightness == Brightness.light
-                    ? Colors.grey.shade200
-                    : Colors.blueGrey.withOpacity(.4)),
+                color: isDarkMode
+                    ? Colors.blueGrey.withOpacity(.4)
+                    : Colors.grey.shade200),
             child: Image.asset(data.image),
           ),
           Expanded(
@@ -80,9 +78,9 @@ class OrderItem extends StatelessWidget {
                       padding: EdgeInsets.all(getProportionateScreenWidth(16)),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: brightness == Brightness.light
-                            ? Colors.blueGrey.withOpacity(.2)
-                            : Colors.blueGrey.withOpacity(.4),
+                        color: isDarkMode
+                            ? Colors.blueGrey.withOpacity(.4)
+                            : Colors.blueGrey.withOpacity(.2),
                       ),
                       child: Text(
                         "${data.quantity}",

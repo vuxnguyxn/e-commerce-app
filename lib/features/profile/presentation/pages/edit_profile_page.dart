@@ -1,7 +1,6 @@
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
@@ -18,10 +17,6 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-  
-  final Brightness brightness =
-      SchedulerBinding.instance.platformDispatcher.platformBrightness;
-
   DateTime? date;
 
   final TextEditingController _birthdayTextController = TextEditingController();
@@ -64,20 +59,17 @@ class _EditProfilePageState extends State<EditProfilePage> {
   String dropdownPhone = itemsPhone.first;
   String? birthday;
 
-  BoxDecoration boxDecoration() {
-    return BoxDecoration(
-      color: brightness == Brightness.light
-          ? Colors.white
-          : Colors.blueGrey.withOpacity(.2),
-      borderRadius: BorderRadius.circular(12),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    bool isDarkMode = brightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Edit Profile"),
+        title: const Text(
+          "Edit Profile",
+          style: TextStyle(fontSize: 20),
+        ),
       ),
       resizeToAvoidBottomInset: false,
       body: Container(
@@ -91,7 +83,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   birthday: birthday),
               textFormField(
                   title: 'User Name', textInputType: TextInputType.name),
-              birthdayFormField(brightness: brightness),
+              birthdayFormField(),
               textFormField(
                   title: 'Email',
                   textInputType: TextInputType.emailAddress,
@@ -104,12 +96,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 width: double.infinity,
                 child: CustomButton(
                   title: "Update",
-                  color: brightness == Brightness.light
-                      ? Colors.black
-                      : Colors.white,
-                  colorText: brightness == Brightness.light
-                      ? Colors.white
-                      : Colors.black,
+                  color: isDarkMode ? Colors.white : Colors.black,
+                  colorText: isDarkMode ? Colors.black : Colors.white,
                   press: () {},
                 ),
               ),
@@ -146,7 +134,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   value: item,
                   child: Text(
                     item,
-                    style: const TextStyle(fontSize: 12),
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: Theme.of(context).textTheme.bodyMedium?.color),
                   ),
                 );
               }).toList(),
@@ -191,7 +181,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
       ),
       margin:
           EdgeInsets.only(bottom: getProportionateScreenWidth(kDefaultPadding)),
-      decoration: boxDecoration(),
+      decoration: BoxDecoration(
+        color: Colors.blueGrey.withOpacity(.2),
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton(
           value: dropdownGender,
@@ -203,7 +196,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
           items: itemsGender.map((String item) {
             return DropdownMenuItem(
               value: item,
-              child: Text(item),
+              child: Text(
+                item,
+                style: TextStyle(
+                    color: Theme.of(context).textTheme.bodyMedium?.color),
+              ),
             );
           }).toList(),
           onChanged: (String? newValue) {
@@ -239,7 +236,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
           items: itemsCountry.map((String item) {
             return DropdownMenuItem(
               value: item,
-              child: Text(item),
+              child: Text(
+                item,
+                style: TextStyle(
+                    color: Theme.of(context).textTheme.bodyMedium?.color),
+              ),
             );
           }).toList(),
           onChanged: (String? newValue) {
@@ -252,7 +253,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     );
   }
 
-  Container birthdayFormField({required Brightness brightness}) {
+  Container birthdayFormField() {
     return Container(
       margin:
           EdgeInsets.only(bottom: getProportionateScreenWidth(kDefaultPadding)),
@@ -267,7 +268,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
         keyboardType: TextInputType.datetime,
         decoration: InputDecoration(
           label: Text(_birthdayTextController.text),
-          hintText: 'Birthday',
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide.none,
