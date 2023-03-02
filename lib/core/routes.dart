@@ -13,6 +13,7 @@ import 'package:e_commerce_app/features/home/presentation/pages/search_page.dart
 import 'package:e_commerce_app/features/home/presentation/pages/special_offer_page.dart';
 import 'package:e_commerce_app/features/profile/presentation/pages/address_page.dart';
 import 'package:e_commerce_app/features/profile/presentation/pages/edit_profile_page.dart';
+import 'package:e_commerce_app/features/profile/presentation/pages/notification_page.dart';
 import 'package:e_commerce_app/features/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -33,4 +34,5 @@ final Map<String, WidgetBuilder> routes = {
   PromoPage.route:(context) => const PromoPage(),
   EditProfilePage.route:(context) => const EditProfilePage(),
   AddressPage.route:(context) => const AddressPage(),
+  NotificationPage.route: (context) => const NotificationPage(),
 };
