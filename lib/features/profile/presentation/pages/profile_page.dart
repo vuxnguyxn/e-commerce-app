@@ -5,6 +5,8 @@ import 'package:e_commerce_app/features/profile/presentation/widgets/dark_mode_i
 import 'package:e_commerce_app/widgets/horizon_line.dart';
 import 'package:flutter/material.dart';
 
+import 'address_page.dart';
+
 class Profile extends StatelessWidget {
   const Profile({super.key});
 
@@ -17,7 +19,10 @@ class Profile extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile'),
+        title: const Text(
+          'Profile',
+          style: TextStyle(fontSize: 20),
+        ),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -49,7 +54,8 @@ class Profile extends StatelessWidget {
                     title: 'Edit profile',
                     icon: Icons.person_outline),
                 profileItem(
-                    press: () {},
+                    press: () =>
+                        Navigator.pushNamed(context, AddressPage.route),
                     title: 'Address',
                     icon: Icons.location_on_outlined),
                 profileItem(

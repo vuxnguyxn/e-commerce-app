@@ -50,7 +50,7 @@ class ThemeNotifier with ChangeNotifier {
     ),
     primaryColor: Colors.black,
     iconTheme: const IconThemeData(color: kContentColorLightTheme),
-    textTheme:  const TextTheme(
+    textTheme: const TextTheme(
       bodyLarge: TextStyle(color: kContentColorLightTheme),
       bodyMedium: TextStyle(color: kContentColorLightTheme),
     ),
@@ -74,7 +74,6 @@ class ThemeNotifier with ChangeNotifier {
 
   ThemeNotifier() {
     StorageManager.readData('themeMode').then((value) {
-      print("Value read from storage: $value");
       var themeMode = value ?? 'light';
       if (themeMode == 'light') {
         _themeData = lightTheme;
