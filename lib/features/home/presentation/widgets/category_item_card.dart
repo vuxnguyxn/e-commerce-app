@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/features/home/data/simple_data.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/categories_page.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +8,10 @@ import '../../../../core/size_config.dart';
 class CategoryItemCard extends StatelessWidget {
   const CategoryItemCard({
     Key? key,
+    required this.data,
   }) : super(key: key);
+
+  final Category data;
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +33,12 @@ class CategoryItemCard extends StatelessWidget {
                       : Colors.grey.shade200,
                   borderRadius: BorderRadius.circular(kDefaultPadding),
                 ),
-                child: const Icon(Icons.shopping_bag)),
+                child: Icon(data.icon)),
           ),
           SizedBox(
             height: getProportionateScreenHeight(kDefaultPadding),
           ),
-          const Text('Title'),
+          Text(data.title),
         ],
       ),
     );

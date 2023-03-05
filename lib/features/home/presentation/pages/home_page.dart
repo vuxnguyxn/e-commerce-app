@@ -109,11 +109,13 @@ class _HomePageState extends State<HomePage> {
       height: getProportionateScreenHeight(200),
       child: GridView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 10,
+        itemCount: dataCategory.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
         ),
-        itemBuilder: (context, index) => const CategoryItemCard(),
+        itemBuilder: (context, index) => CategoryItemCard(
+          data: dataCategory[index],
+        ),
       ),
     );
   }

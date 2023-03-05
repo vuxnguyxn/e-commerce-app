@@ -1,6 +1,26 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
+class Category {
+  String title;
+  IconData icon;
+  Category({
+    required this.title,
+    required this.icon,
+  });
+}
+
+List dataCategory = [
+  Category(title: 'Clothes', icon: Icons.shopping_bag_outlined),
+  Category(title: 'Shoes', icon: Icons.shopping_bag_outlined),
+  Category(title: 'Bags', icon: Icons.shopping_bag_outlined),
+  Category(title: 'Electronics', icon: Icons.shopping_bag_outlined),
+  Category(title: 'Watch', icon: Icons.shopping_bag_outlined),
+  Category(title: 'Jewelry', icon: Icons.shopping_bag_outlined),
+  Category(title: 'Kitchen', icon: Icons.shopping_bag_outlined),
+  Category(title: 'Toys', icon: Icons.shopping_bag_outlined),
+];
+
 class DataTitleMostPopular {
   String title;
   bool? isSelected;
