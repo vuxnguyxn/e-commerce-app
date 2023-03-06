@@ -11,6 +11,7 @@ import 'package:e_commerce_app/features/home/presentation/home.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/product_detail_page.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/search_page.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/special_offer_page.dart';
+import 'package:e_commerce_app/features/order/presentation/orders.dart';
 import 'package:e_commerce_app/features/profile/presentation/pages/address_page.dart';
 import 'package:e_commerce_app/features/profile/presentation/pages/edit_profile_page.dart';
 import 'package:e_commerce_app/features/profile/presentation/pages/notification_page.dart';
@@ -35,4 +36,5 @@ final Map<String, WidgetBuilder> routes = {
   EditProfilePage.route:(context) => const EditProfilePage(),
   AddressPage.route:(context) => const AddressPage(),
   NotificationPage.route: (context) => const NotificationPage(),
+  Orders.route: (context) => const Orders(),
 };
