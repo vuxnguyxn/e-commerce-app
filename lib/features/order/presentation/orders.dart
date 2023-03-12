@@ -78,7 +78,9 @@ class _OrdersState extends State<Orders> with TickerProviderStateMixin {
             ],
           ),
         ),
-        const Center(child: Text('This is Completed page!'))
+        const Center(
+          child: Text('a'),
+        )
       ]),
     );
   }

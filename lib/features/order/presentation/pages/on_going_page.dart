@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
 import 'package:e_commerce_app/features/order/data/simple_data.dart';
+import 'package:e_commerce_app/features/order/presentation/pages/track_order_page.dart';
 import 'package:flutter/material.dart';
 
 class OngoingPage extends StatelessWidget {
@@ -104,7 +105,11 @@ class OngoingPage extends StatelessWidget {
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => TrackOrderPage(
+                                  isDarkMode: isDarkMode, data: data))),
                       borderRadius: BorderRadius.circular(30),
                       child: Container(
                         padding: EdgeInsets.symmetric(
