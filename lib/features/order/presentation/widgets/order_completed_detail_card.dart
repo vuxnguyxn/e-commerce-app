@@ -21,9 +21,6 @@ class OrderCompletedDetailCard extends StatelessWidget {
       padding: EdgeInsets.symmetric(
           horizontal: getProportionateScreenWidth(kDefaultPadding / 2),
           vertical: getProportionateScreenWidth(kDefaultPadding / 2)),
-      margin: EdgeInsets.symmetric(
-          horizontal: getProportionateScreenWidth(kDefaultPadding / 2),
-          vertical: getProportionateScreenWidth(kDefaultPadding)),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         color: isDarkMode

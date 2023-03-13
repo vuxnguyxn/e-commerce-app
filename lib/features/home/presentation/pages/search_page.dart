@@ -3,6 +3,7 @@ import 'package:e_commerce_app/core/size_config.dart';
 import 'package:e_commerce_app/features/home/data/simple_data.dart';
 import 'package:e_commerce_app/features/home/presentation/widgets/most_popular_tab_bar.dart';
 import 'package:e_commerce_app/widgets/custom_button.dart';
+import 'package:e_commerce_app/widgets/short_horizon_line.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/result_for_search_card.dart';
@@ -30,7 +31,6 @@ class _SearchPageState extends State<SearchPage> {
         return Container(
           padding: EdgeInsets.symmetric(
             horizontal: getProportionateScreenWidth(kDefaultPadding),
-            vertical: getProportionateScreenWidth(kDefaultPadding),
           ),
           height: SizeConfig.screenHeight - getProportionateScreenWidth(150),
           decoration: BoxDecoration(
@@ -42,6 +42,7 @@ class _SearchPageState extends State<SearchPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const ShortHorizonLine(),
               const Center(
                 child: Text(
                   'Soft And Filter',
@@ -74,6 +75,9 @@ class _SearchPageState extends State<SearchPage> {
                       colorText: isDarkMode ? Colors.black : Colors.white,
                       press: () {}),
                 ],
+              ),
+               SizedBox(
+                height: getProportionateScreenHeight(kDefaultPadding),
               ),
             ],
           ),

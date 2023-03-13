@@ -27,7 +27,13 @@ class TrackOrderPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            OrderCompletedDetailCard(isDarkMode: isDarkMode, data: data),
+            Container(
+                margin: EdgeInsets.symmetric(
+                    horizontal:
+                        getProportionateScreenWidth(kDefaultPadding / 2),
+                    vertical: getProportionateScreenWidth(kDefaultPadding)),
+                child: OrderCompletedDetailCard(
+                    isDarkMode: isDarkMode, data: data)),
             const PackageStatus(),
             SizedBox(
               height: getProportionateScreenWidth(kDefaultPadding),
@@ -62,4 +68,3 @@ class TrackOrderPage extends StatelessWidget {
     );
   }
 }
-
