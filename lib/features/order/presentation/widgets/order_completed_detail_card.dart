@@ -1,14 +1,18 @@
-import 'package:e_commerce_app/core/constants.dart';
-import 'package:e_commerce_app/core/size_config.dart';
-import 'package:e_commerce_app/features/order/data/simple_data.dart';
-import 'package:e_commerce_app/features/order/presentation/pages/track_order_page.dart';
 import 'package:flutter/material.dart';
 
-class OngoingPage extends StatelessWidget {
-  const OngoingPage({super.key, required this.data, required this.isDarkMode});
+import '../../../../core/constants.dart';
+import '../../../../core/size_config.dart';
+import '../../data/simple_data.dart';
 
-  final Order data;
+class OrderCompletedDetailCard extends StatelessWidget {
+  const OrderCompletedDetailCard({
+    super.key,
+    required this.isDarkMode,
+    required this.data,
+  });
+
   final bool isDarkMode;
+  final Order data;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +23,7 @@ class OngoingPage extends StatelessWidget {
           vertical: getProportionateScreenWidth(kDefaultPadding / 2)),
       margin: EdgeInsets.symmetric(
           horizontal: getProportionateScreenWidth(kDefaultPadding / 2),
-          vertical: getProportionateScreenWidth(kDefaultPadding) / 4),
+          vertical: getProportionateScreenWidth(kDefaultPadding)),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         color: isDarkMode
@@ -83,59 +87,12 @@ class OngoingPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Row(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal:
-                              getProportionateScreenWidth(kDefaultPadding / 2),
-                          vertical:
-                              getProportionateScreenWidth(kDefaultPadding / 4)),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: isDarkMode
-                              ? Colors.blueGrey.withOpacity(.2)
-                              : Colors.blueGrey.withOpacity(.1)),
-                      child: Center(child: Text(data.status)),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      '\$${data.price}.00',
-                      style: TextStyle(
-                        fontSize: getProportionateScreenWidth(18),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => TrackOrderPage(
-                                  isDarkMode: isDarkMode, data: data))),
-                      borderRadius: BorderRadius.circular(30),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                            vertical: getProportionateScreenWidth(
-                                kDefaultPadding / 2),
-                            horizontal:
-                                getProportionateScreenWidth(kDefaultPadding)),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: isDarkMode
-                                ? Colors.blueGrey.withOpacity(.3)
-                                : Colors.black),
-                        child: const Center(
-                            child: Text(
-                          'Track Order',
-                          style: TextStyle(color: Colors.white),
-                        )),
-                      ),
-                    ),
-                  ],
+                Text(
+                  '\$${data.price}.00',
+                  style: TextStyle(
+                    fontSize: getProportionateScreenWidth(18),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),

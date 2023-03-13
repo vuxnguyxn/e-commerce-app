@@ -6,7 +6,7 @@ class Order {
   final String title;
   final String status;
   final Color color;
-  final String size;
+  String? size;
   final int quantity;
   final int price;
   final List<DetailStatus> detailStatus;
@@ -16,7 +16,7 @@ class Order {
     required this.title,
     required this.status,
     required this.color,
-    required this.size,
+    this.size,
     required this.quantity,
     required this.price,
   });
