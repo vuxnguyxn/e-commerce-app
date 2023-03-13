@@ -1,8 +1,9 @@
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
+import 'package:e_commerce_app/features/order/presentation/pages/completed_page.dart';
+
 import 'package:flutter/material.dart';
 
-import '../data/simple_data.dart';
 import 'pages/on_going_page.dart';
 
 class Orders extends StatefulWidget {
@@ -62,25 +63,8 @@ class _OrdersState extends State<Orders> with TickerProviderStateMixin {
         ],
       ),
       body: TabBarView(controller: tabController, children: [
-        Container(
-          width: double.infinity,
-          margin: EdgeInsets.only(
-              top: getProportionateScreenWidth(kDefaultPadding)),
-          child: Column(
-            children: [
-              ...List.generate(
-                dataOrder.length,
-                (index) => OngoingPage(
-                  isDarkMode: isDarkMode,
-                  data: dataOrder[index],
-                ),
-              )
-            ],
-          ),
-        ),
-        const Center(
-          child: Text('a'),
-        )
+        OngoingPage(isDarkMode: isDarkMode),
+        CompletedPage(isDarkMode: isDarkMode),
       ]),
     );
   }
