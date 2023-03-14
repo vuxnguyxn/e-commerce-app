@@ -1,10 +1,13 @@
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
+import 'package:e_commerce_app/features/home/presentation/home.dart';
+import 'package:e_commerce_app/features/sign_up/sign_up.dart';
 import 'package:e_commerce_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/horizon_line_with_or.dart';
 import '../../widgets/icon_before_and_button.dart';
+import '../../widgets/question_and_text_ink_well.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
@@ -13,6 +16,8 @@ class SignIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    bool isDarkMode = brightness == Brightness.dark;
     SizeConfig().init(context);
     return Scaffold(
       body: SafeArea(
@@ -37,7 +42,9 @@ class SignIn extends StatelessWidget {
               ),
               Text(
                 "Let's your in",
-                style: TextStyle(fontSize: getProportionateScreenWidth(30)),
+                style: TextStyle(
+                    fontSize: getProportionateScreenWidth(30),
+                    fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: getProportionateScreenWidth(kDefaultPadding),
@@ -57,7 +64,9 @@ class SignIn extends StatelessWidget {
               SizedBox(
                 height: getProportionateScreenWidth(kDefaultPadding),
               ),
-              const HorizonLineWithOr(),
+              const HorizonLineWithOr(
+                middleText: 'or',
+              ),
               SizedBox(
                 height: getProportionateScreenWidth(kDefaultPadding),
               ),
@@ -65,28 +74,18 @@ class SignIn extends StatelessWidget {
                 width: double.infinity,
                 child: CustomButton(
                     title: 'Sign in with password',
-                    color: Colors.white,
-                    colorText: Colors.black,
-                    press: () {}),
+                    color: isDarkMode ? Colors.white : Colors.black,
+                    colorText: isDarkMode ? Colors.black : Colors.white,
+                    press: () =>
+                        Navigator.pushNamed(context, HomeScreen.route)),
               ),
               SizedBox(
                 height: getProportionateScreenWidth(kDefaultPadding * 2),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text("Don't have a account?  "),
-                  InkWell(
-                    onTap: () {},
-                    borderRadius: BorderRadius.circular(12),
-                    child: Text(
-                      'Sign Up',
-                      style: TextStyle(
-                          fontSize: getProportionateScreenWidth(16),
-                          fontWeight: FontWeight.bold),
-                    ),
-                  )
-                ],
+              QuestionAndTextInkWell(
+                title: 'Sign Up',
+                press: () => Navigator.pushNamed(context, SignUp.route),
+                question: "Don't have an account?",
               ),
               SizedBox(
                 height: getProportionateScreenWidth(kDefaultPadding),
