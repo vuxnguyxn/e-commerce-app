@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:e_commerce_app/features/home/presentation/home.dart';
+import 'package:e_commerce_app/features/signin/sign_in.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _navigator() {
     Timer(const Duration(seconds: 3),
-        () => Navigator.pushReplacementNamed(context, HomeScreen.route));
+        () => Navigator.pushReplacementNamed(context, SignIn.route));
   }
 
   // int val = 3;
