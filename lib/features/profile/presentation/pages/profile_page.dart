@@ -20,6 +20,7 @@ class Profile extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text(
           'Profile',
           style: TextStyle(fontSize: 20),
@@ -60,7 +61,8 @@ class Profile extends StatelessWidget {
                     title: 'Address',
                     icon: Icons.location_on_outlined),
                 profileItem(
-                    press: () => Navigator.pushNamed(context, NotificationPage.route),
+                    press: () =>
+                        Navigator.pushNamed(context, NotificationPage.route),
                     title: 'Notification',
                     icon: Icons.notifications_outlined),
                 profileItem(

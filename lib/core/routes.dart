@@ -15,8 +15,9 @@ import 'package:e_commerce_app/features/order/presentation/orders.dart';
 import 'package:e_commerce_app/features/profile/presentation/pages/address_page.dart';
 import 'package:e_commerce_app/features/profile/presentation/pages/edit_profile_page.dart';
 import 'package:e_commerce_app/features/profile/presentation/pages/notification_page.dart';
+import 'package:e_commerce_app/features/sign_in/presentation/sign_in_page.dart';
 import 'package:e_commerce_app/features/sign_in/sign_in.dart';
-import 'package:e_commerce_app/features/sign_up/sign_up.dart';
+import 'package:e_commerce_app/features/sign_up/presentation/sign_up_page.dart';
 import 'package:e_commerce_app/features/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -40,5 +41,6 @@ final Map<String, WidgetBuilder> routes = {
   NotificationPage.route: (context) => const NotificationPage(),
   Orders.route: (context) => const Orders(),
   SignIn.route: (context) => const SignIn(),
-  SignUp.route: (context) => const SignUp(),
+  SignUpPage.route: (context) => const SignUpPage(),
+  SignInPage.route: (context) => const SignInPage(),
 };

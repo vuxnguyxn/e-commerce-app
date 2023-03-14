@@ -29,6 +29,7 @@ class _OrdersState extends State<Orders> with TickerProviderStateMixin {
 
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text(
           'My Order',
           style: TextStyle(fontSize: 20),

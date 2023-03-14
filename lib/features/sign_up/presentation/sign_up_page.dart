@@ -1,14 +1,15 @@
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
+import 'package:e_commerce_app/features/sign_in/presentation/sign_in_page.dart';
 import 'package:e_commerce_app/widgets/horizon_line_with_or.dart';
 import 'package:flutter/material.dart';
 
-import '../../widgets/question_and_text_ink_well.dart';
-import 'widgets/sign_up_form.dart';
-import 'widgets/icon_sign_in.dart';
+import '../../../widgets/question_and_text_ink_well.dart';
+import '../widgets/sign_up_form.dart';
+import '../widgets/icon_sign_in.dart';
 
-class SignUp extends StatelessWidget {
-  const SignUp({super.key});
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({super.key});
 
   static const String route = '/sign_up';
 
@@ -42,6 +43,7 @@ class SignUp extends StatelessWidget {
               isDarkMode: isDarkMode,
             ),
             const HorizonLineWithOr(middleText: 'or continue with'),
+            SizedBox(height: getProportionateScreenWidth(kDefaultPadding),),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -59,9 +61,10 @@ class SignUp extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(height: getProportionateScreenWidth(kDefaultPadding * 2),),
             QuestionAndTextInkWell(
               title: 'Sign In',
-              press: () => Navigator.pop(context),
+              press: () => Navigator.pushReplacementNamed(context, SignInPage.route),
               question: "Already have an account?",
             ),
           ],

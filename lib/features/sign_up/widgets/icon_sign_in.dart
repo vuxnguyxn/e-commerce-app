@@ -21,10 +21,7 @@ class IconSignIn extends StatelessWidget {
           horizontal: getProportionateScreenWidth(kDefaultPadding),
           vertical: getProportionateScreenWidth(kDefaultPadding / 2),
         ),
-        margin: EdgeInsets.only(
-          top: getProportionateScreenWidth(kDefaultPadding),
-          bottom: getProportionateScreenWidth(kDefaultPadding * 2),
-        ),
+       
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             color: Colors.blueGrey.withOpacity(.2)),
