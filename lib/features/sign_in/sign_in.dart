@@ -1,8 +1,7 @@
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
-import 'package:e_commerce_app/features/home/presentation/home.dart';
-import 'package:e_commerce_app/features/sign_in/presentation/sign_in_page.dart';
-import 'package:e_commerce_app/features/sign_up/presentation/sign_up_page.dart';
+import 'package:e_commerce_app/features/sign_in/presentation/pages/sign_in_page.dart';
+import 'package:e_commerce_app/features/sign_up/presentation/pages/sign_up_page.dart';
 import 'package:e_commerce_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 

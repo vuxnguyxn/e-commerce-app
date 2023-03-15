@@ -1,14 +1,14 @@
-import 'package:e_commerce_app/features/home/presentation/home.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/constants.dart';
-import '../../../core/size_config.dart';
-import '../../../widgets/custom_button.dart';
-import '../../sign_up/widgets/check_remember_me.dart';
-import '../../sign_up/widgets/form_error.dart';
+import '../../../../core/constants.dart';
+import '../../../../core/size_config.dart';
+import '../../../../widgets/custom_button.dart';
+import '../pages/account_setup/fill_your_profile_page.dart';
+import 'check_remember_me.dart';
+import '../../../../widgets/form_error.dart';
 
-class SignInForm extends StatefulWidget {
-  const SignInForm({
+class SignUpForm extends StatefulWidget {
+  const SignUpForm({
     super.key,
     required this.isDarkMode,
   });
@@ -16,10 +16,10 @@ class SignInForm extends StatefulWidget {
   final bool isDarkMode;
 
   @override
-  State<SignInForm> createState() => _EmailAndPasswordFormState();
+  State<SignUpForm> createState() => _EmailAndPasswordFormState();
 }
 
-class _EmailAndPasswordFormState extends State<SignInForm> {
+class _EmailAndPasswordFormState extends State<SignUpForm> {
   final formKey = GlobalKey<FormState>();
   String? email, password;
   final List<String> errors = [];
@@ -133,14 +133,15 @@ class _EmailAndPasswordFormState extends State<SignInForm> {
                 top: getProportionateScreenWidth(kDefaultPadding)),
             width: double.infinity,
             child: CustomButton(
-                title: 'Sign In',
+                title: 'Sign Up',
                 color: widget.isDarkMode ? Colors.white : Colors.black,
                 colorText: widget.isDarkMode ? Colors.black : Colors.white,
                 press: () {
                   // if (formKey.currentState!.validate()) {
                   //   //Handle sign up account
                   // }
-                  Navigator.pushReplacementNamed(context, HomeScreen.route);
+                  Navigator.pushNamed(
+                      context, FillYourProfilePage.route);
                 }),
           ),
         ],

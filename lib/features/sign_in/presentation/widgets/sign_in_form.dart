@@ -1,13 +1,14 @@
+import 'package:e_commerce_app/features/home/presentation/home.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/constants.dart';
-import '../../../core/size_config.dart';
-import '../../../widgets/custom_button.dart';
-import 'check_remember_me.dart';
-import 'form_error.dart';
+import '../../../../core/constants.dart';
+import '../../../../core/size_config.dart';
+import '../../../../widgets/custom_button.dart';
+import '../../../sign_up/presentation/widgets/check_remember_me.dart';
+import '../../../../widgets/form_error.dart';
 
-class SignUpForm extends StatefulWidget {
-  const SignUpForm({
+class SignInForm extends StatefulWidget {
+  const SignInForm({
     super.key,
     required this.isDarkMode,
   });
@@ -15,10 +16,10 @@ class SignUpForm extends StatefulWidget {
   final bool isDarkMode;
 
   @override
-  State<SignUpForm> createState() => _EmailAndPasswordFormState();
+  State<SignInForm> createState() => _EmailAndPasswordFormState();
 }
 
-class _EmailAndPasswordFormState extends State<SignUpForm> {
+class _EmailAndPasswordFormState extends State<SignInForm> {
   final formKey = GlobalKey<FormState>();
   String? email, password;
   final List<String> errors = [];
@@ -132,13 +133,14 @@ class _EmailAndPasswordFormState extends State<SignUpForm> {
                 top: getProportionateScreenWidth(kDefaultPadding)),
             width: double.infinity,
             child: CustomButton(
-                title: 'Sign Up',
+                title: 'Sign In',
                 color: widget.isDarkMode ? Colors.white : Colors.black,
                 colorText: widget.isDarkMode ? Colors.black : Colors.white,
                 press: () {
-                  if (formKey.currentState!.validate()) {
-                    //Handle sign up account
-                  }
+                  // if (formKey.currentState!.validate()) {
+                  //   //Handle sign up account
+                  // }
+                  Navigator.pushReplacementNamed(context, HomeScreen.route);
                 }),
           ),
         ],

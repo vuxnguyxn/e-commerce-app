@@ -4,24 +4,24 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
-import '../../../../widgets/custom_button.dart';
-import '../../data/simple_data.dart';
+import '../../../../../widgets/custom_button.dart';
+import '../../../../profile/data/simple_data.dart';
 
-class EditProfilePage extends StatefulWidget {
-  const EditProfilePage({super.key});
+class FillYourProfilePage extends StatefulWidget {
+  const FillYourProfilePage({super.key});
 
-  static const String route = 'edit_profile';
+  static const String route = '/fill_your_profile';
 
   @override
-  State<EditProfilePage> createState() => _EditProfilePageState();
+  State<FillYourProfilePage> createState() => _FillYourProfilePageState();
 }
 
-class _EditProfilePageState extends State<EditProfilePage> {
+class _FillYourProfilePageState extends State<FillYourProfilePage> {
   DateTime? date;
 
   final TextEditingController birthdayTextController = TextEditingController();
 
-  void _showDatePicker() {
+  void showDatePicker() {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -69,41 +69,80 @@ class _EditProfilePageState extends State<EditProfilePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Edit Profile",
+          'Fill Your Profile',
           style: TextStyle(fontSize: 20),
         ),
       ),
-      resizeToAvoidBottomInset: false,
-      body: Container(
-        padding: EdgeInsets.all(getProportionateScreenWidth(kDefaultPadding)),
-        child: Form(
-          child: Column(
-            children: [
-              textFormField(
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: getProportionateScreenWidth(kDefaultPadding),
+            vertical: getProportionateScreenWidth(kDefaultPadding),
+          ),
+          child: Form(
+            child: Column(
+              children: [
+                Stack(
+                  children: [
+                    SizedBox(
+                      width: SizeConfig.screenWidth * .3,
+                      height: SizeConfig.screenWidth * .3,
+                      child: CircleAvatar(
+                        child: Image.asset("assets/images/profile_image.png"),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 5,
+                      right: 5,
+                      child: Container(
+                        width: getProportionateScreenWidth(32),
+                        height: getProportionateScreenWidth(32),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: isDarkMode ? Colors.white : Colors.black),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.edit,
+                            color: isDarkMode ? Colors.black : Colors.white,
+                            size: 16,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: getProportionateScreenWidth(kDefaultPadding),
+                ),
+                textFormField(
                   title: 'Full Name',
                   textInputType: TextInputType.name,
-                  birthday: birthday),
-              textFormField(
-                  title: 'User Name', textInputType: TextInputType.name),
-              birthdayFormField(),
-              textFormField(
-                  title: 'Email',
-                  textInputType: TextInputType.emailAddress,
-                  icon: Icons.email_outlined),
-              dropdownCountryField(),
-              dropdownPhoneField(),
-              dropdownGenderField(),
-              const Spacer(),
-              SizedBox(
-                width: double.infinity,
-                child: CustomButton(
-                  title: "Update",
-                  color: isDarkMode ? Colors.white : Colors.black,
-                  colorText: isDarkMode ? Colors.black : Colors.white,
-                  press: () {},
                 ),
-              ),
-            ],
+                textFormField(
+                    title: 'User Name', textInputType: TextInputType.name),
+                birthdayFormField(),
+                textFormField(
+                    title: 'Email',
+                    textInputType: TextInputType.emailAddress,
+                    icon: Icons.email_outlined),
+                dropdownCountryField(),
+                dropdownPhoneField(),
+                dropdownGenderField(),
+                SizedBox(
+                  height: getProportionateScreenWidth(kDefaultPadding),
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: CustomButton(
+                    title: "Continue",
+                    color: isDarkMode ? Colors.white : Colors.black,
+                    colorText: isDarkMode ? Colors.black : Colors.white,
+                    press: () {},
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -265,7 +304,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
       ),
       child: TextField(
         controller: birthdayTextController,
-        // onSaved: (newValue) => birthday = newValue!,
         textInputAction: TextInputAction.next,
         keyboardType: TextInputType.datetime,
         decoration: InputDecoration(
@@ -290,7 +328,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           suffixIcon: IconButton(
               onPressed: () {
-                _showDatePicker();
+                showDatePicker();
               },
               icon: const Icon(Icons.date_range)),
         ),
@@ -300,7 +338,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   Container textFormField({
     required String title,
-    String? birthday,
     required TextInputType textInputType,
     IconData? icon,
   }) {
@@ -312,7 +349,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
         borderRadius: BorderRadius.circular(12),
       ),
       child: TextFormField(
-        onSaved: (newValue) => birthday = newValue!,
         textInputAction: TextInputAction.next,
         keyboardType: textInputType,
         decoration: InputDecoration(
