@@ -56,6 +56,51 @@ class _FillYourProfilePageState extends State<FillYourProfilePage> {
     );
   }
 
+  void showDialogSuccess({required bool isDarkMode}) {
+    showDialog(
+      context: context,
+      builder: (builder) => AlertDialog(
+        backgroundColor: Colors.transparent,
+        actions: [
+          Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: getProportionateScreenWidth(kDefaultPadding),
+              vertical: getProportionateScreenWidth(kDefaultPadding * 3),
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color:isDarkMode ? kContentColorLightTheme : Colors.white,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.check,
+                  size: 36,
+                ),
+                SizedBox(
+                  height: getProportionateScreenWidth(kDefaultPadding),
+                ),
+                Text(
+                  'Congratulations!',
+                  style: TextStyle(fontSize: getProportionateScreenWidth(22)),
+                ),
+                SizedBox(
+                  height: getProportionateScreenWidth(kDefaultPadding),
+                ),
+                Text(
+                  'Your account is ready to use. You will be redirected to the Home page in a \n few seconds.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: getProportionateScreenWidth(16)),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
   String dropdownCountry = itemsCountry.first;
   String dropdownGender = itemsGender.first;
   String dropdownPhone = itemsPhone.first;
@@ -138,7 +183,7 @@ class _FillYourProfilePageState extends State<FillYourProfilePage> {
                     title: "Continue",
                     color: isDarkMode ? Colors.white : Colors.black,
                     colorText: isDarkMode ? Colors.black : Colors.white,
-                    press: () {},
+                    press: () => showDialogSuccess(isDarkMode: isDarkMode),
                   ),
                 ),
               ],
