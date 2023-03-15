@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
+import 'package:e_commerce_app/features/sign_in/presentation/pages/create_new_password_page.dart';
 import 'package:e_commerce_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
@@ -50,7 +51,7 @@ class _PinPasswordPageState extends State<PinPasswordPage> {
                   title: "Verify",
                   color: isDarkMode ? Colors.white : Colors.black,
                   colorText: isDarkMode ? Colors.black : Colors.white,
-                  press: () {}),
+                  press: () => Navigator.pushNamed(context, CreateNewPasswordPage.route)),
             ),
           ],
         ),
