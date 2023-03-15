@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
+import 'package:e_commerce_app/features/sign_in/presentation/pages/forgot_password_page.dart';
 import 'package:e_commerce_app/features/sign_in/presentation/widgets/sign_in_form.dart';
 import 'package:e_commerce_app/widgets/horizon_line_with_or.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,7 @@ class SignInPage extends StatelessWidget {
               Center(
                   child: InkWell(
                 borderRadius: BorderRadius.circular(12),
-                onTap: () {},
+                onTap: () => Navigator.pushNamed(context, ForgotPasswordPage.route),
                 child: const Text(
                   'Forgot the password?',
                   style: TextStyle(fontWeight: FontWeight.bold),

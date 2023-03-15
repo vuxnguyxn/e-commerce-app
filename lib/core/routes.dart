@@ -15,9 +15,10 @@ import 'package:e_commerce_app/features/order/presentation/orders.dart';
 import 'package:e_commerce_app/features/profile/presentation/pages/address_page.dart';
 import 'package:e_commerce_app/features/profile/presentation/pages/edit_profile_page.dart';
 import 'package:e_commerce_app/features/profile/presentation/pages/notification_page.dart';
+import 'package:e_commerce_app/features/sign_in/presentation/pages/forgot_password_page.dart';
 import 'package:e_commerce_app/features/sign_in/presentation/pages/sign_in_page.dart';
 import 'package:e_commerce_app/features/sign_in/sign_in.dart';
-import 'package:e_commerce_app/features/sign_up/presentation/pages/account_setup/fill_your_profile_page.dart';
+import 'package:e_commerce_app/features/sign_up/presentation/pages/fill_your_profile_page.dart';
 import 'package:e_commerce_app/features/sign_up/presentation/pages/sign_up_page.dart';
 import 'package:e_commerce_app/features/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -45,4 +46,5 @@ final Map<String, WidgetBuilder> routes = {
   SignUpPage.route: (context) => const SignUpPage(),
   SignInPage.route: (context) => const SignInPage(),
   FillYourProfilePage.route: (context) => const FillYourProfilePage(),
+  ForgotPasswordPage.route: (context) => const ForgotPasswordPage(),
 };

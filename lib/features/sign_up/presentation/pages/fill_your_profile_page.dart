@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
-import '../../../../../widgets/custom_button.dart';
-import '../../../../profile/data/simple_data.dart';
+import '../../../../widgets/custom_button.dart';
+import '../../../profile/data/simple_data.dart';
 
 class FillYourProfilePage extends StatefulWidget {
   const FillYourProfilePage({super.key});

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/size_config.dart';
 import '../../../../widgets/custom_button.dart';
-import '../pages/account_setup/fill_your_profile_page.dart';
+import '../pages/fill_your_profile_page.dart';
 import 'check_remember_me.dart';
 import '../../../../widgets/form_error.dart';
 
