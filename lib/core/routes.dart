@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:e_commerce_app/features/cart/presentation/cart.dart';
 import 'package:e_commerce_app/features/cart/presentation/pages/check_out_page.dart';
 import 'package:e_commerce_app/features/cart/presentation/pages/choose_shipping_page.dart';
@@ -16,6 +18,7 @@ import 'package:e_commerce_app/features/profile/presentation/pages/address_page.
 import 'package:e_commerce_app/features/profile/presentation/pages/edit_profile_page.dart';
 import 'package:e_commerce_app/features/profile/presentation/pages/notification_page.dart';
 import 'package:e_commerce_app/features/sign_in/presentation/pages/forgot_password_page.dart';
+import 'package:e_commerce_app/features/sign_in/presentation/pages/pin_password_page.dart';
 import 'package:e_commerce_app/features/sign_in/presentation/pages/sign_in_page.dart';
 import 'package:e_commerce_app/features/sign_in/sign_in.dart';
 import 'package:e_commerce_app/features/sign_up/presentation/pages/fill_your_profile_page.dart';
@@ -47,4 +50,5 @@ final Map<String, WidgetBuilder> routes = {
   SignInPage.route: (context) => const SignInPage(),
   FillYourProfilePage.route: (context) => const FillYourProfilePage(),
   ForgotPasswordPage.route: (context) => const ForgotPasswordPage(),
+  PinPasswordPage.route: (context) => const PinPasswordPage(),
 };

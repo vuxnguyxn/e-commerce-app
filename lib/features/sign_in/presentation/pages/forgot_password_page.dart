@@ -3,6 +3,7 @@ import 'package:e_commerce_app/core/size_config.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../widgets/custom_button.dart';
+import 'pin_password_page.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -148,7 +149,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 colorText: isDarkMode ? Colors.black : Colors.white,
                 press: () {
                   if (isSelectedSmS) {
-                  } else {}
+                    Navigator.pushNamed(context, PinPasswordPage.route);
+                  } else {
+                    Navigator.pushNamed(context, PinPasswordPage.route);
+                  }
                 },
               ),
             ),
