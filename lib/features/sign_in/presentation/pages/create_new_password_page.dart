@@ -1,8 +1,6 @@
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
 import 'package:e_commerce_app/features/sign_in/presentation/widgets/create_new_password_form.dart.dart';
-import 'package:e_commerce_app/features/sign_up/presentation/widgets/check_remember_me.dart';
-import 'package:e_commerce_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class CreateNewPasswordPage extends StatelessWidget {
@@ -37,7 +35,6 @@ class CreateNewPasswordPage extends StatelessWidget {
               height: getProportionateScreenWidth(kDefaultPadding),
             ),
             CreateNewPasswordForm(isDarkMode: isDarkMode),
-             
           ],
         ),
       ),

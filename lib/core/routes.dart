@@ -1,4 +1,3 @@
-import 'dart:js';
 
 import 'package:e_commerce_app/features/cart/presentation/cart.dart';
 import 'package:e_commerce_app/features/cart/presentation/pages/check_out_page.dart';

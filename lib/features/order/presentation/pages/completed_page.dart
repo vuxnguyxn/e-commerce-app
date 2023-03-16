@@ -83,7 +83,7 @@ class CompletedPage extends StatelessWidget {
                     color: isDarkMode ? Colors.white :Colors.black,
                   ),
                   onRatingUpdate: (rating) {
-                    print(rating);
+                    
                   },
                 ),
                 SizedBox(

@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final brightness = Theme.of(context).brightness;
     bool isDarkMode = brightness == Brightness.dark;
-
+    SizeConfig().init(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
