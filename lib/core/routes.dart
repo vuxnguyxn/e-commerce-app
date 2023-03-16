@@ -1,4 +1,3 @@
-
 import 'package:e_commerce_app/features/cart/presentation/cart.dart';
 import 'package:e_commerce_app/features/cart/presentation/pages/check_out_page.dart';
 import 'package:e_commerce_app/features/cart/presentation/pages/choose_shipping_page.dart';
@@ -23,6 +22,7 @@ import 'package:e_commerce_app/features/sign_in/sign_in.dart';
 import 'package:e_commerce_app/features/sign_up/presentation/pages/fill_your_profile_page.dart';
 import 'package:e_commerce_app/features/sign_up/presentation/pages/sign_up_page.dart';
 import 'package:e_commerce_app/features/splash/splash_screen.dart';
+import 'package:e_commerce_app/features/wallet/presentation/pages/transaction_history_page.dart';
 import 'package:flutter/material.dart';
 
 import '../features/sign_in/presentation/pages/create_new_password_page.dart';
@@ -53,4 +53,5 @@ final Map<String, WidgetBuilder> routes = {
   ForgotPasswordPage.route: (context) => const ForgotPasswordPage(),
   PinPasswordPage.route: (context) => const PinPasswordPage(),
   CreateNewPasswordPage.route: (context) => const CreateNewPasswordPage(),
+  TransactionHistoryPage.route: (context) => const TransactionHistoryPage(),
 };

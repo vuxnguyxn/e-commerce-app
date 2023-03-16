@@ -37,7 +37,7 @@ class TitleOfferAndSeeAll extends StatelessWidget {
             child: Text(
               "See All",
               style: TextStyle(
-                  fontSize: getProportionateScreenWidth(12),
+                  fontSize: getProportionateScreenWidth(14),
                   fontWeight: FontWeight.bold),
             ),
           ),
