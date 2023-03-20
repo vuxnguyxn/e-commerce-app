@@ -84,7 +84,7 @@ class SignIn extends StatelessWidget {
               ),
               QuestionAndTextInkWell(
                 title: 'Sign Up',
-                press: () => Navigator.pushReplacementNamed(context, SignUpPage.route),
+                press: () => Navigator.pushNamed(context, SignUpPage.route),
                 question: "Don't have an account?",
               ),
               SizedBox(

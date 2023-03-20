@@ -1,5 +1,4 @@
 import 'package:animations/animations.dart';
-import 'package:e_commerce_app/core/size_config.dart';
 import 'package:e_commerce_app/features/cart/presentation/cart.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/home_page.dart';
 import 'package:e_commerce_app/features/order/presentation/orders.dart';
@@ -29,7 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       body: PageTransitionSwitcher(
         transitionBuilder: (child, primaryAnimation, secondaryAnimation) =>

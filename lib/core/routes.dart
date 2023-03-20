@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/controller/screen_controller.dart';
 import 'package:e_commerce_app/features/cart/presentation/cart.dart';
 import 'package:e_commerce_app/features/cart/presentation/pages/check_out_page.dart';
 import 'package:e_commerce_app/features/cart/presentation/pages/choose_shipping_page.dart';
@@ -54,4 +55,5 @@ final Map<String, WidgetBuilder> routes = {
   PinPasswordPage.route: (context) => const PinPasswordPage(),
   CreateNewPasswordPage.route: (context) => const CreateNewPasswordPage(),
   TransactionHistoryPage.route: (context) => const TransactionHistoryPage(),
+  ScreenController.route: (context) => const ScreenController(),
 };

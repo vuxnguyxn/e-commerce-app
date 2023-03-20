@@ -5,7 +5,9 @@ import 'package:e_commerce_app/features/profile/presentation/pages/notification_
 import 'package:e_commerce_app/features/profile/presentation/widgets/dark_mode_item.dart';
 import 'package:e_commerce_app/widgets/horizon_line.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../blocs/app_bloc/app_bloc.dart';
 import 'address_page.dart';
 
 class Profile extends StatelessWidget {
@@ -89,7 +91,7 @@ class Profile extends StatelessWidget {
                     press: () {},
                     title: 'Invite Friend',
                     icon: Icons.supervisor_account_outlined),
-                logoutItem()
+                logoutItem(context)
               ],
             ),
           ),
@@ -131,9 +133,9 @@ class Profile extends StatelessWidget {
     );
   }
 
-  InkWell logoutItem() {
+  InkWell logoutItem(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => context.read<AppBloc>().add(AppEventSignOut()),
       borderRadius: BorderRadius.circular(12),
       child: Container(
         padding: EdgeInsets.symmetric(
