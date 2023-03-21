@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/size_config.dart';
 import '../../../../widgets/custom_button.dart';
+import '../../../../widgets/notification_error.dart';
 import '../../../sign_up/presentation/widgets/check_remember_me.dart';
-import '../../../../widgets/form_error.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({
@@ -91,8 +91,8 @@ class _EmailAndPasswordFormState extends State<SignInForm> {
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: getProportionateScreenWidth(kDefaultPadding)),
+            padding: EdgeInsets.only(
+                left: getProportionateScreenWidth(kDefaultPadding)),
             margin: EdgeInsets.only(
                 bottom: getProportionateScreenWidth(kDefaultPadding / 2)),
             decoration: BoxDecoration(
@@ -137,20 +137,8 @@ class _EmailAndPasswordFormState extends State<SignInForm> {
               ),
             ),
           ),
-          FormError(errors: errors),
-          Padding(
-            padding: EdgeInsets.all(
-              getProportionateScreenWidth(kDefaultPadding),
-            ),
-            child: authErrorSignIn != ""
-                ? Text(
-                    textAlign: TextAlign.center,
-                    authErrorSignIn.split(']')[1],
-                    style: const TextStyle(
-                        color: Colors.red, fontWeight: FontWeight.bold),
-                  )
-                : null,
-          ),
+          // FormError(errors: errors),
+          NotificationError(text: authErrorSignIn,),
           const CheckRememberMe(),
           BlocBuilder<AppBloc, AppState>(
             builder: (context, state) {
@@ -163,10 +151,8 @@ class _EmailAndPasswordFormState extends State<SignInForm> {
                   title: 'Sign In',
                   color: widget.isDarkMode ? Colors.white : Colors.black,
                   colorText: widget.isDarkMode ? Colors.black : Colors.white,
-                  isProcess: state.isLoading,
+                  isLoading: state.isLoading,
                   press: () {
-                    // if (formKey.currentState!.validate()) {
-
                     context
                         .read<AppBloc>()
                         .add(AppEventSignIn(email: email, password: password));
@@ -180,3 +166,4 @@ class _EmailAndPasswordFormState extends State<SignInForm> {
     );
   }
 }
+

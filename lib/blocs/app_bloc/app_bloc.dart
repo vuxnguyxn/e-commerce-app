@@ -37,7 +37,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
             email: event.email, password: event.password);
         emit(const AppStateLoggedIn(isLoading: false, successful: true));
       } on FirebaseAuthException catch (e) {
-        authErrorSingUp = e.toString();
+        authErrorSignUp = e.toString();
         emit(const AppStateLoggedOut(isLoading: false, successful: false));
       }
     });

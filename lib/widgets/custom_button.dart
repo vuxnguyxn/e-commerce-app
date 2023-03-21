@@ -9,14 +9,14 @@ class CustomButton extends StatelessWidget {
       required this.title,
       required this.color,
       required this.colorText,
-      this.isProcess = false,
+      this.isLoading = false,
       required this.press});
 
   final String title;
   final Color color;
   final Color colorText;
   final VoidCallback press;
-  final bool isProcess;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class CustomButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (isProcess)
+            if (isLoading)
               CircularProgressIndicator(
                 color: colorText,
                 strokeWidth: 3,

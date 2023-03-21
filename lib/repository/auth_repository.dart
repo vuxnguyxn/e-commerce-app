@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 
 String authErrorSignIn = '';
-String authErrorSingUp = '';
+String authErrorSignUp = '';
 String authErrorResetPassword = '';
 
 class AuthRepository {

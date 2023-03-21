@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/repository/auth_repository.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants.dart';
@@ -28,6 +29,7 @@ class _HomePageState extends State<HomePage> {
   final time = DateTime.now().hour;
   String notification = "";
   int currentIndex = 0;
+  final user = AuthRepository().currentUser;
 
   void greeting() {
     if (time < 6) {
@@ -48,10 +50,17 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    greeting();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final brightness = Theme.of(context).brightness;
     bool isDarkMode = brightness == Brightness.dark;
     SizeConfig().init(context);
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -203,7 +212,9 @@ class _HomePageState extends State<HomePage> {
           width: getProportionateScreenWidth(48),
           height: getProportionateScreenWidth(48),
           child: CircleAvatar(
-            child: Image.asset("assets/images/profile_image.png"),
+            child: user!.photoURL == null
+                ? Image.asset("assets/images/profile_image.png")
+                : Image.network(user!.photoURL!),
           ),
         ),
         SizedBox(
@@ -226,7 +237,7 @@ class _HomePageState extends State<HomePage> {
               height: getProportionateScreenHeight(5),
             ),
             Text(
-              'Peter Parker',
+              user!.displayName ?? "Peter Paker",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: getProportionateScreenWidth(18),

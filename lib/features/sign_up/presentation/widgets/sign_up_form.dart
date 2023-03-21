@@ -1,11 +1,13 @@
+import 'package:e_commerce_app/blocs/app_bloc/app_bloc.dart';
+import 'package:e_commerce_app/repository/auth_repository.dart';
+import 'package:e_commerce_app/widgets/notification_error.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/size_config.dart';
 import '../../../../widgets/custom_button.dart';
-import '../pages/fill_your_profile_page.dart';
 import 'check_remember_me.dart';
-import '../../../../widgets/form_error.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({
@@ -21,7 +23,8 @@ class SignUpForm extends StatefulWidget {
 
 class _EmailAndPasswordFormState extends State<SignUpForm> {
   final formKey = GlobalKey<FormState>();
-  String? email, password;
+  String email = '', password = '';
+  bool visible = true;
   final List<String> errors = [];
 
   void addError({required String error}) {
@@ -65,17 +68,18 @@ class _EmailAndPasswordFormState extends State<SignUpForm> {
                     errors.contains(kInvalidEmailError)) {
                   removeError(error: kInvalidEmailError);
                 }
+                email = value;
               },
               //check validator
-              validator: (value) {
-                if (value!.isEmpty && !errors.contains(kEmailNullError)) {
-                  addError(error: kEmailNullError);
-                } else if (!emailValidatorRegExp.hasMatch(value) &&
-                    !errors.contains(kInvalidEmailError)) {
-                  addError(error: kInvalidEmailError);
-                }
-                return null;
-              },
+              // validator: (value) {
+              //   if (value!.isEmpty && !errors.contains(kEmailNullError)) {
+              //     addError(error: kEmailNullError);
+              //   } else if (!emailValidatorRegExp.hasMatch(value) &&
+              //       !errors.contains(kInvalidEmailError)) {
+              //     addError(error: kInvalidEmailError);
+              //   }
+              //   return null;
+              // },
               textInputAction: TextInputAction.next,
               keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(
@@ -87,8 +91,8 @@ class _EmailAndPasswordFormState extends State<SignUpForm> {
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: getProportionateScreenWidth(kDefaultPadding)),
+            padding: EdgeInsets.only(
+                left: getProportionateScreenWidth(kDefaultPadding)),
             margin: EdgeInsets.only(
                 bottom: getProportionateScreenWidth(kDefaultPadding / 2)),
             decoration: BoxDecoration(
@@ -106,43 +110,52 @@ class _EmailAndPasswordFormState extends State<SignUpForm> {
                 }
                 password = value;
               },
-              validator: (value) {
-                if (value!.isEmpty && !errors.contains(kPassNullError)) {
-                  addError(error: kPassNullError);
-                } else if (value.length < 6 &&
-                    !errors.contains(kShortPassError)) {
-                  addError(error: kShortPassError);
-                }
-                return null;
-              },
+              // validator: (value) {
+              //   if (value!.isEmpty && !errors.contains(kPassNullError)) {
+              //     addError(error: kPassNullError);
+              //   } else if (value.length < 6 &&
+              //       !errors.contains(kShortPassError)) {
+              //     addError(error: kShortPassError);
+              //   }
+              //   return null;
+              // },
               textInputAction: TextInputAction.done,
-              obscureText: true,
-              decoration: const InputDecoration(
-                focusedBorder: InputBorder.none,
-                border: InputBorder.none,
-                icon: Icon(Icons.lock),
-                hintText: 'Password',
-              ),
+              obscureText: visible,
+              decoration: InputDecoration(
+                  focusedBorder: InputBorder.none,
+                  border: InputBorder.none,
+                  icon: const Icon(Icons.lock),
+                  hintText: 'Password',
+                  suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          visible = !visible;
+                        });
+                      },
+                      icon: const Icon(Icons.remove_red_eye))),
             ),
           ),
-          FormError(errors: errors),
+          // FormError(errors: errors),
+          NotificationError(text: authErrorSignUp),
           const CheckRememberMe(),
-          Container(
-            margin: EdgeInsets.only(
-                bottom: getProportionateScreenWidth(kDefaultPadding * 2),
-                top: getProportionateScreenWidth(kDefaultPadding)),
-            width: double.infinity,
-            child: CustomButton(
-                title: 'Sign Up',
-                color: widget.isDarkMode ? Colors.white : Colors.black,
-                colorText: widget.isDarkMode ? Colors.black : Colors.white,
-                press: () {
-                  // if (formKey.currentState!.validate()) {
-                  //   //Handle sign up account
-                  // }
-                  Navigator.pushNamed(
-                      context, FillYourProfilePage.route);
-                }),
+          BlocBuilder<AppBloc, AppState>(
+            builder: (context, state) {
+              return Container(
+                margin: EdgeInsets.only(
+                    bottom: getProportionateScreenWidth(kDefaultPadding * 2),
+                    top: getProportionateScreenWidth(kDefaultPadding)),
+                width: double.infinity,
+                child: CustomButton(
+                    title: 'Sign Up',
+                    color: widget.isDarkMode ? Colors.white : Colors.black,
+                    colorText: widget.isDarkMode ? Colors.black : Colors.white,
+                    isLoading: state.isLoading,
+                    press: () {
+                      context.read<AppBloc>().add(
+                          AppEventSignUp(email: email, password: password));
+                    }),
+              );
+            },
           ),
         ],
       ),
