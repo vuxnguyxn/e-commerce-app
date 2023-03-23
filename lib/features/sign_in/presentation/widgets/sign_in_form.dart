@@ -1,4 +1,3 @@
-import 'package:e_commerce_app/blocs/app_bloc/app_bloc.dart';
 import 'package:e_commerce_app/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:e_commerce_app/repository/auth_repository.dart';
 import 'package:flutter/material.dart';

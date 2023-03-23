@@ -1,4 +1,3 @@
-import 'package:e_commerce_app/blocs/auth_bloc/auth_bloc.dart';
 import 'package:e_commerce_app/repository/auth_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';

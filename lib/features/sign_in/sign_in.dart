@@ -1,8 +1,7 @@
 import 'package:e_commerce_app/controller/sign_in_controller.dart';
+import 'package:e_commerce_app/controller/sign_up_controller.dart';
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
-import 'package:e_commerce_app/features/sign_in/presentation/pages/sign_in_page.dart';
-import 'package:e_commerce_app/features/sign_up/presentation/pages/sign_up_page.dart';
 import 'package:e_commerce_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
@@ -85,7 +84,7 @@ class SignIn extends StatelessWidget {
               ),
               QuestionAndTextInkWell(
                 title: 'Sign Up',
-                press: () => Navigator.pushNamed(context, SignUpPage.route),
+                press: () => Navigator.pushNamed(context, SignUpController.route),
                 question: "Don't have an account?",
               ),
               SizedBox(

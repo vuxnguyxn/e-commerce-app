@@ -1,8 +1,6 @@
 import 'package:e_commerce_app/blocs/auth_bloc/auth_bloc.dart';
 import 'package:e_commerce_app/features/home/presentation/home.dart';
 import 'package:e_commerce_app/features/sign_in/sign_in.dart';
-import 'package:e_commerce_app/features/splash/splash_screen.dart';
-import 'package:e_commerce_app/repository/auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

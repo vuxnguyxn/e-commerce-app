@@ -1,10 +1,7 @@
 import 'dart:async';
 
-import 'package:e_commerce_app/blocs/auth_bloc/auth_bloc.dart';
 import 'package:e_commerce_app/controller/screen_controller.dart';
-import 'package:e_commerce_app/features/sign_in/sign_in.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String route = '/Splash';

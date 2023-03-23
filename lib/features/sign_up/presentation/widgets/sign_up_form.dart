@@ -1,5 +1,4 @@
-import 'package:e_commerce_app/blocs/app_bloc/app_bloc.dart';
-import 'package:e_commerce_app/repository/auth_repository.dart';
+import 'package:e_commerce_app/blocs/sign_up_bloc/sign_up_bloc.dart';
 import 'package:e_commerce_app/widgets/notification_error.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -143,7 +142,7 @@ class _EmailAndPasswordFormState extends State<SignUpForm> {
           // FormError(errors: errors),
           NotificationError(text: authErrorSignUp),
           const CheckRememberMe(),
-          BlocBuilder<AppBloc, AppState>(
+          BlocBuilder<SignUpBloc, SignUpState>(
             builder: (context, state) {
               return Container(
                 margin: EdgeInsets.only(
@@ -156,10 +155,9 @@ class _EmailAndPasswordFormState extends State<SignUpForm> {
                   colorText: widget.isDarkMode ? Colors.black : Colors.white,
                   isLoading: state.isLoading,
                   press: () {
-                    context
-                        .read<AppBloc>()
-                        .add(AppEventSignUp(email: email, password: password));
-                    print(state);
+                    context.read<SignUpBloc>().add(
+                          SignUpLoaded(email: email, password: password),
+                        );
                   },
                 ),
               );

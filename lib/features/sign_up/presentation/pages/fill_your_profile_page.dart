@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/blocs/app_bloc/app_bloc.dart';
+import 'package:e_commerce_app/blocs/auth_bloc/auth_bloc.dart';
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
 import 'package:e_commerce_app/repository/auth_repository.dart';
@@ -107,11 +107,8 @@ class _FillYourProfilePageState extends State<FillYourProfilePage> {
                 dropdownCountryField(),
                 dropdownPhoneField(),
                 dropdownGenderField(),
-                SizedBox(
-                  height: getProportionateScreenWidth(kDefaultPadding * 2),
-                ),
                 NotificationError(text: authErrorUpdateProfile),
-                BlocBuilder<AppBloc, AppState>(
+                BlocBuilder<AuthBloc, AuthState>(
                   builder: (context, state) {
                     return SizedBox(
                       width: double.infinity,
@@ -119,7 +116,7 @@ class _FillYourProfilePageState extends State<FillYourProfilePage> {
                         title: "Continue",
                         color: isDarkMode ? Colors.white : Colors.black,
                         colorText: isDarkMode ? Colors.black : Colors.white,
-                        isLoading: state.isLoading,
+                        // isLoading: state.isLoading,
                         press: () {
                           final phoneSplit = dropdownPhone.split("(").last;
                           final phoneID = phoneSplit.split(")").first;
@@ -145,19 +142,19 @@ class _FillYourProfilePageState extends State<FillYourProfilePage> {
                                 isDarkMode: isDarkMode,
                                 textError: authErrorFillYourPage);
                           } else {
-                            context.read<AppBloc>().add(
-                                  AppEventUpdateProfile(
-                                    displayName: fullName.text,
-                                    photoURL: photoURL,
-                                    birthday: birthday.text,
-                                    country: dropdownCountry,
-                                    gender: dropdownGender,
-                                    phone: "$phoneID ${phone.text}",
-                                    username: userName.text,
-                                    context: context,
-                                  ),
-                                );
-                            print(state);
+                            // context.read<AppBloc>().add(
+                            //       AppEventUpdateProfile(
+                            //         displayName: fullName.text,
+                            //         photoURL: photoURL,
+                            //         birthday: birthday.text,
+                            //         country: dropdownCountry,
+                            //         gender: dropdownGender,
+                            //         phone: "$phoneID ${phone.text}",
+                            //         username: userName.text,
+                            //         context: context,
+                            //       ),
+                            //     );
+                            // print(state);
                           }
                         },
                       ),
