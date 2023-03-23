@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/blocs/app_bloc/app_bloc.dart';
+import 'package:e_commerce_app/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:e_commerce_app/repository/auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -132,15 +133,19 @@ class _EmailAndPasswordFormState extends State<SignInForm> {
                       visible = !visible;
                     });
                   },
-                  icon: const Icon(Icons.remove_red_eye),
+                  icon: Icon(visible
+                      ? Icons.remove_red_eye_outlined
+                      : Icons.remove_red_eye),
                 ),
               ),
             ),
           ),
           // FormError(errors: errors),
-          NotificationError(text: authErrorSignIn,),
+          NotificationError(
+            text: authErrorSignIn,
+          ),
           const CheckRememberMe(),
-          BlocBuilder<AppBloc, AppState>(
+          BlocBuilder<SignInBloc, SignInState>(
             builder: (context, state) {
               return Container(
                 margin: EdgeInsets.only(
@@ -154,8 +159,8 @@ class _EmailAndPasswordFormState extends State<SignInForm> {
                   isLoading: state.isLoading,
                   press: () {
                     context
-                        .read<AppBloc>()
-                        .add(AppEventSignIn(email: email, password: password));
+                        .read<SignInBloc>()
+                        .add(SignInLoaded(email: email, password: password));
                   },
                 ),
               );
@@ -166,4 +171,3 @@ class _EmailAndPasswordFormState extends State<SignInForm> {
     );
   }
 }
-

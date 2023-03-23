@@ -1,7 +1,10 @@
 import 'dart:async';
 
+import 'package:e_commerce_app/blocs/auth_bloc/auth_bloc.dart';
+import 'package:e_commerce_app/controller/screen_controller.dart';
 import 'package:e_commerce_app/features/sign_in/sign_in.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String route = '/Splash';
@@ -16,24 +19,19 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     _navigator();
-    // countDownTime();
   }
+
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   _navigator();
+  // }
 
   void _navigator() {
-    Timer(const Duration(seconds: 3),
-        () => Navigator.pushReplacementNamed(context, SignIn.route));
+    Timer(const Duration(seconds: 3), () {
+      Navigator.pushReplacementNamed(context, ScreenController.route);
+    });
   }
-
-  // int val = 3;
-  // void countDownTime() {
-  //   Timer.periodic(const Duration(seconds: 1), (timer) {
-  //     val > 0
-  //         ? setState(
-  //             () => val--,
-  //           )
-  //         : timer.cancel();
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {

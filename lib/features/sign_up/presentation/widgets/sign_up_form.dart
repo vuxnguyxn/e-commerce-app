@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/size_config.dart';
 import '../../../../widgets/custom_button.dart';
+import '../pages/sign_up_page.dart';
 import 'check_remember_me.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -122,17 +123,21 @@ class _EmailAndPasswordFormState extends State<SignUpForm> {
               textInputAction: TextInputAction.done,
               obscureText: visible,
               decoration: InputDecoration(
-                  focusedBorder: InputBorder.none,
-                  border: InputBorder.none,
-                  icon: const Icon(Icons.lock),
-                  hintText: 'Password',
-                  suffixIcon: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          visible = !visible;
-                        });
-                      },
-                      icon: const Icon(Icons.remove_red_eye))),
+                focusedBorder: InputBorder.none,
+                border: InputBorder.none,
+                icon: const Icon(Icons.lock),
+                hintText: 'Password',
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      visible = !visible;
+                    });
+                  },
+                  icon: Icon(visible
+                      ? Icons.remove_red_eye_outlined
+                      : Icons.remove_red_eye),
+                ),
+              ),
             ),
           ),
           // FormError(errors: errors),
@@ -146,14 +151,17 @@ class _EmailAndPasswordFormState extends State<SignUpForm> {
                     top: getProportionateScreenWidth(kDefaultPadding)),
                 width: double.infinity,
                 child: CustomButton(
-                    title: 'Sign Up',
-                    color: widget.isDarkMode ? Colors.white : Colors.black,
-                    colorText: widget.isDarkMode ? Colors.black : Colors.white,
-                    isLoading: state.isLoading,
-                    press: () {
-                      context.read<AppBloc>().add(
-                          AppEventSignUp(email: email, password: password));
-                    }),
+                  title: 'Sign Up',
+                  color: widget.isDarkMode ? Colors.white : Colors.black,
+                  colorText: widget.isDarkMode ? Colors.black : Colors.white,
+                  isLoading: state.isLoading,
+                  press: () {
+                    context
+                        .read<AppBloc>()
+                        .add(AppEventSignUp(email: email, password: password));
+                    print(state);
+                  },
+                ),
               );
             },
           ),

@@ -11,6 +11,8 @@ const kTextColor = Color(0xFF757575);
 
 const kDefaultPadding = 20.0;
 
+const photoURL =
+    'https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/81201544.jfif?alt=media&token=7fef6d6d-99b3-4ef0-a442-40a230b9e044';
 
 // Form Error
 final RegExp emailValidatorRegExp =
@@ -26,4 +28,3 @@ const String kFirstNameNullError = "Please Enter your first name";
 const String kLastNameNullError = "Please Enter your last name";
 const String kPhoneNumberNullError = "Please Enter your phone number";
 const String kAddressNullError = "Please Enter your address";
-

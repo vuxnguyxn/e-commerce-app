@@ -26,3 +26,22 @@ class AppStateLoggedOut extends AppState {
   @override
   List<Object?> get props => [isLoading, successful];
 }
+class AppStateUpdateProfile extends AppState {
+  const AppStateUpdateProfile({
+    required isLoading,
+    required successful,
+  }) : super(isLoading: isLoading, successful: successful);
+
+  @override
+  List<Object?> get props => [isLoading, successful];
+}
+
+class AppStateSignUp extends AppState {
+  const AppStateSignUp({
+    required isLoading,
+    required successful,
+  }) : super(isLoading: isLoading, successful: successful);
+
+  @override
+  List<Object?> get props => [isLoading, successful];
+}

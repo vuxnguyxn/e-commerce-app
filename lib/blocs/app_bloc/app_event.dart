@@ -41,3 +41,29 @@ class AppEventResetPassword extends AppEvent {
 
 @immutable
 class AppEventSignOut extends AppEvent {}
+
+@immutable
+class AppEventUpdateProfile extends AppEvent {
+  final String displayName;
+  final String photoURL;
+  final String birthday;
+  final String username;
+  final String gender;
+  final String phone;
+  final String country;
+  final BuildContext context;
+
+  const AppEventUpdateProfile(
+      {required this.birthday,
+      required this.username,
+      required this.gender,
+      required this.context,
+      required this.phone,
+      required this.country,
+      required this.displayName,
+      required this.photoURL});
+
+  @override
+  List<Object> get props =>
+      [displayName, photoURL, country, birthday, username, gender, phone];
+}

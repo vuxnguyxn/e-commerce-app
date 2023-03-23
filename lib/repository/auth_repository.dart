@@ -1,13 +1,15 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 String authErrorSignIn = '';
-String authErrorSignUp = '';
 String authErrorResetPassword = '';
+String authErrorUpdateProfile = '';
 
 class AuthRepository {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final FirebaseDatabase _firebaseDatabase = FirebaseDatabase.instance;
 
   User? get currentUser => _firebaseAuth.currentUser;
 
@@ -35,5 +37,32 @@ class AuthRepository {
 
   Future<void> signOut() async {
     await _firebaseAuth.signOut();
+  }
+
+  Future<bool> isSignIn() async {
+    var user = currentUser;
+    return user != null;
+  }
+
+  Future<void> updateProfile(
+      {required String displayName,
+      required String phone,
+      required String birthday,
+      required String gender,
+      required String username,
+      required String country,
+      required String photoURL}) async {
+    await currentUser?.updateDisplayName(displayName);
+    await currentUser?.updatePhotoURL(photoURL);
+
+    DatabaseReference ref =
+        _firebaseDatabase.ref('account/${currentUser!.uid}');
+    await ref.set({
+      "username": username,
+      "birthday": birthday,
+      "gender": gender,
+      "phone": phone,
+      "country": country,
+    });
   }
 }

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "335830767904",
+    "firebase_url": "https://e-commerce-project-e9a41-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "e-commerce-project-e9a41",
     "storage_bucket": "e-commerce-project-e9a41.appspot.com"
   },
@@ -29,6 +30,13 @@
             {
               "client_id": "335830767904-k0v21bt6nah7iert66mbske7ubhnao4d.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "335830767904-35si7k76eaqomnuqdpfvibi7jmmk50c0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.eCommerceApp"
+              }
             }
           ]
         }

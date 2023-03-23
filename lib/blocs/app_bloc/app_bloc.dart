@@ -4,6 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/home/presentation/home.dart';
+import '../../features/sign_up/presentation/pages/sign_up_page.dart';
+
 part 'app_event.dart';
 part 'app_state.dart';
 
@@ -15,6 +18,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       try {
         await AuthRepository().signInWithEmailAndPassword(
             email: event.email, password: event.password);
+
         emit(const AppStateLoggedIn(isLoading: false, successful: true));
       } on FirebaseAuthException catch (e) {
         authErrorSignIn = e.toString();
@@ -27,7 +31,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       try {
         await AuthRepository().signOut();
         emit(const AppStateLoggedOut(isLoading: false, successful: true));
-      } on FirebaseAuthException catch(_){}
+      } on FirebaseAuthException catch (_) {}
     });
 
     on<AppEventSignUp>((event, emit) async {
@@ -35,7 +39,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       try {
         await AuthRepository().createUserWithEmailAndPassword(
             email: event.email, password: event.password);
-        emit(const AppStateLoggedIn(isLoading: false, successful: true));
+        emit(const AppStateSignUp(isLoading: false, successful: true));
       } on FirebaseAuthException catch (e) {
         authErrorSignUp = e.toString();
         emit(const AppStateLoggedOut(isLoading: false, successful: false));
@@ -52,5 +56,28 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         emit(const AppStateLoggedOut(isLoading: false, successful: false));
       }
     });
+
+    on<AppEventUpdateProfile>((event, emit) async {
+      emit(const AppStateLoggedOut(isLoading: true, successful: false));
+      try {
+        await AuthRepository().updateProfile(
+            displayName: event.displayName,
+            photoURL: event.photoURL,
+            birthday: event.birthday,
+            gender: event.gender,
+            phone: event.phone,
+            country: event.country,
+            username: event.username);
+        emit(const AppStateUpdateProfile(isLoading: false, successful: true));
+        naviHome(event.context);
+      } on FirebaseAuthException catch (e) {
+        authErrorUpdateProfile = e.toString();
+        emit(const AppStateLoggedOut(isLoading: false, successful: false));
+      }
+    });
+  }
+
+  void naviHome(BuildContext context) {
+    Navigator.pushNamed(context, HomeScreen.route);
   }
 }

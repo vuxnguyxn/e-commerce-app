@@ -1,6 +1,10 @@
+import 'package:e_commerce_app/blocs/app_bloc/app_bloc.dart';
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
+import 'package:e_commerce_app/repository/auth_repository.dart';
+import 'package:e_commerce_app/widgets/notification_error.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
@@ -19,100 +23,25 @@ class FillYourProfilePage extends StatefulWidget {
 class _FillYourProfilePageState extends State<FillYourProfilePage> {
   DateTime? date;
 
-  final TextEditingController birthdayTextController = TextEditingController();
-
-  void showDatePicker() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: kContentColorLightTheme,
-        actions: [
-          SfDateRangePicker(
-            view: DateRangePickerView.month,
-            selectionMode: DateRangePickerSelectionMode.single,
-            todayHighlightColor: Colors.amber,
-            showTodayButton: false,
-            confirmText: 'Ok',
-            cancelText: 'Cancel',
-            backgroundColor: kContentColorLightTheme,
-            selectionColor: Colors.green,
-            headerStyle: const DateRangePickerHeaderStyle(
-                textStyle: TextStyle(fontSize: 18)),
-            showActionButtons: true,
-            showNavigationArrow: true,
-            onCancel: () => Navigator.pop(context),
-            onSubmit: (value) {
-              setState(() {
-                if (value != null) {
-                  birthdayTextController.text =
-                      DateFormat.yMd().format(value as DateTime);
-                }
-                Navigator.pop(context);
-              });
-            },
-          ),
-        ],
-      ),
-    );
-  }
-
-  void showDialogSuccess({required bool isDarkMode}) {
-    showDialog(
-      context: context,
-      builder: (builder) => AlertDialog(
-        backgroundColor: Colors.transparent,
-        actions: [
-          Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: getProportionateScreenWidth(kDefaultPadding),
-              vertical: getProportionateScreenWidth(kDefaultPadding * 3),
-            ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              color:isDarkMode ? kContentColorLightTheme : Colors.white,
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(
-                  Icons.check,
-                  size: 36,
-                ),
-                SizedBox(
-                  height: getProportionateScreenWidth(kDefaultPadding),
-                ),
-                Text(
-                  'Congratulations!',
-                  style: TextStyle(fontSize: getProportionateScreenWidth(22)),
-                ),
-                SizedBox(
-                  height: getProportionateScreenWidth(kDefaultPadding),
-                ),
-                Text(
-                  'Your account is ready to use. You will be redirected to the Home page in a \n few seconds.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: getProportionateScreenWidth(16)),
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
-    );
-  }
+  final TextEditingController birthday = TextEditingController();
+  final TextEditingController fullName = TextEditingController();
+  final TextEditingController userName = TextEditingController();
+  final TextEditingController phone = TextEditingController();
 
   String dropdownCountry = itemsCountry.first;
   String dropdownGender = itemsGender.first;
   String dropdownPhone = itemsPhone.first;
-  String? birthday;
+  String authErrorFillYourPage = '';
 
   @override
   Widget build(BuildContext context) {
     final brightness = Theme.of(context).brightness;
     bool isDarkMode = brightness == Brightness.dark;
+    print("fill your page: ${AuthRepository().currentUser}");
 
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text(
           'Fill Your Profile',
           style: TextStyle(fontSize: 20),
@@ -163,28 +92,77 @@ class _FillYourProfilePageState extends State<FillYourProfilePage> {
                 textFormField(
                   title: 'Full Name',
                   textInputType: TextInputType.name,
+                  textEditingController: fullName,
                 ),
                 textFormField(
-                    title: 'User Name', textInputType: TextInputType.name),
+                  title: 'User Name',
+                  textInputType: TextInputType.name,
+                  textEditingController: userName,
+                ),
                 birthdayFormField(),
-                textFormField(
-                    title: 'Email',
-                    textInputType: TextInputType.emailAddress,
-                    icon: Icons.email_outlined),
+                // textFormField(
+                //     title: 'Email',
+                //     textInputType: TextInputType.emailAddress,
+                //     icon: Icons.email_outlined),
                 dropdownCountryField(),
                 dropdownPhoneField(),
                 dropdownGenderField(),
                 SizedBox(
-                  height: getProportionateScreenWidth(kDefaultPadding),
+                  height: getProportionateScreenWidth(kDefaultPadding * 2),
                 ),
-                SizedBox(
-                  width: double.infinity,
-                  child: CustomButton(
-                    title: "Continue",
-                    color: isDarkMode ? Colors.white : Colors.black,
-                    colorText: isDarkMode ? Colors.black : Colors.white,
-                    press: () => showDialogSuccess(isDarkMode: isDarkMode),
-                  ),
+                NotificationError(text: authErrorUpdateProfile),
+                BlocBuilder<AppBloc, AppState>(
+                  builder: (context, state) {
+                    return SizedBox(
+                      width: double.infinity,
+                      child: CustomButton(
+                        title: "Continue",
+                        color: isDarkMode ? Colors.white : Colors.black,
+                        colorText: isDarkMode ? Colors.black : Colors.white,
+                        isLoading: state.isLoading,
+                        press: () {
+                          final phoneSplit = dropdownPhone.split("(").last;
+                          final phoneID = phoneSplit.split(")").first;
+
+                          if (fullName.text == "") {
+                            authErrorFillYourPage = 'Full name is empty!';
+                            showDialogError(
+                                isDarkMode: isDarkMode,
+                                textError: authErrorFillYourPage);
+                          } else if (userName.text == "") {
+                            authErrorFillYourPage = 'User name is empty!';
+                            showDialogError(
+                                isDarkMode: isDarkMode,
+                                textError: authErrorFillYourPage);
+                          } else if (phone.text == "") {
+                            authErrorFillYourPage = 'Number phone is empty!';
+                            showDialogError(
+                                isDarkMode: isDarkMode,
+                                textError: authErrorFillYourPage);
+                          } else if (birthday.text == "") {
+                            authErrorFillYourPage = 'Date of birth is empty!';
+                            showDialogError(
+                                isDarkMode: isDarkMode,
+                                textError: authErrorFillYourPage);
+                          } else {
+                            context.read<AppBloc>().add(
+                                  AppEventUpdateProfile(
+                                    displayName: fullName.text,
+                                    photoURL: photoURL,
+                                    birthday: birthday.text,
+                                    country: dropdownCountry,
+                                    gender: dropdownGender,
+                                    phone: "$phoneID ${phone.text}",
+                                    username: userName.text,
+                                    context: context,
+                                  ),
+                                );
+                            print(state);
+                          }
+                        },
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
@@ -192,6 +170,7 @@ class _FillYourProfilePageState extends State<FillYourProfilePage> {
         ),
       ),
     );
+        
   }
 
   Container dropdownPhoneField() {
@@ -240,6 +219,9 @@ class _FillYourProfilePageState extends State<FillYourProfilePage> {
             child: TextFormField(
               keyboardType: TextInputType.phone,
               textInputAction: TextInputAction.next,
+              onChanged: (value) {
+                phone.text = value;
+              },
               decoration: InputDecoration(
                 labelText: 'Number Phone',
                 border: OutlineInputBorder(
@@ -348,14 +330,14 @@ class _FillYourProfilePageState extends State<FillYourProfilePage> {
         borderRadius: BorderRadius.circular(12),
       ),
       child: TextField(
-        controller: birthdayTextController,
+        controller: birthday,
         textInputAction: TextInputAction.next,
         keyboardType: TextInputType.datetime,
         decoration: InputDecoration(
-          label: birthdayTextController.text != ''
-              ? Text(birthdayTextController.text)
+          label: birthday.text != ''
+              ? Text(birthday.text)
               : Text(
-                  'Birthday',
+                  'Date of Birth',
                   style: TextStyle(
                       color: Theme.of(context)
                           .textTheme
@@ -385,6 +367,7 @@ class _FillYourProfilePageState extends State<FillYourProfilePage> {
     required String title,
     required TextInputType textInputType,
     IconData? icon,
+    required TextEditingController textEditingController,
   }) {
     return Container(
       margin:
@@ -396,6 +379,9 @@ class _FillYourProfilePageState extends State<FillYourProfilePage> {
       child: TextFormField(
         textInputAction: TextInputAction.next,
         keyboardType: textInputType,
+        onChanged: (value) {
+          textEditingController.text = value;
+        },
         decoration: InputDecoration(
           hintText: title,
           border: OutlineInputBorder(
@@ -406,8 +392,134 @@ class _FillYourProfilePageState extends State<FillYourProfilePage> {
           floatingLabelBehavior: FloatingLabelBehavior.never,
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          suffixIcon: icon != null ? Icon(icon) : null,
+          suffixIcon: icon == null ? Icon(icon) : null,
         ),
+      ),
+    );
+  }
+
+  void showDatePicker() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: kContentColorLightTheme,
+        actions: [
+          SfDateRangePicker(
+            view: DateRangePickerView.month,
+            selectionMode: DateRangePickerSelectionMode.single,
+            todayHighlightColor: Colors.amber,
+            showTodayButton: false,
+            confirmText: 'Ok',
+            cancelText: 'Cancel',
+            backgroundColor: kContentColorLightTheme,
+            selectionColor: Colors.green,
+            headerStyle: const DateRangePickerHeaderStyle(
+                textStyle: TextStyle(fontSize: 18)),
+            showActionButtons: true,
+            showNavigationArrow: true,
+            onCancel: () => Navigator.pop(context),
+            onSubmit: (value) {
+              setState(() {
+                if (value != null) {
+                  birthday.text = DateFormat.yMd().format(value as DateTime);
+                }
+                Navigator.pop(context);
+              });
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  void showDialogSuccess({required bool isDarkMode}) {
+    showDialog(
+      context: context,
+      builder: (builder) => AlertDialog(
+        backgroundColor: Colors.transparent,
+        actions: [
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(
+              horizontal: getProportionateScreenWidth(kDefaultPadding),
+              vertical: getProportionateScreenWidth(kDefaultPadding * 3),
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: isDarkMode ? kContentColorLightTheme : Colors.white,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.check,
+                  size: 36,
+                ),
+                SizedBox(
+                  height: getProportionateScreenWidth(kDefaultPadding),
+                ),
+                Text(
+                  'Congratulations!',
+                  style: TextStyle(fontSize: getProportionateScreenWidth(22)),
+                ),
+                SizedBox(
+                  height: getProportionateScreenWidth(kDefaultPadding),
+                ),
+                Text(
+                  'Your account is ready to use. You will be redirected to the Home page in a \n few seconds.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: getProportionateScreenWidth(16)),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  void showDialogError({required bool isDarkMode, required String textError}) {
+    showDialog(
+      context: context,
+      builder: (builder) => AlertDialog(
+        backgroundColor: Colors.transparent,
+        actions: [
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(
+              horizontal: getProportionateScreenWidth(kDefaultPadding),
+              vertical: getProportionateScreenWidth(kDefaultPadding * 3),
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: isDarkMode ? kContentColorLightTheme : Colors.white,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.cancel,
+                  size: 36,
+                ),
+                SizedBox(
+                  height: getProportionateScreenWidth(kDefaultPadding),
+                ),
+                Text(
+                  'Error!',
+                  style: TextStyle(fontSize: getProportionateScreenWidth(22)),
+                ),
+                SizedBox(
+                  height: getProportionateScreenWidth(kDefaultPadding),
+                ),
+                Text(
+                  textError,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: getProportionateScreenWidth(16)),
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }

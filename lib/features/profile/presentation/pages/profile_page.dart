@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../blocs/app_bloc/app_bloc.dart';
+import '../../../../blocs/auth_bloc/auth_bloc.dart';
 import 'address_page.dart';
 
 class Profile extends StatelessWidget {
@@ -135,7 +136,7 @@ class Profile extends StatelessWidget {
 
   InkWell logoutItem(BuildContext context) {
     return InkWell(
-      onTap: () => context.read<AppBloc>().add(AppEventSignOut()),
+      onTap: () => context.read<AuthBloc>().add(AppSignOut()),
       borderRadius: BorderRadius.circular(12),
       child: Container(
         padding: EdgeInsets.symmetric(

@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
     final brightness = Theme.of(context).brightness;
     bool isDarkMode = brightness == Brightness.dark;
     SizeConfig().init(context);
-
+    print("home: ${AuthRepository().currentUser}");
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -211,7 +211,8 @@ class _HomePageState extends State<HomePage> {
         SizedBox(
           width: getProportionateScreenWidth(48),
           height: getProportionateScreenWidth(48),
-          child: CircleAvatar(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(50),
             child: user!.photoURL == null
                 ? Image.asset("assets/images/profile_image.png")
                 : Image.network(user!.photoURL!),
@@ -237,7 +238,7 @@ class _HomePageState extends State<HomePage> {
               height: getProportionateScreenHeight(5),
             ),
             Text(
-              user!.displayName ?? "Peter Paker",
+              user!.displayName ?? "Peter Parker",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: getProportionateScreenWidth(18),

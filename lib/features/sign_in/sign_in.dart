@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/controller/sign_in_controller.dart';
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
 import 'package:e_commerce_app/features/sign_in/presentation/pages/sign_in_page.dart';
@@ -77,7 +78,7 @@ class SignIn extends StatelessWidget {
                     color: isDarkMode ? Colors.white : Colors.black,
                     colorText: isDarkMode ? Colors.black : Colors.white,
                     press: () =>
-                        Navigator.pushNamed(context, SignInPage.route)),
+                        Navigator.pushNamed(context, SignInController.route)),
               ),
               SizedBox(
                 height: getProportionateScreenWidth(kDefaultPadding * 2),

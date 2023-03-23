@@ -2,7 +2,6 @@ import 'package:e_commerce_app/blocs/app_bloc/app_bloc.dart';
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
 import 'package:e_commerce_app/features/sign_in/presentation/pages/sign_in_page.dart';
-import 'package:e_commerce_app/features/sign_up/presentation/pages/fill_your_profile_page.dart';
 import 'package:e_commerce_app/widgets/horizon_line_with_or.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +9,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../widgets/question_and_text_ink_well.dart';
 import '../widgets/sign_up_form.dart';
 import '../widgets/icon_sign_in.dart';
+
+String authErrorSignUp = '';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
@@ -23,8 +24,8 @@ class SignUpPage extends StatelessWidget {
 
     return BlocBuilder<AppBloc, AppState>(
       builder: (context, state) {
-        if (state is AppStateLoggedIn) {
-          return const FillYourProfilePage();
+        if (state is AppStateSignUp) {
+          return  Container();
         } else {
           return Scaffold(
             resizeToAvoidBottomInset: false,
