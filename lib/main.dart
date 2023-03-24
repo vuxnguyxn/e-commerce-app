@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/blocs/auth_bloc/auth_bloc.dart';
 import 'package:e_commerce_app/blocs/sign_in_bloc/sign_in_bloc.dart';
+import 'package:e_commerce_app/blocs/update_profile_bloc/update_profile_bloc.dart';
 import 'package:e_commerce_app/core/routes.dart';
 import 'package:e_commerce_app/core/themes.dart';
 import 'package:e_commerce_app/features/splash/splash_screen.dart';
@@ -34,6 +35,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => SignUpBloc(authRepository: authRepository),
+        ),
+        BlocProvider(
+          create: (context) =>
+              UpdateProfileBloc(authRepository: authRepository),
         ),
         ChangeNotifierProvider<ThemeNotifier>(
           create: (_) => ThemeNotifier(),

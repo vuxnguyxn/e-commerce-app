@@ -19,12 +19,7 @@ class _ScreenControllerState extends State<ScreenController> {
     super.initState();
     context.read<AuthBloc>().add(AppLoader());
   }
-  @override
-  void dispose() {
-    super.dispose();
-    context.read<AuthBloc>().add(AppLoader());
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(

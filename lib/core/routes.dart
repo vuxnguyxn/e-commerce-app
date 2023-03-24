@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/controller/screen_controller.dart';
 import 'package:e_commerce_app/controller/sign_in_controller.dart';
 import 'package:e_commerce_app/controller/sign_up_controller.dart';
+import 'package:e_commerce_app/controller/update_profile_controller.dart';
 import 'package:e_commerce_app/features/cart/presentation/cart.dart';
 import 'package:e_commerce_app/features/cart/presentation/pages/check_out_page.dart';
 import 'package:e_commerce_app/features/cart/presentation/pages/choose_shipping_page.dart';
@@ -60,4 +61,5 @@ final Map<String, WidgetBuilder> routes = {
   ScreenController.route: (context) => const ScreenController(),
   SignInController.route: (context) => const SignInController(),
   SignUpController.route: (context) => const SignUpController(),
+  UpdateProfileController.route: (context) => const UpdateProfileController(),
 };

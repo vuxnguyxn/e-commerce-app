@@ -60,7 +60,6 @@ class _HomePageState extends State<HomePage> {
     final brightness = Theme.of(context).brightness;
     bool isDarkMode = brightness == Brightness.dark;
     SizeConfig().init(context);
-    print("home: ${AuthRepository().currentUser}");
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(

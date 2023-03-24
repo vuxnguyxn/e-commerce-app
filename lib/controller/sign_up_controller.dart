@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/features/sign_up/presentation/pages/fill_your_profile_page.dart';
+import 'package:e_commerce_app/controller/update_profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,7 +15,7 @@ class SignUpController extends StatelessWidget {
     return BlocBuilder<SignUpBloc, SignUpState>(
       builder: (context, state) {
         if (state is SignUpSuccess) {
-          return const FillYourProfilePage();
+          return const UpdateProfileController();
         }
         if (state is SignUpFailed) {
           return const SignUpPage();
