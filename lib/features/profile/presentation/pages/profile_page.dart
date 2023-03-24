@@ -4,10 +4,12 @@ import 'package:e_commerce_app/features/profile/presentation/pages/edit_profile_
 import 'package:e_commerce_app/features/profile/presentation/pages/notification_page.dart';
 import 'package:e_commerce_app/features/profile/presentation/widgets/dark_mode_item.dart';
 import 'package:e_commerce_app/widgets/horizon_line.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../blocs/auth_bloc/auth_bloc.dart';
+import '../../../../repository/auth_repository.dart';
 import 'address_page.dart';
 
 class Profile extends StatelessWidget {
@@ -19,6 +21,8 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     final brightness = Theme.of(context).brightness;
     bool isDarkMode = brightness == Brightness.dark;
+
+    final user = AuthRepository().currentUser;
 
     return Scaffold(
       appBar: AppBar(
@@ -36,13 +40,14 @@ class Profile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                avatarWithEditIcon(isDarkMode: isDarkMode),
+                avatarWithEditIcon(isDarkMode: isDarkMode, user: user!),
                 SizedBox(
                   height: getProportionateScreenWidth(kDefaultPadding / 2),
                 ),
-                const Text(
-                  'Peter Parker',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                Text(
+                  user.displayName ?? "Peter Parker",
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: getProportionateScreenWidth(kDefaultPadding / 4),
@@ -100,15 +105,18 @@ class Profile extends StatelessWidget {
     );
   }
 
-  Stack avatarWithEditIcon({required bool isDarkMode}) {
+  Stack avatarWithEditIcon({required bool isDarkMode, required User user}) {
     return Stack(
       alignment: Alignment.center,
       children: [
         SizedBox(
           width: 100,
           height: 100,
-          child: CircleAvatar(
-              child: Image.asset("assets/images/profile_image.png")),
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: user.photoURL == null
+                  ? Image.asset("assets/images/profile_image.png")
+                  : Image.network(user.photoURL!)),
         ),
         Positioned(
           bottom: 0,
