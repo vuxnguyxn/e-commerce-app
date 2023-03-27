@@ -1,8 +1,8 @@
-import 'package:e_commerce_app/repository/auth_repository.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/size_config.dart';
+import '../../../../repository/auth_repository.dart';
 import '../../data/simple_data.dart';
 import '../widgets/banner_special_offer.dart';
 import '../widgets/category_item_card.dart';
@@ -81,32 +81,10 @@ class _HomePageState extends State<HomePage> {
                   press: () =>
                       Navigator.pushNamed(context, MostPopularPage.route)),
               mostPopularTabBar(),
-              mostPopularCard(),
+              const MostPopularCard(),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Container mostPopularCard() {
-    return Container(
-      height: SizeConfig.screenHeight - getProportionateScreenHeight(200),
-      padding: EdgeInsets.only(
-        top: getProportionateScreenWidth(20),
-        right: getProportionateScreenWidth(20),
-        left: getProportionateScreenWidth(20),
-      ),
-      child: GridView.builder(
-        itemCount: dataItemMostPopular.length,
-        scrollDirection: Axis.vertical,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: .6,
-            crossAxisSpacing: getProportionateScreenWidth(kDefaultPadding),
-            mainAxisSpacing: getProportionateScreenWidth(kDefaultPadding)),
-        itemBuilder: (context, index) =>
-            MostPopularItemCard(data: dataItemMostPopular[index]),
       ),
     );
   }
@@ -249,3 +227,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
