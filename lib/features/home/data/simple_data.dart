@@ -2,23 +2,59 @@
 import 'package:flutter/material.dart';
 
 class Category {
+  String id;
   String title;
-  IconData icon;
+  String svgLight;
+  String svgDark;
   Category({
+    required this.id,
     required this.title,
-    required this.icon,
+    required this.svgLight,
+    required this.svgDark,
   });
 }
 
 List dataCategory = [
-  Category(title: 'Clothes', icon: Icons.shopping_bag_outlined),
-  Category(title: 'Shoes', icon: Icons.shopping_bag_outlined),
-  Category(title: 'Bags', icon: Icons.shopping_bag_outlined),
-  Category(title: 'Electronics', icon: Icons.shopping_bag_outlined),
-  Category(title: 'Watch', icon: Icons.shopping_bag_outlined),
-  Category(title: 'Jewelry', icon: Icons.shopping_bag_outlined),
-  Category(title: 'Kitchen', icon: Icons.shopping_bag_outlined),
-  Category(title: 'Toys', icon: Icons.shopping_bag_outlined),
+  Category(
+      title: 'Bags',
+      svgLight: "assets/icons/clothes_light.svg",
+      id: 'product_bags',
+      svgDark: "assets/icons/clothes_dark.svg"),
+  Category(
+      title: 'Clothes',
+      svgLight: "assets/icons/clothes_light.svg",
+      id: 'product_clothes',
+      svgDark: 'assets/icons/clothes_dark.svg'),
+  Category(
+      title: 'Shoes',
+      svgLight: "assets/icons/clothes_light.svg",
+      id: 'product_shoes',
+      svgDark: 'assets/icons/clothes_dark.svg'),
+  Category(
+      title: 'Headphones',
+      svgLight: "assets/icons/clothes_light.svg",
+      id: 'product_headphones',
+      svgDark: 'assets/icons/clothes_dark.svg'),
+  Category(
+      title: 'Gloves',
+      svgLight: "assets/icons/clothes_light.svg",
+      id: 'product_gloves',
+      svgDark: 'assets/icons/clothes_dark.svg'),
+  Category(
+      title: 'Gamings',
+      svgLight: "assets/icons/clothes_light.svg",
+      id: 'product_gaming',
+      svgDark: 'assets/icons/clothes_dark.svg'),
+  Category(
+      title: 'Books',
+      svgLight: "assets/icons/clothes_light.svg",
+      id: 'product_books',
+      svgDark: 'assets/icons/clothes_dark.svg'),
+  Category(
+      title: 'Helmets',
+      svgLight: "assets/icons/clothes_light.svg",
+      id: 'product_helmets',
+      svgDark: 'assets/icons/clothes_dark.svg'),
 ];
 
 class DataTitleMostPopular {
@@ -31,8 +67,8 @@ class DataTitleMostPopular {
 }
 
 List dataTitleMostPopular = [
-  DataTitleMostPopular(title: 'All', isSelected: false),
-  DataTitleMostPopular(title: 'Clothes', isSelected: true),
+  DataTitleMostPopular(title: 'All', isSelected: true),
+  DataTitleMostPopular(title: 'Clothes', isSelected: false),
   DataTitleMostPopular(title: 'T-Shirt', isSelected: false),
   DataTitleMostPopular(title: 'Hat', isSelected: false),
   DataTitleMostPopular(title: 'Hoodie', isSelected: false),

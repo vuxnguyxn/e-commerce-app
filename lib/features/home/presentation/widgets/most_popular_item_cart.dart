@@ -14,7 +14,7 @@ class MostPopularCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ref = FirebaseDatabase.instance.ref('products');
+    final ref = FirebaseDatabase.instance.ref('products/product_all');
     return Container(
       height: SizeConfig.screenHeight - getProportionateScreenHeight(200),
       padding: EdgeInsets.only(

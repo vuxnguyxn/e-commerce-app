@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/features/home/data/simple_data.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/categories_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/size_config.dart';
@@ -23,7 +24,7 @@ class CategoryItemCard extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              Navigator.pushNamed(context, CategoriesPage.route);
+              Navigator.pushNamed(context, CategoriesPage.route, arguments: data.id);
             },
             child: Container(
                 padding: const EdgeInsets.all(kDefaultPadding / 2),
@@ -33,7 +34,7 @@ class CategoryItemCard extends StatelessWidget {
                       : Colors.grey.shade200,
                   borderRadius: BorderRadius.circular(kDefaultPadding),
                 ),
-                child: Icon(data.icon)),
+                child: SvgPicture.asset(isDarkMode ? data.svgDark : data.svgLight)),
           ),
           SizedBox(
             height: getProportionateScreenHeight(kDefaultPadding),

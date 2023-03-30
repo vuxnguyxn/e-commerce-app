@@ -56,7 +56,7 @@ class AuthRepository {
     await currentUser?.updatePhotoURL(photoURL);
 
     DatabaseReference ref =
-        _firebaseDatabase.ref('account/${currentUser!.uid}');
+        _firebaseDatabase.ref('accounts/${currentUser!.uid}');
     await ref.set({
       "username": username,
       "birthday": birthday,
