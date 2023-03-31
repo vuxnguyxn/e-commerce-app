@@ -97,8 +97,10 @@ class MostPopularItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15)),
                   child: AspectRatio(
                     aspectRatio: 1,
-                    child: Image.network(
-                      data[index]["image"],
+                    child: data[index]["image"] != null
+                        ? Image.network(data[index]["image"])
+                        : const Center(
+                            child: CircularProgressIndicator(),
                     ),
                   ),
                 ),
