@@ -29,6 +29,8 @@ class CategoryItemCard extends StatelessWidget {
                   arguments: CategoryArguments(id: data.id, title: data.title));
             },
             child: Container(
+              width: getProportionateScreenWidth(48),
+              height: getProportionateScreenWidth(48),
                 padding: const EdgeInsets.all(kDefaultPadding / 2),
                 decoration: BoxDecoration(
                   color: isDarkMode

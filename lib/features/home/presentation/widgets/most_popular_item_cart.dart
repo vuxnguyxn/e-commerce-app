@@ -110,15 +110,22 @@ class MostPopularItem extends StatelessWidget {
                   child: Container(
                     height: 24,
                     width: 24,
-                    padding: EdgeInsets.all(getProportionateScreenWidth(5)),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      border: Border.all(color: Colors.black, width: 1),
-                      color: Colors.black,
+                      border: Border.all(color: Colors.black45, width: 1),
+                      color: Colors.black45,
                     ),
                     child: data[index]['favorite']
-                        ? SvgPicture.asset("assets/icons/Favorites.svg")
-                        : SvgPicture.asset("assets/icons/Heart_dark.svg"),
+                          ? const Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                              size: 16,
+                            )
+                          : const Icon(
+                              Icons.favorite,
+                              color: Colors.white,
+                              size: 16,
+                            ) 
                   ),
                 ),
               ],

@@ -17,44 +17,44 @@ class Category {
 List dataCategory = [
   Category(
       title: 'Bags',
-      svgLight: "assets/icons/clothes_light.svg",
+      svgLight: 'assets/icons/bag_light.svg',
       id: 'product_bags',
-      svgDark: "assets/icons/clothes_dark.svg"),
+      svgDark: 'assets/icons/bag_dark.svg'),
   Category(
       title: 'Clothes',
-      svgLight: "assets/icons/clothes_light.svg",
+      svgLight: 'assets/icons/clothes_light.svg',
       id: 'product_clothes',
       svgDark: 'assets/icons/clothes_dark.svg'),
   Category(
       title: 'Shoes',
-      svgLight: "assets/icons/clothes_light.svg",
+      svgLight: 'assets/icons/shoes_light.svg',
       id: 'product_shoes',
-      svgDark: 'assets/icons/clothes_dark.svg'),
+      svgDark: 'assets/icons/shoes_dark.svg'),
   Category(
       title: 'Headphones',
-      svgLight: "assets/icons/clothes_light.svg",
+      svgLight: 'assets/icons/headphones_light.svg',
       id: 'product_headphones',
-      svgDark: 'assets/icons/clothes_dark.svg'),
+      svgDark: 'assets/icons/headphones_dark.svg'),
   Category(
       title: 'Gloves',
-      svgLight: "assets/icons/clothes_light.svg",
+      svgLight: 'assets/icons/glove_light.svg',
       id: 'product_gloves',
-      svgDark: 'assets/icons/clothes_dark.svg'),
+      svgDark: 'assets/icons/glove_dark.svg'),
   Category(
       title: 'Gamings',
-      svgLight: "assets/icons/clothes_light.svg",
+      svgLight: 'assets/icons/gaming_light.svg',
       id: 'product_gaming',
-      svgDark: 'assets/icons/clothes_dark.svg'),
+      svgDark: 'assets/icons/gaming_dark.svg'),
   Category(
       title: 'Books',
-      svgLight: "assets/icons/clothes_light.svg",
+      svgLight: 'assets/icons/book_light.svg',
       id: 'product_books',
-      svgDark: 'assets/icons/clothes_dark.svg'),
+      svgDark: 'assets/icons/book_dark.svg'),
   Category(
       title: 'Helmets',
-      svgLight: "assets/icons/clothes_light.svg",
+      svgLight: 'assets/icons/helmet_light.svg',
       id: 'product_helmets',
-      svgDark: 'assets/icons/clothes_dark.svg'),
+      svgDark: 'assets/icons/helmet_dark.svg'),
 ];
 
 class DataTitleMostPopular {
@@ -227,38 +227,38 @@ class Notifications {
 
 List dataNotifications = [
   Notifications(
-    date: "Today",
+    date: 'Today',
     notifications: [
       Notification(
-          title: "30% Special Discount!",
-          content: "Special promotion only valid today.",
-          image: "discount"),
+          title: '30% Special Discount!',
+          content: 'Special promotion only valid today.',
+          image: 'discount'),
     ],
   ),
   Notifications(
-    date: "Yesterday",
+    date: 'Yesterday',
     notifications: [
       Notification(
-          title: "Top Up E-Wallet Successful!",
-          content: "You have to top up your e-wallet",
-          image: "wallet"),
+          title: 'Top Up E-Wallet Successful!',
+          content: 'You have to top up your e-wallet',
+          image: 'wallet'),
       Notification(
-          title: "New Service Available!",
-          content: "Now you can track orders is real time",
-          image: "location"),
+          title: 'New Service Available!',
+          content: 'Now you can track orders is real time',
+          image: 'location'),
     ],
   ),
   Notifications(
-    date: "December 22, 2023",
+    date: 'December 22, 2023',
     notifications: [
       Notification(
-          title: "Credit Card Connected!",
-          content: "Credit Card has been linked!",
-          image: "credit"),
+          title: 'Credit Card Connected!',
+          content: 'Credit Card has been linked!',
+          image: 'credit'),
       Notification(
-          title: "Account Setup Successful!",
-          content: "Your account has been created!",
-          image: "account"),
+          title: 'Account Setup Successful!',
+          content: 'Your account has been created!',
+          image: 'account'),
     ],
   ),
 ];
@@ -288,20 +288,20 @@ class Size {
 }
 
 List dataLetterSize = [
-  Size(size: "X", isSelected: false),
-  Size(size: "M", isSelected: false),
-  Size(size: "L", isSelected: false),
-  Size(size: "XL", isSelected: true),
-  Size(size: "2XL", isSelected: false),
-  Size(size: "3XL", isSelected: false),
+  Size(size: 'X', isSelected: false),
+  Size(size: 'M', isSelected: false),
+  Size(size: 'L', isSelected: false),
+  Size(size: 'XL', isSelected: true),
+  Size(size: '2XL', isSelected: false),
+  Size(size: '3XL', isSelected: false),
 ];
 List dataNumberSize = [
-  Size(size: "37", isSelected: false),
-  Size(size: "38", isSelected: false),
-  Size(size: "39", isSelected: false),
-  Size(size: "40", isSelected: true),
-  Size(size: "41", isSelected: false),
-  Size(size: "42", isSelected: false),
+  Size(size: '37', isSelected: false),
+  Size(size: '38', isSelected: false),
+  Size(size: '39', isSelected: false),
+  Size(size: '40', isSelected: true),
+  Size(size: '41', isSelected: false),
+  Size(size: '42', isSelected: false),
 ];
 
 class ChooseColor {
