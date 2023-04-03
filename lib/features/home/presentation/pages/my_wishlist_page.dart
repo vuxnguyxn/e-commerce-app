@@ -1,6 +1,8 @@
 import 'package:e_commerce_app/features/home/data/simple_data.dart';
 import 'package:e_commerce_app/features/home/presentation/widgets/most_popular_item_cart.dart';
 import 'package:e_commerce_app/features/home/presentation/widgets/most_popular_tab_bar.dart';
+import 'package:e_commerce_app/repository/auth_repository.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants.dart';
@@ -12,6 +14,10 @@ class MyWishlistPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final uid = AuthRepository().currentUser!.uid;
+    final ref = FirebaseDatabase.instance.ref('wishlists/$uid');
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -30,15 +36,36 @@ class MyWishlistPage extends StatelessWidget {
                 top: getProportionateScreenWidth(kDefaultPadding),
                 left: getProportionateScreenWidth(kDefaultPadding),
                 right: getProportionateScreenWidth(kDefaultPadding / 2)),
-            child: GridView.builder(
-              itemBuilder: (context, index) =>
-                  MostPopularItemCard(data: dataItemFavorites[index]),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: .63,
-                  mainAxisSpacing: kDefaultPadding,
-                  crossAxisSpacing: kDefaultPadding),
-              itemCount: dataItemFavorites.length,
+            child: StreamBuilder(
+              stream: ref.onValue,
+              builder: (context, AsyncSnapshot<DatabaseEvent> snapshot) {
+                if (snapshot.hasData) {
+                  Map<dynamic, dynamic> map =
+                      snapshot.data!.snapshot.value as dynamic;
+
+                  List<dynamic> list = [];
+                  list.clear();
+                  list = map.values.toList();
+                
+                  return GridView.builder(
+                    itemCount: list.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: .63,
+                            mainAxisSpacing: kDefaultPadding,
+                            crossAxisSpacing: kDefaultPadding),
+                    itemBuilder: (context, index) => MostPopularItem(
+                      data: list,
+                      index: index,
+                    ),
+                  );
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
             ),
           )
         ],
