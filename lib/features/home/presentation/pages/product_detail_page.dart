@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/arguments/product_arguments.dart';
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
 import 'package:e_commerce_app/features/home/presentation/widgets/dot_color.dart';
@@ -25,6 +26,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     final brightness = Theme.of(context).brightness;
     bool isDarkMode = brightness == Brightness.dark;
 
+    final args = ModalRoute.of(context)!.settings.arguments as ProductArguments;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -34,7 +37,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            listImageAndDotColor(),
+            listImageAndDotColor(args: args),
             Container(
               padding: EdgeInsets.symmetric(
                   horizontal: getProportionateScreenWidth(kDefaultPadding)),
@@ -44,20 +47,20 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   SizedBox(
                       height:
                           getProportionateScreenHeight(kDefaultPadding / 2)),
-                  titleAndFavorites(),
+                  titleAndFavorites(args: args),
                   SizedBox(
                       height:
                           getProportionateScreenHeight(kDefaultPadding / 2)),
-                  soldAndReviews(isDarkMode: isDarkMode),
+                  soldAndReviews(isDarkMode: isDarkMode, args: args),
                   SizedBox(
                       height: getProportionateScreenHeight(kDefaultPadding)),
-                  description(),
+                  description(args: args),
                   SizedBox(
                       height: getProportionateScreenHeight(kDefaultPadding)),
-                  const ProductSizeCard(),
+                  ProductSizeCard(size: args.size,),
                   SizedBox(
                       height: getProportionateScreenHeight(kDefaultPadding)),
-                  const ProductColorCard(),
+                  ProductColorCard(color: args.color),
                   SizedBox(
                       height: getProportionateScreenHeight(kDefaultPadding)),
                   Row(
@@ -105,6 +108,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       height: getProportionateScreenHeight(kDefaultPadding)),
                   TotalPriceAndAddToCart(
                     isDarkMode: isDarkMode,
+                    price: args.price,
+                    quantity: quantity,
                   ),
                   SizedBox(
                       height:
@@ -118,7 +123,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     );
   }
 
-  Column description() {
+  Column description({required ProductArguments args}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -131,9 +136,9 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
         SizedBox(
           height: getProportionateScreenHeight(kDefaultPadding / 2),
         ),
-        const Text(
-          "This is description",
-          style: TextStyle(fontSize: 12),
+        Text(
+          args.description,
+          style: const TextStyle(fontSize: 12),
           maxLines: 10,
           overflow: TextOverflow.ellipsis,
         ),
@@ -141,7 +146,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     );
   }
 
-  Row soldAndReviews({required bool isDarkMode}) {
+  Row soldAndReviews(
+      {required bool isDarkMode, required ProductArguments args}) {
     return Row(
       children: [
         Container(
@@ -151,29 +157,29 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               color: isDarkMode
                   ? Colors.blueGrey.withOpacity(.2)
                   : Colors.grey.shade200),
-          child: const Text(
-            "3,200 sold",
-            style: TextStyle(fontSize: 12),
+          child: Text(
+            "${args.sold} sold",
+            style: const TextStyle(fontSize: 12),
           ),
         ),
         SizedBox(
           width: getProportionateScreenWidth(kDefaultPadding),
         ),
         const Icon(Icons.star_half),
-        const Text(
-          '4.6 (4,780 reviews)',
-          style: TextStyle(fontSize: 12),
+        Text(
+          '${args.star} (${args.reviews} reviews)',
+          style: const TextStyle(fontSize: 12),
         ),
       ],
     );
   }
 
-  Row titleAndFavorites() {
+  Row titleAndFavorites({required ProductArguments args}) {
     return Row(
       children: [
         Expanded(
           child: Text(
-            'Snake Leather Bag Snake Leather Bag Snake Leather Bag Snake Leather Bag Snake Leather Bag',
+            args.title,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
@@ -187,7 +193,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     );
   }
 
-  Stack listImageAndDotColor() {
+  Stack listImageAndDotColor({required ProductArguments args}) {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -198,15 +204,15 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
           child: AspectRatio(
             aspectRatio: 1,
             child: PageView.builder(
-              itemCount: 5,
+              itemCount: args.image.length,
               scrollDirection: Axis.horizontal,
               onPageChanged: (value) {
                 setState(() {
                   currentIndex = value;
                 });
               },
-              itemBuilder: (context, index) => Image.asset(
-                "assets/images/bag_1.png",
+              itemBuilder: (context, index) => Image.network(
+                args.image[index],
                 scale: 1,
               ),
             ),
@@ -214,7 +220,10 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
         ),
         Positioned(
             bottom: kDefaultPadding,
-            child: DotColor(currentIndex: currentIndex))
+            child: DotColor(
+              currentIndex: currentIndex,
+              length: args.image.length,
+            ))
       ],
     );
   }

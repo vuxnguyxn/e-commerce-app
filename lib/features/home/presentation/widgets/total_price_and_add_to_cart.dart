@@ -7,12 +7,17 @@ class TotalPriceAndAddToCart extends StatelessWidget {
   const TotalPriceAndAddToCart({
     Key? key,
     required this.isDarkMode,
+    required this.price,
+    required this.quantity,
   }) : super(key: key);
 
   final bool isDarkMode;
+  final int price;
+  final int quantity;
 
   @override
   Widget build(BuildContext context) {
+    int total = price * quantity;
     return Row(
       children: [
         Expanded(
@@ -26,9 +31,10 @@ class TotalPriceAndAddToCart extends StatelessWidget {
                   color: Colors.grey.shade500,
                 ),
               ),
-              const Text(
-                "\$800",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              Text(
+                "$total",
+                style:
+                    const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
             ],
           ),

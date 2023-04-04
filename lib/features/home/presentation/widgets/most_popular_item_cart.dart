@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/arguments/product_arguments.dart';
 import 'package:e_commerce_app/features/home/data/simple_data.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/product_detail_page.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -32,7 +33,7 @@ class MostPopularCard extends StatelessWidget {
             List<dynamic> list = [];
             list.clear();
             list = map.values.toList();
-           
+
             return SizedBox(
               height:
                   SizeConfig.screenHeight - getProportionateScreenHeight(200),
@@ -76,7 +77,22 @@ class MostPopularItem extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, ProductDetailPage.route,);
+        Navigator.pushNamed(
+          context,
+          ProductDetailPage.route,
+          arguments: ProductArguments(
+              title: data[index]['title'],
+              color: data[index]['color'],
+              description: data[index]['description'],
+              favorite: data[index]['favorite'],
+              image: data[index]['list-image'],
+              price: data[index]['price'],
+              reviews: data[index]['reviews'],
+              size: data[index]['size'],
+              sold: data[index]['sold'],
+              star: data[index]['star'],
+              id: data[index]['id']),
+        );
       },
       child: SizedBox(
         child: Column(
@@ -101,21 +117,21 @@ class MostPopularItem extends StatelessWidget {
                         ? Image.network(data[index]["image"])
                         : const Center(
                             child: CircularProgressIndicator(),
-                    ),
+                          ),
                   ),
                 ),
                 Positioned(
                   top: 10,
                   right: 10,
                   child: Container(
-                    height: 24,
-                    width: 24,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.black45, width: 1),
-                      color: Colors.black45,
-                    ),
-                    child: data[index]['favorite']
+                      height: 24,
+                      width: 24,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.black45, width: 1),
+                        color: Colors.black45,
+                      ),
+                      child: data[index]['favorite']
                           ? const Icon(
                               Icons.favorite,
                               color: Colors.red,
@@ -125,8 +141,7 @@ class MostPopularItem extends StatelessWidget {
                               Icons.favorite,
                               color: Colors.white,
                               size: 16,
-                            ) 
-                  ),
+                            )),
                 ),
               ],
             ),

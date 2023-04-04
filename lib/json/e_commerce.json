@@ -1,0 +1,684 @@
+{
+  "accounts": {
+    "CcnSMjR0iSWQroq993frvOn30qB2": {
+      "birthday": "3/18/2023",
+      "country": "Germany",
+      "gender": "Male",
+      "phone": "+84 79466767",
+      "username": "Peter Parker"
+    },
+    "LnmorMVQYYgUfwvZP1RiObn56Dl2": {
+      "birthday": "12/06/2001",
+      "country": "VietNam",
+      "gender": "Male",
+      "phone": "+84 0373460106",
+      "username": "Kazuha"
+    }
+  },
+  "wishlists": {
+    "LnmorMVQYYgUfwvZP1RiObn56Dl2": {
+      "prod4ajNoFwdTz": {
+        "id": "prod4ajNoFwdTz",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+        "price": 369,
+        "sold": 120,
+        "star": 4.7,
+        "favorite": true,
+        "title": "Remis Tote Bags"
+      },
+      "prodxcyJVAiCsH": {
+        "id": "prodxcyJVAiCsH",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_3.png?alt=media&token=07b2173b-3f9b-4f7e-8b40-d89bd9998c2b",
+        "price": 500,
+        "sold": 1033,
+        "star": 4.9,
+        "favorite": true,
+        "title": "Edmond HandBags"
+      }
+    }
+  },
+  "products": {
+    "product_all": {
+      "all4ajNoFwdTz": {
+        "id": "all4ajNoFwdTz",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+        "price": 900,
+        "sold": 1000,
+        "star": 4.5,
+        "favorite": false,
+        "title": "Bear Leather Bag",
+        "reviews": 2829,
+        "description": "The Bear Leather Bag that characterizes the PQ Blondie line originates from the House archives. Signature pieces such as this PQ Blondie shoulder and crossbody bag with a top handle reinterprets the emblem as a subtler leather patch detail.",
+        "size": [
+          "39",
+          "40",
+          "41"
+        ],
+        "color": [
+          "green",
+          "yellow",
+          "blue",
+          "pink",
+          "grey"
+        ],
+        "list-image": [
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f"
+        ]
+      },
+      "allWu5pMchikt": {
+        "id": "allWu5pMchikt",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+        "price": 800,
+        "sold": 809,
+        "star": 4.0,
+        "favorite": false,
+        "title": "Snake Leather Bag",
+        "reviews": 2829,
+        "description": "The Bear Leather Bag that characterizes the PQ Blondie line originates from the House archives. Signature pieces such as this PQ Blondie shoulder and crossbody bag with a top handle reinterprets the emblem as a subtler leather patch detail.",
+        "size": [
+          "39",
+          "40",
+          "41"
+        ],
+        "color": [
+          "green",
+          "yellow",
+          "blue",
+          "pink",
+          "grey"
+        ],
+        "list-image": [
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f"
+        ]
+      },
+      "allxcyJVAiCsH": {
+        "id": "allxcyJVAiCsH",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+        "price": 900,
+        "sold": 1000,
+        "star": 4.5,
+        "favorite": false,
+        "title": "Bear Leather Bag",
+        "reviews": 2829,
+        "description": "The Bear Leather Bag that characterizes the PQ Blondie line originates from the House archives. Signature pieces such as this PQ Blondie shoulder and crossbody bag with a top handle reinterprets the emblem as a subtler leather patch detail.",
+        "size": [
+          "39",
+          "40",
+          "41"
+        ],
+        "color": [
+          "green",
+          "yellow",
+          "blue",
+          "pink",
+          "grey"
+        ],
+        "list-image": [
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f"
+        ]
+      },
+      "allJP4Hy1d9yg": {
+        "id": "allJP4Hy1d9yg",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+        "price": 800,
+        "sold": 809,
+        "star": 4.0,
+        "favorite": false,
+        "title": "Snake Leather Bag",
+        "reviews": 2829,
+        "description": "The Bear Leather Bag that characterizes the PQ Blondie line originates from the House archives. Signature pieces such as this PQ Blondie shoulder and crossbody bag with a top handle reinterprets the emblem as a subtler leather patch detail.",
+        "size": [
+          "39",
+          "40",
+          "41"
+        ],
+        "color": [
+          "green",
+          "yellow",
+          "blue",
+          "pink",
+          "grey"
+        ],
+        "list-image": [
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f"
+        ]
+      },
+      "allPCbnEA5z4x": {
+        "id": "allPCbnEA5z4x",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+        "price": 900,
+        "sold": 1000,
+        "star": 4.5,
+        "favorite": false,
+        "title": "Bear Leather Bag",
+        "reviews": 2829,
+        "description": "The Bear Leather Bag that characterizes the PQ Blondie line originates from the House archives. Signature pieces such as this PQ Blondie shoulder and crossbody bag with a top handle reinterprets the emblem as a subtler leather patch detail.",
+        "size": [
+          "39",
+          "40",
+          "41"
+        ],
+        "color": [
+          "green",
+          "yellow",
+          "blue",
+          "pink",
+          "grey"
+        ],
+        "list-image": [
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f"
+        ]
+      },
+      "alla1C9PgTWCZ": {
+        "id": "alla1C9PgTWCZ",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+        "price": 800,
+        "sold": 809,
+        "star": 4.0,
+        "favorite": false,
+        "title": "Snake Leather Bag",
+        "reviews": 2829,
+        "description": "The Bear Leather Bag that characterizes the PQ Blondie line originates from the House archives. Signature pieces such as this PQ Blondie shoulder and crossbody bag with a top handle reinterprets the emblem as a subtler leather patch detail.",
+        "size": [
+          "39",
+          "40",
+          "41"
+        ],
+        "color": [
+          "green",
+          "yellow",
+          "blue",
+          "pink",
+          "grey"
+        ],
+        "list-image": [
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f"
+        ]
+      }
+    },
+    "product_bags": {
+      "prod4ajNoFwdTz": {
+        "id": "prod4ajNoFwdTz",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
+        "price": 369,
+        "sold": 120,
+        "star": 4.7,
+        "favorite": false,
+        "title": "Remis Tote Bags"
+      },
+      "prodWu5pMchikt": {
+        "id": "prodWu5pMchikt",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_2.png?alt=media&token=b55e7c6b-fe0b-478d-8936-daf3f536fba8",
+        "price": 332,
+        "sold": 809,
+        "star": 4.5,
+        "favorite": false,
+        "title": "Remi Tote Bags"
+      },
+      "prodxcyJVAiCsH": {
+        "id": "prodxcyJVAiCsH",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_3.png?alt=media&token=07b2173b-3f9b-4f7e-8b40-d89bd9998c2b",
+        "price": 500,
+        "sold": 1033,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Edmond HandBags"
+      },
+      "prodJP4Hy1d9yg": {
+        "id": "prodJP4Hy1d9yg",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_4.png?alt=media&token=1be6e81d-090c-4230-af87-e8545f6c99c3",
+        "price": 220,
+        "sold": 469,
+        "star": 4.5,
+        "favorite": false,
+        "title": "Como Ha Bags"
+      },
+      "prodPCbnEA5z4x": {
+        "id": "prodPCbnEA5z4x",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_5.png?alt=media&token=684a8ab9-2c6c-4a18-ac82-e2e5ba7bf534",
+        "price": 110,
+        "sold": 2202,
+        "star": 4.5,
+        "favorite": false,
+        "title": "Comis Bags"
+      },
+      "proda1C9PgTWCZ": {
+        "id": "proda1C9PgTWCZ",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_6.png?alt=media&token=00233b5c-b7fd-4228-a1f0-4bd04d8aff7b",
+        "price": 212,
+        "sold": 809,
+        "star": 4.8,
+        "favorite": false,
+        "title": "Rose S Bags"
+      }
+    },
+    "product_shoes": {
+      "shoesKsjj681dfw": {
+        "id": "shoesKsjj681dfw",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/shoes%2Fshoes2.png?alt=media&token=41429caf-2edb-40be-9608-3f749b1da391",
+        "price": 56,
+        "sold": 993,
+        "star": 4.4,
+        "favorite": false,
+        "title": "Fitness I Shoes"
+      },
+      "shoesKsjj682dfw": {
+        "id": "shoesKsjj682dfw",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/shoes%2Fshoes2.png?alt=media&token=41429caf-2edb-40be-9608-3f749b1da391",
+        "price": 59,
+        "sold": 13,
+        "star": 4.7,
+        "favorite": false,
+        "title": "Fitness II Shoes"
+      },
+      "shoesKsjj683dfw": {
+        "id": "shoesKsjj683dfw",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/shoes%2Fshoes2.png?alt=media&token=41429caf-2edb-40be-9608-3f749b1da391",
+        "price": 63,
+        "sold": 203,
+        "star": 4.5,
+        "favorite": false,
+        "title": "Fitness III Shoes"
+      },
+      "shoesKsjj684dfw": {
+        "id": "shoesKsjj684dfw",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/shoes%2Fshoes2.png?alt=media&token=41429caf-2edb-40be-9608-3f749b1da391",
+        "price": 69,
+        "sold": 572,
+        "star": 4.7,
+        "favorite": false,
+        "title": "Fitness IV Shoes"
+      },
+      "shoesKsjj685dfw": {
+        "id": "shoesKsjj685dfw",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/shoes%2Fshoes2.png?alt=media&token=41429caf-2edb-40be-9608-3f749b1da391",
+        "price": 74,
+        "sold": 200,
+        "star": 4.8,
+        "favorite": false,
+        "title": "Fitness V Shoes"
+      },
+      "shoesKsjj686dfw": {
+        "id": "shoesKsjj686dfw",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/shoes%2Fshoes2.png?alt=media&token=41429caf-2edb-40be-9608-3f749b1da391",
+        "price": 79,
+        "sold": 123,
+        "star": 4.7,
+        "favorite": false,
+        "title": "Fitness VI Shoes"
+      }
+    },
+    "product_gloves": {
+      "glovesHSud12fh33": {
+        "id": "glovesHSud12fh33",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/gloves%2Fglap.png?alt=media&token=82bf4f84-ff17-433c-b9f4-9454d83b3d75",
+        "price": 12,
+        "sold": 993,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Moto I Gloves"
+      },
+      "glovesHSud13fh33": {
+        "id": "glovesHSud13fh33",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/gloves%2Fglap.png?alt=media&token=82bf4f84-ff17-433c-b9f4-9454d83b3d75",
+        "price": 14,
+        "sold": 73,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Moto II Gloves"
+      },
+      "glovesHSud14fh33": {
+        "id": "glovesHSud14fh33",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/gloves%2Fglap.png?alt=media&token=82bf4f84-ff17-433c-b9f4-9454d83b3d75",
+        "price": 16,
+        "sold": 193,
+        "star": 4.5,
+        "favorite": false,
+        "title": "Moto III Gloves"
+      },
+      "glovesHSud15fh33": {
+        "id": "glovesHSud15fh33",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/gloves%2Fglap.png?alt=media&token=82bf4f84-ff17-433c-b9f4-9454d83b3d75",
+        "price": 18,
+        "sold": 993,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Moto IV Gloves"
+      },
+      "glovesHSud16fh33": {
+        "id": "glovesHSud16fh33",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/gloves%2Fglap.png?alt=media&token=82bf4f84-ff17-433c-b9f4-9454d83b3d75",
+        "price": 20,
+        "sold": 193,
+        "star": 4.8,
+        "favorite": false,
+        "title": "Moto V Gloves"
+      },
+      "glovesHSud17fh33": {
+        "id": "glovesHSud17fh33",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/gloves%2Fglap.png?alt=media&token=82bf4f84-ff17-433c-b9f4-9454d83b3d75",
+        "price": 125,
+        "sold": 93,
+        "star": 5.0,
+        "favorite": false,
+        "title": "Moto VI Gloves"
+      }
+    },
+    "product_books": {
+      "booksBKgs1121dd": {
+        "id": "booksBKgs1121dd",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/books%2Fbook-1.png?alt=media&token=1ab7bfc6-5075-45da-a927-cbf634d5a67d",
+        "price": 6,
+        "sold": 993,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Crushing and Infuence I"
+      },
+      "booksBKgs1122dd": {
+        "id": "booksBKgs1122dd",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/books%2Fbook-2.png?alt=media&token=b45e041f-642c-4ac2-a3ea-a7c86c9de9ce",
+        "price": 6,
+        "sold": 345,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Top 10 Business Hacks I"
+      },
+      "booksBKgs1123dd": {
+        "id": "booksBKgs1123dd",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/books%2Fbook-3.png?alt=media&token=045a6da5-6d8c-4dbe-8baf-7af81eafa670",
+        "price": 6,
+        "sold": 355,
+        "star": 4.9,
+        "favorite": false,
+        "title": "How To Win Friend and Influence People I"
+      },
+      "booksBKgs1124dd": {
+        "id": "booksBKgs1124dd",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/books%2Fbook-1.png?alt=media&token=1ab7bfc6-5075-45da-a927-cbf634d5a67d",
+        "price": 6,
+        "sold": 22,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Crushing and Influence II"
+      },
+      "booksBKgs1125dd": {
+        "id": "booksBKgs1125dd",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/books%2Fbook-2.png?alt=media&token=b45e041f-642c-4ac2-a3ea-a7c86c9de9ce",
+        "price": 6,
+        "sold": 34,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Top 10 Business Hacks II"
+      },
+      "booksBKgs1126dd": {
+        "id": "booksBKgs1126dd",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/books%2Fbook-3.png?alt=media&token=045a6da5-6d8c-4dbe-8baf-7af81eafa670",
+        "price": 6,
+        "sold": 35,
+        "star": 4.7,
+        "favorite": false,
+        "title": "How To Win Friend and Influence People II"
+      }
+    },
+    "product_clothes": {
+      "clotHSoeTy6701": {
+        "id": "clotHSoeTy6701",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/clothes%2FImage%20Popular%20Product%202.png?alt=media&token=2bc021c2-f441-4168-8b03-bbabee9b7400",
+        "price": 40,
+        "sold": 20,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Shorts Cotton"
+      },
+      "clotHSoeTy6702": {
+        "id": "clotHSoeTy6702",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/clothes%2Fproduct%201%20image.png?alt=media&token=9b8d88e7-377b-4d73-b721-1787753ecf59",
+        "price": 40,
+        "sold": 30,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Yellow T-shirt"
+      },
+      "clotHSoeTy6703": {
+        "id": "clotHSoeTy6703",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/clothes%2Fproduct_0.png?alt=media&token=e78bf12a-3b37-4432-bc8d-d4f403f19a1b",
+        "price": 42,
+        "sold": 29,
+        "star": 4.9,
+        "favorite": false,
+        "title": "T-shirt Cotton Type I"
+      },
+      "clotHSoeTy6704": {
+        "id": "clotHSoeTy6704",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/clothes%2Fproduct_1.png?alt=media&token=05ca86a3-52de-4295-8e2f-8b46b4902e36",
+        "price": 44,
+        "sold": 222,
+        "star": 4.9,
+        "favorite": false,
+        "title": "T-shirt BlackBlue"
+      },
+      "clotHSoeTy6705": {
+        "id": "clotHSoeTy6705",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/clothes%2Fproduct_2.png?alt=media&token=e8f8cb83-ce9e-4be4-8d67-eb3f7523fd38",
+        "price": 44,
+        "sold": 0,
+        "star": 4.7,
+        "favorite": false,
+        "title": "T-shirt WhiteGreen"
+      },
+      "clotHSoeTy6706": {
+        "id": "clotHSoeTy6706",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/clothes%2Fproduct_3.png?alt=media&token=32eede06-f5c7-4cd3-9d29-b94b8d975c0b",
+        "price": 46,
+        "sold": 20,
+        "star": 4.6,
+        "favorite": false,
+        "title": "T-shirt GreenBlack"
+      },
+      "clotHSoeTy6707": {
+        "id": "clotHSoeTy6707",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/clothes%2Ftshirt.png?alt=media&token=5afdc925-aada-4f30-a56b-92addf0e97f4",
+        "price": 50,
+        "sold": 220,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Polo T-shirt"
+      }
+    },
+    "product_headphones": {
+      "headPkHH51Rt45": {
+        "id": "headPkHH51Rt45",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/headphones%2Fwireless%20headset.png?alt=media&token=9520a18d-af2b-4b7a-b6eb-04af26b705a1",
+        "price": 100,
+        "sold": 10,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Wireless Headset I"
+      },
+      "headPkHH52Rt45": {
+        "id": "headPkHH52Rt45",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/headphones%2Fwireless%20headset.png?alt=media&token=9520a18d-af2b-4b7a-b6eb-04af26b705a1",
+        "price": 110,
+        "sold": 203,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Wireless Headset II"
+      },
+      "headPkHH53Rt45": {
+        "id": "headPkHH53Rt45",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/headphones%2Fwireless%20headset.png?alt=media&token=9520a18d-af2b-4b7a-b6eb-04af26b705a1",
+        "price": 140,
+        "sold": 101,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Wireless Headset III"
+      },
+      "headPkHH54Rt45": {
+        "id": "headPkHH54Rt45",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/headphones%2Fwireless%20headset.png?alt=media&token=9520a18d-af2b-4b7a-b6eb-04af26b705a1",
+        "price": 150,
+        "sold": 10,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Wireless Headset IV"
+      },
+      "headPkHH55Rt45": {
+        "id": "headPkHH55Rt45",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/headphones%2Fwireless%20headset.png?alt=media&token=9520a18d-af2b-4b7a-b6eb-04af26b705a1",
+        "price": 170,
+        "sold": 20,
+        "star": 4.7,
+        "favorite": false,
+        "title": "Wireless Headset V"
+      },
+      "headPkHH56Rt45": {
+        "id": "headPkHH56Rt45",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/headphones%2Fwireless%20headset.png?alt=media&token=9520a18d-af2b-4b7a-b6eb-04af26b705a1",
+        "price": 200,
+        "sold": 103,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Wireless Headset VI"
+      }
+    },
+    "product_gaming": {
+      "gameHSoeeo1231": {
+        "id": "gameHSoeeo1231",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/gaming%2FImage%20Popular%20Product%201.png?alt=media&token=5b3d8e01-3d7f-4c81-b7ed-095179544552",
+        "price": 304,
+        "sold": 10,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Ps5 Console I"
+      },
+      "gameHSoeeo1232": {
+        "id": "gameHSoeeo1232",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/gaming%2FImage%20Popular%20Product%201.png?alt=media&token=5b3d8e01-3d7f-4c81-b7ed-095179544552",
+        "price": 304,
+        "sold": 10,
+        "star": 4.8,
+        "favorite": false,
+        "title": "Ps5 Console II"
+      },
+      "gameHSoeeo1233": {
+        "id": "gameHSoeeo1233",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/gaming%2FImage%20Popular%20Product%201.png?alt=media&token=5b3d8e01-3d7f-4c81-b7ed-095179544552",
+        "price": 204,
+        "sold": 10,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Ps5 Console III"
+      },
+      "gameHSoeeo1234": {
+        "id": "gameHSoeeo1234",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/gaming%2FImage%20Popular%20Product%201.png?alt=media&token=5b3d8e01-3d7f-4c81-b7ed-095179544552",
+        "price": 329,
+        "sold": 30,
+        "star": 4.5,
+        "favorite": false,
+        "title": "Ps5 Console IV"
+      },
+      "gameHSoeeo1235": {
+        "id": "gameHSoeeo1235",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/gaming%2FImage%20Popular%20Product%201.png?alt=media&token=5b3d8e01-3d7f-4c81-b7ed-095179544552",
+        "price": 304,
+        "sold": 10,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Ps5 Console V"
+      },
+      "gameHSoeeo1236": {
+        "id": "gameHSoeeo1236",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/gaming%2FImage%20Popular%20Product%201.png?alt=media&token=5b3d8e01-3d7f-4c81-b7ed-095179544552",
+        "price": 405,
+        "sold": 101,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Ps5 Console VI"
+      },
+      "gameHSoeeo1237": {
+        "id": "gameHSoeeo1237",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/gaming%2FImage%20Popular%20Product%201.png?alt=media&token=5b3d8e01-3d7f-4c81-b7ed-095179544552",
+        "price": 404,
+        "sold": 1002,
+        "star": 4.8,
+        "favorite": false,
+        "title": "Ps5 Console VII"
+      }
+    },
+    "product_helmets": {
+      "helmetHsd351das1": {
+        "id": "helmetHsd351das1",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/helmets%2FImage%20Popular%20Product%203.png?alt=media&token=3d3b64cc-39c7-4e2e-bb1a-289b0b694b9d",
+        "price": 110,
+        "sold": 10,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Bicycle Helmet I"
+      },
+      "helmetHsd352das1": {
+        "id": "helmetHsd352das1",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/helmets%2FImage%20Popular%20Product%203.png?alt=media&token=3d3b64cc-39c7-4e2e-bb1a-289b0b694b9d",
+        "price": 120,
+        "sold": 10,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Bicycle Helmet II"
+      },
+      "helmetHsd353das1": {
+        "id": "helmetHsd353das1",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/helmets%2FImage%20Popular%20Product%203.png?alt=media&token=3d3b64cc-39c7-4e2e-bb1a-289b0b694b9d",
+        "price": 130,
+        "sold": 102,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Bicycle Helmet III"
+      },
+      "helmetHsd354das1": {
+        "id": "helmetHsd354das1",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/helmets%2FImage%20Popular%20Product%203.png?alt=media&token=3d3b64cc-39c7-4e2e-bb1a-289b0b694b9d",
+        "price": 140,
+        "sold": 110,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Bicycle Helmet IV"
+      },
+      "helmetHsd355das1": {
+        "id": "helmetHsd355das1",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/helmets%2FImage%20Popular%20Product%203.png?alt=media&token=3d3b64cc-39c7-4e2e-bb1a-289b0b694b9d",
+        "price": 150,
+        "sold": 10,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Bicycle Helmet V"
+      },
+      "helmetHsd356das1": {
+        "id": "helmetHsd356das1",
+        "image": "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/helmets%2FImage%20Popular%20Product%203.png?alt=media&token=3d3b64cc-39c7-4e2e-bb1a-289b0b694b9d",
+        "price": 160,
+        "sold": 10,
+        "star": 4.9,
+        "favorite": false,
+        "title": "Bicycle Helmet VI"
+      }
+    }
+  }
+}

@@ -51,7 +51,7 @@ class _SpecialOfferPageState extends State<SpecialOfferPage> {
             itemBuilder: (context, index) => const BannerSpecialOffer(),
             itemCount: 5,
           ),
-          Positioned(bottom: 40, child: DotColor(currentIndex: currentIndex)),
+          Positioned(bottom: 40, child: DotColor(currentIndex: currentIndex, length: 5,)),
         ],
       ),
     );

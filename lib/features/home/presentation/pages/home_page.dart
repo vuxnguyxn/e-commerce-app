@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Positioned(
               bottom: kDefaultPadding * 2,
-              child: DotColor(currentIndex: currentIndex)),
+              child: DotColor(currentIndex: currentIndex, length: 5,)),
         ],
       ),
     );

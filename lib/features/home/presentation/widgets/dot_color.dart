@@ -5,10 +5,11 @@ import '../../../../core/size_config.dart';
 class DotColor extends StatelessWidget {
   const DotColor({
     Key? key,
-    required this.currentIndex,
+    required this.currentIndex, required this.length,
   }) : super(key: key);
 
   final int currentIndex;
+  final int length;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class DotColor extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(
-          5,
+          length,
           (index) => AnimatedContainer(
             margin: EdgeInsets.only(right: getProportionateScreenWidth(8)),
             duration: const Duration(seconds: 1),
