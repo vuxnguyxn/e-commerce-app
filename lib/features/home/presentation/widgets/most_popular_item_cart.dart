@@ -11,11 +11,14 @@ import '../../../../core/size_config.dart';
 class MostPopularCard extends StatelessWidget {
   const MostPopularCard({
     super.key,
+    required this.idTabBar,
   });
+
+  final String idTabBar;
 
   @override
   Widget build(BuildContext context) {
-    final ref = FirebaseDatabase.instance.ref('products/product_all');
+    final ref = FirebaseDatabase.instance.ref('most_popular/$idTabBar');
     return Container(
       height: SizeConfig.screenHeight - getProportionateScreenHeight(200),
       padding: EdgeInsets.only(

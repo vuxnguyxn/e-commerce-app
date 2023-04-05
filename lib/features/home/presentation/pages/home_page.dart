@@ -8,7 +8,6 @@ import '../widgets/banner_special_offer.dart';
 import '../widgets/category_item_card.dart';
 import '../widgets/dot_color.dart';
 import '../widgets/icon_button_with_counter.dart';
-import '../widgets/most_popular_item_cart.dart';
 import '../widgets/most_popular_tab_bar.dart';
 import 'most_popular_page.dart';
 import 'my_wishlist_page.dart';
@@ -80,8 +79,7 @@ class _HomePageState extends State<HomePage> {
                   title: 'Most Popular',
                   press: () =>
                       Navigator.pushNamed(context, MostPopularPage.route)),
-              mostPopularTabBar(),
-              const MostPopularCard(),
+              const MostPopularTabBarCard(),
             ],
           ),
         ),
@@ -101,25 +99,6 @@ class _HomePageState extends State<HomePage> {
         ),
         itemBuilder: (context, index) => CategoryItemCard(
           data: dataCategory[index],
-        ),
-      ),
-    );
-  }
-
-  Container mostPopularTabBar() {
-    return Container(
-      width: double.infinity,
-      height: getProportionateScreenWidth(45),
-      margin: EdgeInsets.only(
-          top: getProportionateScreenWidth(kDefaultPadding),
-          left: getProportionateScreenWidth(kDefaultPadding),
-          right: getProportionateScreenWidth(kDefaultPadding / 2)),
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: dataTitleMostPopular.length,
-        itemBuilder: (context, index) => MostPopularTabBar(
-          data: dataTitleMostPopular[index],
-          press: () {},
         ),
       ),
     );

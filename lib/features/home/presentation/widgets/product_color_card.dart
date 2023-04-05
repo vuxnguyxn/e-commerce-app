@@ -28,6 +28,8 @@ class _ProductColorCardState extends State<ProductColorCard> {
         return Colors.pink;
       case "grey":
         return Colors.grey;
+      case "white":
+        return Colors.white;
       default:
         return Colors.black;
     }

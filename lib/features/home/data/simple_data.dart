@@ -65,15 +65,25 @@ class DataTitleMostPopular {
     this.isSelected = false,
   });
 }
+class DataTabBar {
+  String title;
+  String id;
+  DataTabBar({
+    required this.title,
+    required this.id,
+  });
+}
 
 List dataTitleMostPopular = [
-  DataTitleMostPopular(title: 'All', isSelected: true),
-  DataTitleMostPopular(title: 'Clothes', isSelected: false),
-  DataTitleMostPopular(title: 'T-Shirt', isSelected: false),
-  DataTitleMostPopular(title: 'Hat', isSelected: false),
-  DataTitleMostPopular(title: 'Hoodie', isSelected: false),
-  DataTitleMostPopular(title: 'Legging', isSelected: false),
-  DataTitleMostPopular(title: 'Sweater', isSelected: false),
+  DataTabBar(title: 'All', id: "most_popular_all"),
+  DataTabBar(title: 'Bags', id: "most_popular_bags"),
+  DataTabBar(title: 'Shoes', id: "most_popular_shoes"),
+  DataTabBar(title: 'Gloves', id: "most_popular_gloves"),
+  DataTabBar(title: 'Books', id: "most_popular_books"),
+  DataTabBar(title: 'Clothes', id: "most_popular_clothes"),
+  DataTabBar(title: 'Headphones', id: "most_popular_headphones"),
+  DataTabBar(title: 'Gaming', id: "most_popular_gaming"),
+  DataTabBar(title: 'Helmets', id: "most_popular_helmets"),
 ];
 
 List dataPriceRange = [
