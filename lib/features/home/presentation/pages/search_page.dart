@@ -6,6 +6,7 @@ import 'package:e_commerce_app/widgets/custom_button.dart';
 import 'package:e_commerce_app/widgets/short_horizon_line.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/recent_history_card.dart';
 import '../widgets/result_for_search_card.dart';
 import '../widgets/search_and_filter_bar.dart';
 
@@ -21,6 +22,51 @@ class _SearchPageState extends State<SearchPage> {
   String textSearch = "Electronic";
   String resultFound = "20,220";
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    bool isDarkMode = brightness == Brightness.dark;
+
+    return Scaffold(
+      key: _scaffoldKey,
+      body: SafeArea(
+        child: Container(
+          margin: EdgeInsets.symmetric(
+              vertical: getProportionateScreenWidth(kDefaultPadding)),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  const BackButton(),
+                  Expanded(
+                    child: SearchAndFilterBar(
+                      isDarkMode: isDarkMode,
+                      filterPress: () {
+                        _showSortAndFilterModalSheet(isDarkMode: isDarkMode);
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: getProportionateScreenHeight(kDefaultPadding),
+              ),
+              Expanded(
+                child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal:
+                            getProportionateScreenWidth(kDefaultPadding)),
+                    child: const RecentHistoryCard()),
+              ),
+              // ResultForSearchCard(
+              //     textSearch: textSearch, resultFound: resultFound)
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
   void _showSortAndFilterModalSheet({required bool isDarkMode}) {
     showModalBottomSheet(
@@ -76,7 +122,7 @@ class _SearchPageState extends State<SearchPage> {
                       press: () {}),
                 ],
               ),
-               SizedBox(
+              SizedBox(
                 height: getProportionateScreenHeight(kDefaultPadding),
               ),
             ],
@@ -112,37 +158,6 @@ class _SearchPageState extends State<SearchPage> {
           ),
         ),
       ],
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final brightness = Theme.of(context).brightness;
-    bool isDarkMode = brightness == Brightness.dark;
-
-    return Scaffold(
-      key: _scaffoldKey,
-      body: SafeArea(
-        child: Container(
-          margin: EdgeInsets.all(getProportionateScreenWidth(kDefaultPadding)),
-          child: Column(
-            children: [
-              SearchAndFilterBar(
-                isDarkMode: isDarkMode,
-                filterPress: () {
-                  _showSortAndFilterModalSheet(isDarkMode: isDarkMode);
-                },
-              ),
-              SizedBox(
-                height: getProportionateScreenHeight(kDefaultPadding),
-              ),
-              // const RecentHistoryCard(),
-              ResultForSearchCard(
-                  textSearch: textSearch, resultFound: resultFound)
-            ],
-          ),
-        ),
-      ),
     );
   }
 }

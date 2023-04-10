@@ -3,7 +3,6 @@ import 'package:e_commerce_app/features/home/data/simple_data.dart';
 import 'package:e_commerce_app/features/home/presentation/pages/product_detail_page.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/size_config.dart';
@@ -229,7 +228,7 @@ class MostPopularItemCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15)),
                   child: AspectRatio(
                     aspectRatio: 1,
-                    child: Image.network(
+                    child: Image.asset(
                       data.image,
                     ),
                   ),
@@ -238,18 +237,25 @@ class MostPopularItemCard extends StatelessWidget {
                   top: 10,
                   right: 10,
                   child: Container(
-                    height: 24,
-                    width: 24,
-                    padding: EdgeInsets.all(getProportionateScreenWidth(5)),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.black, width: 1),
-                      color: Colors.black,
-                    ),
-                    child: data.isFavorites!
-                        ? SvgPicture.asset("assets/icons/Favorites.svg")
-                        : SvgPicture.asset("assets/icons/Heart_dark.svg"),
-                  ),
+                      height: 24,
+                      width: 24,
+                      padding: EdgeInsets.all(getProportionateScreenWidth(5)),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.black, width: 1),
+                        color: Colors.black,
+                      ),
+                      child: data.isFavorites!
+                          ? const Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                              size: 16,
+                            )
+                          : const Icon(
+                              Icons.favorite,
+                              color: Colors.white,
+                              size: 16,
+                            )),
                 ),
               ],
             ),

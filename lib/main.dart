@@ -5,6 +5,7 @@ import 'package:e_commerce_app/core/routes.dart';
 import 'package:e_commerce_app/core/themes.dart';
 import 'package:e_commerce_app/features/splash/splash_screen.dart';
 import 'package:e_commerce_app/repository/auth_repository.dart';
+import 'package:e_commerce_app/repository/recent_history_repository.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,6 +43,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<ThemeNotifier>(
           create: (_) => ThemeNotifier(),
+        ),
+        ChangeNotifierProvider<RecentHistoryRepository>(
+          create: (_) => RecentHistoryRepository(),
         ),
       ],
       child: Consumer<ThemeNotifier>(

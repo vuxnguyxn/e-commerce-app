@@ -17,44 +17,42 @@ class ResultForSearchCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Text(
-                'Result for "$textSearch"',
-                overflow: textSearch.length > 10 ? TextOverflow.ellipsis : null,
-                style: TextStyle(
-                    fontSize: getProportionateScreenWidth(18),
-                    fontWeight: FontWeight.bold),
-              ),
-              const Spacer(),
-              Text(
-                '$resultFound found',
-                style: TextStyle(
-                    fontSize: getProportionateScreenWidth(16),
-                    fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: getProportionateScreenHeight(kDefaultPadding),
-          ),
-          Expanded(
-            child: GridView.builder(
-              itemBuilder: (context, index) =>
-                  MostPopularItemCard(data: dataItemMostPopular[index]),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: .6,
-                  mainAxisSpacing: kDefaultPadding,
-                  crossAxisSpacing: kDefaultPadding),
-              itemCount: dataItemMostPopular.length,
+    return Column(
+      children: [
+        Row(
+          children: [
+            Text(
+              'Result for "$textSearch"',
+              overflow: textSearch.length > 10 ? TextOverflow.ellipsis : null,
+              style: TextStyle(
+                  fontSize: getProportionateScreenWidth(18),
+                  fontWeight: FontWeight.bold),
             ),
-          )
-        ],
-      ),
+            const Spacer(),
+            Text(
+              '$resultFound found',
+              style: TextStyle(
+                  fontSize: getProportionateScreenWidth(16),
+                  fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: getProportionateScreenHeight(kDefaultPadding),
+        ),
+        Expanded(
+          child: GridView.builder(
+            itemBuilder: (context, index) =>
+                MostPopularItemCard(data: dataItemMostPopular[index]),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: .6,
+                mainAxisSpacing: kDefaultPadding,
+                crossAxisSpacing: kDefaultPadding),
+            itemCount: dataItemMostPopular.length,
+          ),
+        )
+      ],
     );
   }
 }

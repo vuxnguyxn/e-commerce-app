@@ -1,9 +1,11 @@
+import 'package:e_commerce_app/repository/recent_history_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/size_config.dart';
 
-class SearchAndFilterBar extends StatelessWidget {
+class SearchAndFilterBar extends StatefulWidget {
   const SearchAndFilterBar(
       {Key? key, required this.filterPress, required this.isDarkMode})
       : super(key: key);
@@ -12,16 +14,32 @@ class SearchAndFilterBar extends StatelessWidget {
   final bool isDarkMode;
 
   @override
+  State<SearchAndFilterBar> createState() => _SearchAndFilterBarState();
+}
+
+class _SearchAndFilterBarState extends State<SearchAndFilterBar> {
+  @override
+  void initState() {
+    super.initState();
+    RecentHistoryRepository();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       height: getProportionateScreenWidth(kDefaultPadding * 2.5),
+      margin:
+          EdgeInsets.only(right: getProportionateScreenWidth(kDefaultPadding)),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: isDarkMode ? kContentColorLightTheme : Colors.grey.shade100,
+          color: widget.isDarkMode
+              ? kContentColorLightTheme
+              : Colors.grey.shade100,
           border: Border.all(
-              color:
-                  isDarkMode ? Colors.blueGrey.withOpacity(.2) : Colors.black,
+              color: widget.isDarkMode
+                  ? Colors.blueGrey.withOpacity(.2)
+                  : Colors.black,
               width: 1)),
       child: Row(
         children: [
@@ -33,20 +51,27 @@ class SearchAndFilterBar extends StatelessWidget {
               child: const Icon(
                 Icons.search,
               )),
-          const Expanded(
-            child: TextField(
-              style: TextStyle(color: Colors.black),
-              keyboardType: TextInputType.text,
-              textInputAction: TextInputAction.search,
-              decoration: InputDecoration(
-                  hintText: 'Search...',
-                  focusColor: Colors.black,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none),
-            ),
-          ),
+          Consumer<RecentHistoryRepository>(builder: (context, repository, child) {
+            List<String> recentHistory = repository.getList;
+            return Expanded(
+              child: TextField(
+                // style: const TextStyle(color: Colors.black),
+                keyboardType: TextInputType.text,
+                textInputAction: TextInputAction.search,
+                onSubmitted: (value) {
+                  recentHistory.add(value);
+                  repository.setData(data: recentHistory);
+                },
+                decoration: const InputDecoration(
+                    hintText: 'Search...',
+                    focusColor: Colors.black,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none),
+              ),
+            );
+          }),
           InkWell(
-            onTap: filterPress,
+            onTap: widget.filterPress,
             child: Container(
               padding: EdgeInsets.all(
                   getProportionateScreenWidth(kDefaultPadding * .5)),

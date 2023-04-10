@@ -1,8 +1,9 @@
+import 'package:e_commerce_app/repository/recent_history_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/size_config.dart';
-import '../../data/simple_data.dart';
 
 class RecentHistoryCard extends StatelessWidget {
   const RecentHistoryCard({
@@ -11,8 +12,9 @@ class RecentHistoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
+    return Consumer<RecentHistoryRepository>(builder: (context, repository, child) {
+      List<String> recentHistory = repository.getList;
+      return Column(
         children: [
           Row(
             children: [
@@ -24,7 +26,13 @@ class RecentHistoryCard extends StatelessWidget {
               ),
               const Spacer(),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  if (recentHistory.isNotEmpty) {
+                    //Clear all data recent history, set new data in SharedPreference
+                    recentHistory.clear();
+                    repository.setData(data: recentHistory);
+                  }
+                },
                 borderRadius: BorderRadius.circular(12),
                 child: Text(
                   'Clear All',
@@ -38,25 +46,26 @@ class RecentHistoryCard extends StatelessWidget {
           SizedBox(
             height: getProportionateScreenHeight(kDefaultPadding),
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: historySearch.length,
-              itemBuilder: (context, index) => Row(
-                children: [
-                  Text(
-                    historySearch[index],
-                  ),
-                  const Spacer(),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.cancel),
-                  )
-                ],
+          if (recentHistory.isNotEmpty)
+            Expanded(
+              child: ListView.builder(
+                itemCount: recentHistory.length,
+                itemBuilder: (context, index) => Row(
+                  children: [
+                    Text(
+                      recentHistory[index],
+                    ),
+                    const Spacer(),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.cancel),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
         ],
-      ),
-    );
+      );
+    });
   }
 }
