@@ -56,15 +56,6 @@ List dataCategory = [
       id: 'product_helmets',
       svgDark: 'assets/icons/helmet_dark.svg'),
 ];
-
-class DataTitleMostPopular {
-  String title;
-  bool? isSelected;
-  DataTitleMostPopular({
-    required this.title,
-    this.isSelected = false,
-  });
-}
 class DataTabBar {
   String title;
   String id;
@@ -87,31 +78,31 @@ List dataTitleMostPopular = [
 ];
 
 List dataPriceRange = [
-  DataTitleMostPopular(title: 'All', isSelected: false),
-  DataTitleMostPopular(title: '<10\$', isSelected: false),
-  DataTitleMostPopular(title: '10 - 20\$', isSelected: true),
-  DataTitleMostPopular(title: '20 - 30\$', isSelected: false),
-  DataTitleMostPopular(title: '30 - 40\$', isSelected: false),
-  DataTitleMostPopular(title: '50 - 100\$', isSelected: false),
-  DataTitleMostPopular(title: '>100\$', isSelected: false),
+  DataTabBar(title: 'All', id: "all"),
+  DataTabBar(title: '<10\$', id: "10"),
+  DataTabBar(title: '10 - 20\$', id: "10-20"),
+  DataTabBar(title: '20 - 30\$', id: "20-30"),
+  DataTabBar(title: '30 - 40\$', id: "30-40"),
+  DataTabBar(title: '50 - 100\$', id: "50-100"),
+  DataTabBar(title: '>100\$', id: "100"),
 ];
 
 List dataSortBy = [
-  DataTitleMostPopular(title: 'All', isSelected: false),
-  DataTitleMostPopular(title: 'Popular', isSelected: false),
-  DataTitleMostPopular(title: 'Most Recent', isSelected: true),
-  DataTitleMostPopular(title: 'Price High', isSelected: false),
-  DataTitleMostPopular(title: 'Discount', isSelected: false),
-  DataTitleMostPopular(title: 'Trending', isSelected: false),
+  DataTabBar(title: 'All', id: "all"),
+  DataTabBar(title: 'Popular', id: "popular"),
+  DataTabBar(title: 'Most Recent', id: "most_recent"),
+  DataTabBar(title: 'Price High', id: "price_high"),
+  DataTabBar(title: 'Discount', id: "discount"),
+  DataTabBar(title: 'Trending', id: "trending"),
 ];
 
 List dataRating = [
-  DataTitleMostPopular(title: 'All', isSelected: false),
-  DataTitleMostPopular(title: '5*', isSelected: false),
-  DataTitleMostPopular(title: '4*', isSelected: true),
-  DataTitleMostPopular(title: '3*', isSelected: false),
-  DataTitleMostPopular(title: '2*', isSelected: false),
-  DataTitleMostPopular(title: '1*', isSelected: false),
+  DataTabBar(title: 'All', id: "all"),
+  DataTabBar(title: '5*', id: "5"),
+  DataTabBar(title: '4*', id: "4"),
+  DataTabBar(title: '3*', id: "3"),
+  DataTabBar(title: '2*', id: "2"),
+  DataTabBar(title: '1*', id: "1"),
 ];
 
 class DataItemMostPopular {

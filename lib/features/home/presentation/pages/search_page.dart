@@ -1,13 +1,12 @@
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
 import 'package:e_commerce_app/features/home/data/simple_data.dart';
-import 'package:e_commerce_app/features/home/presentation/widgets/most_popular_tab_bar.dart';
 import 'package:e_commerce_app/widgets/custom_button.dart';
 import 'package:e_commerce_app/widgets/short_horizon_line.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../widgets/custom_tab_bar.dart';
 import '../widgets/recent_history_card.dart';
-import '../widgets/result_for_search_card.dart';
 import '../widgets/search_and_filter_bar.dart';
 
 class SearchPage extends StatefulWidget {
@@ -143,20 +142,7 @@ class _SearchPageState extends State<SearchPage> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        Container(
-          width: double.infinity,
-          height: getProportionateScreenWidth(kDefaultPadding * 2),
-          margin: EdgeInsets.symmetric(
-              vertical: getProportionateScreenWidth(kDefaultPadding)),
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: data.length,
-            itemBuilder: (context, index) => MostPopularTabBar(
-              data: data[index],
-              press: () {},
-            ),
-          ),
-        ),
+        CustomTabBar(data: data)
       ],
     );
   }

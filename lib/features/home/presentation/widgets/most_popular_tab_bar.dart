@@ -5,16 +5,16 @@ import '../../../../core/constants.dart';
 import '../../../../core/size_config.dart';
 import 'most_popular_item_cart.dart';
 
-class MostPopularTabBarCard extends StatefulWidget {
-  const MostPopularTabBarCard({Key? key}) : super(key: key);
+class MostPopularTabBar extends StatefulWidget {
+  const MostPopularTabBar({Key? key}) : super(key: key);
 
   @override
-  State<MostPopularTabBarCard> createState() => _MostPopularTabBarCardState();
+  State<MostPopularTabBar> createState() => _MostPopularTabBarState();
 }
 
-class _MostPopularTabBarCardState extends State<MostPopularTabBarCard> {
+class _MostPopularTabBarState extends State<MostPopularTabBar> {
   int isSelected = 0;
-  
+
   @override
   Widget build(BuildContext context) {
     final brightness = Theme.of(context).brightness;
@@ -55,7 +55,8 @@ class _MostPopularTabBarCardState extends State<MostPopularTabBarCard> {
                             ? Colors.black
                             : Colors.white,
                     border: darkMode
-                        ? Border.all(color: Colors.blueGrey.withOpacity(.2), width: 2)
+                        ? Border.all(
+                            color: Colors.blueGrey.withOpacity(.2), width: 2)
                         : Border.all(color: Colors.black, width: 2),
                   ),
                   child: Center(
@@ -63,11 +64,13 @@ class _MostPopularTabBarCardState extends State<MostPopularTabBarCard> {
                       dataTitleMostPopular[index].title,
                       style: darkMode
                           ? TextStyle(
-                              color:
-                                  isSelected == index ? Colors.white : Colors.white)
+                              color: isSelected == index
+                                  ? Colors.white
+                                  : Colors.white)
                           : TextStyle(
-                              color:
-                                  isSelected == index ? Colors.white : Colors.black),
+                              color: isSelected == index
+                                  ? Colors.white
+                                  : Colors.black),
                     ),
                   ),
                 ),
@@ -75,75 +78,10 @@ class _MostPopularTabBarCardState extends State<MostPopularTabBarCard> {
             ),
           ),
         ),
-        MostPopularCard(idTabBar: dataTitleMostPopular[isSelected].id,),
-      ],
-    );
-  }
-}
-
-class MostPopularTabBar extends StatefulWidget {
-  const MostPopularTabBar({Key? key, required this.press, required this.data})
-      : super(key: key);
-
-  final DataTitleMostPopular data;
-  final VoidCallback press;
-
-  @override
-  State<MostPopularTabBar> createState() => _MostPopularTabBarState();
-}
-
-class _MostPopularTabBarState extends State<MostPopularTabBar> {
-  int isSelected = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    final brightness = Theme.of(context).brightness;
-    bool darkMode = brightness == Brightness.dark;
-
-    return ListView.builder(
-      scrollDirection: Axis.horizontal,
-      itemCount: dataTitleMostPopular.length,
-      itemBuilder: (context, index) => Container(
-        margin: EdgeInsets.only(
-            right: getProportionateScreenWidth(kDefaultPadding / 2)),
-        child: InkWell(
-          onTap: () {
-            setState(() {
-              isSelected = index;
-            });
-          },
-          borderRadius: BorderRadius.circular(30),
-          child: Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: getProportionateScreenWidth(kDefaultPadding)),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              color: darkMode
-                  ? isSelected == index
-                      ? Colors.blueGrey.withOpacity(.2)
-                      : kContentColorLightTheme
-                  : isSelected == index
-                      ? Colors.black
-                      : Colors.white,
-              border: darkMode
-                  ? Border.all(color: Colors.blueGrey.withOpacity(.2), width: 2)
-                  : Border.all(color: Colors.black, width: 2),
-            ),
-            child: Center(
-              child: Text(
-                widget.data.title,
-                style: darkMode
-                    ? TextStyle(
-                        color:
-                            isSelected == index ? Colors.white : Colors.white)
-                    : TextStyle(
-                        color:
-                            isSelected == index ? Colors.white : Colors.black),
-              ),
-            ),
-          ),
+        MostPopularCard(
+          idTabBar: dataTitleMostPopular[isSelected].id,
         ),
-      ),
+      ],
     );
   }
 }

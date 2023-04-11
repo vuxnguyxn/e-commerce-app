@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/size_config.dart';
+import '../../../../widgets/custom_tab_bar.dart';
 
 class MyWishlistPage extends StatelessWidget {
   const MyWishlistPage({super.key});
@@ -14,7 +15,6 @@ class MyWishlistPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final uid = AuthRepository().currentUser!.uid;
     final ref = FirebaseDatabase.instance.ref('wishlists/$uid');
 
@@ -28,7 +28,7 @@ class MyWishlistPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          mostPopularTabBar(),
+          CustomTabBar(data: dataTitleMostPopular),
           Container(
             width: double.infinity,
             height: SizeConfig.screenHeight - getProportionateScreenWidth(160),
@@ -46,7 +46,7 @@ class MyWishlistPage extends StatelessWidget {
                   List<dynamic> list = [];
                   list.clear();
                   list = map.values.toList();
-                
+
                   return GridView.builder(
                     itemCount: list.length,
                     gridDelegate:
@@ -73,22 +73,22 @@ class MyWishlistPage extends StatelessWidget {
     );
   }
 
-  Container mostPopularTabBar() {
-    return Container(
-      width: double.infinity,
-      height: getProportionateScreenWidth(kDefaultPadding * 2),
-      margin: EdgeInsets.only(
-          top: getProportionateScreenWidth(kDefaultPadding),
-          left: getProportionateScreenWidth(kDefaultPadding),
-          right: getProportionateScreenWidth(kDefaultPadding / 2)),
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: dataTitleMostPopular.length,
-        itemBuilder: (context, index) => MostPopularTabBar(
-          data: dataTitleMostPopular[index],
-          press: () {},
-        ),
-      ),
-    );
-  }
+  // Container mostPopularTabBar() {
+  //   return Container(
+  //     width: double.infinity,
+  //     height: getProportionateScreenWidth(kDefaultPadding * 2),
+  //     margin: EdgeInsets.only(
+  //         top: getProportionateScreenWidth(kDefaultPadding),
+  //         left: getProportionateScreenWidth(kDefaultPadding),
+  //         right: getProportionateScreenWidth(kDefaultPadding / 2)),
+  //     child: ListView.builder(
+  //       scrollDirection: Axis.horizontal,
+  //       itemCount: dataTitleMostPopular.length,
+  //       itemBuilder: (context, index) => MostPopularTabBar(
+  //         data: dataTitleMostPopular[index],
+  //         press: () {},
+  //       ),
+  //     ),
+  //   );
+  // }
 }

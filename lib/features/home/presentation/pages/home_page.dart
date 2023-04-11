@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                   title: 'Most Popular',
                   press: () =>
                       Navigator.pushNamed(context, MostPopularPage.route)),
-              const MostPopularTabBarCard(),
+              const MostPopularTabBar(),
             ],
           ),
         ),

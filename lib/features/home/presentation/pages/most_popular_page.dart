@@ -15,7 +15,7 @@ class MostPopularPage extends StatelessWidget {
         ),
         actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
       ),
-      body: const MostPopularTabBarCard(),
+      body: const MostPopularTabBar(),
     );
   }
 }
