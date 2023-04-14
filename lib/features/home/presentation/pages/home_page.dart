@@ -122,8 +122,12 @@ class _HomePageState extends State<HomePage> {
             itemCount: 5,
           ),
           Positioned(
-              bottom: kDefaultPadding * 2,
-              child: DotColor(currentIndex: currentIndex, length: 5,)),
+            bottom: kDefaultPadding * 2,
+            child: DotColor(
+              currentIndex: currentIndex,
+              length: 5,
+            ),
+          ),
         ],
       ),
     );
@@ -206,4 +210,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-

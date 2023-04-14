@@ -14,8 +14,6 @@ class StorageManager {
       pref.setBool(key, value);
     } else if (value is List<String>) {
       pref.setStringList(key, value);
-    } else {
-      print("Invalid type");
     }
   }
 

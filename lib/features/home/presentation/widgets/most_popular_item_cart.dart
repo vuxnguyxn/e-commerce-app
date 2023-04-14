@@ -1,11 +1,13 @@
-import 'package:e_commerce_app/arguments/product_arguments.dart';
-import 'package:e_commerce_app/features/home/data/simple_data.dart';
-import 'package:e_commerce_app/features/home/presentation/pages/product_detail_page.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/material.dart';
+import "package:e_commerce_app/arguments/product_arguments.dart";
+import "package:e_commerce_app/features/home/data/simple_data.dart";
+import "package:e_commerce_app/features/home/presentation/pages/product_detail_page.dart";
+import "package:e_commerce_app/repository/auth_repository.dart";
+import "package:e_commerce_app/repository/my_wishlist_repository.dart";
+import "package:firebase_database/firebase_database.dart";
+import "package:flutter/material.dart";
 
-import '../../../../core/constants.dart';
-import '../../../../core/size_config.dart';
+import "../../../../core/constants.dart";
+import "../../../../core/size_config.dart";
 
 class MostPopularCard extends StatelessWidget {
   const MostPopularCard({
@@ -17,7 +19,8 @@ class MostPopularCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ref = FirebaseDatabase.instance.ref('most_popular/$idTabBar');
+    final ref = FirebaseDatabase.instance.ref("most_popular/$idTabBar");
+
     return Container(
       height: SizeConfig.screenHeight - getProportionateScreenHeight(200),
       padding: EdgeInsets.only(
@@ -62,7 +65,7 @@ class MostPopularCard extends StatelessWidget {
   }
 }
 
-class MostPopularItem extends StatelessWidget {
+class MostPopularItem extends StatefulWidget {
   const MostPopularItem({
     Key? key,
     required this.data,
@@ -73,27 +76,33 @@ class MostPopularItem extends StatelessWidget {
   final int index;
 
   @override
+  State<MostPopularItem> createState() => _MostPopularItemState();
+}
+
+class _MostPopularItemState extends State<MostPopularItem> {
+  bool isFavorites = false;
+  @override
   Widget build(BuildContext context) {
     final brightness = Theme.of(context).brightness;
     bool isDarkMode = brightness == Brightness.dark;
-
+    final uid = AuthRepository().currentUser!.uid;
     return InkWell(
       onTap: () {
         Navigator.pushNamed(
           context,
           ProductDetailPage.route,
           arguments: ProductArguments(
-              title: data[index]['title'],
-              color: data[index]['color'],
-              description: data[index]['description'],
-              favorite: data[index]['favorite'],
-              image: data[index]['list-image'],
-              price: data[index]['price'],
-              reviews: data[index]['reviews'],
-              size: data[index]['size'],
-              sold: data[index]['sold'],
-              star: data[index]['star'],
-              id: data[index]['id']),
+              title: widget.data[widget.index]["title"],
+              color: widget.data[widget.index]["color"],
+              description: widget.data[widget.index]["description"],
+              favorite: widget.data[widget.index]["favorite"],
+              image: widget.data[widget.index]["list-image"],
+              price: widget.data[widget.index]["price"],
+              reviews: widget.data[widget.index]["reviews"],
+              size: widget.data[widget.index]["size"],
+              sold: widget.data[widget.index]["sold"],
+              star: widget.data[widget.index]["star"],
+              id: widget.data[widget.index]["id"]),
         );
       },
       child: SizedBox(
@@ -115,8 +124,9 @@ class MostPopularItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15)),
                   child: AspectRatio(
                     aspectRatio: 1,
-                    child: data[index]["image"] != null
-                        ? Image.network(data[index]["image"])
+                    child: widget.data[widget.index]["list-image"][0] != null
+                        ? Image.network(
+                            widget.data[widget.index]["list-image"][0])
                         : const Center(
                             child: CircularProgressIndicator(),
                           ),
@@ -125,7 +135,34 @@ class MostPopularItem extends StatelessWidget {
                 Positioned(
                   top: 10,
                   right: 10,
-                  child: Container(
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        isFavorites = !isFavorites;
+                        if (isFavorites) {
+                          //set product in my wishlist
+                          MyWishlistRepository().upLoadWishlist(
+                              uid: uid,
+                              title: widget.data[widget.index]["title"],
+                              color: widget.data[widget.index]["color"],
+                              description: widget.data[widget.index]
+                                  ["description"],
+                              listImage: widget.data[widget.index]
+                                  ["list-image"],
+                              price: widget.data[widget.index]["price"],
+                              reviews: widget.data[widget.index]["reviews"],
+                              size: widget.data[widget.index]["size"],
+                              sold: widget.data[widget.index]["sold"],
+                              star: widget.data[widget.index]["star"],
+                              id: widget.data[widget.index]["id"]);
+                        } else {
+                          MyWishlistRepository().deletedWishlist(
+                              uid: uid, id: widget.data[widget.index]["id"]);
+                        }
+                      });
+                    },
+                    borderRadius: BorderRadius.circular(50),
+                    child: Container(
                       height: 24,
                       width: 24,
                       decoration: BoxDecoration(
@@ -133,7 +170,7 @@ class MostPopularItem extends StatelessWidget {
                         border: Border.all(color: Colors.black45, width: 1),
                         color: Colors.black45,
                       ),
-                      child: data[index]['favorite']
+                      child: isFavorites
                           ? const Icon(
                               Icons.favorite,
                               color: Colors.red,
@@ -143,12 +180,14 @@ class MostPopularItem extends StatelessWidget {
                               Icons.favorite,
                               color: Colors.white,
                               size: 16,
-                            )),
+                            ),
+                    ),
+                  ),
                 ),
               ],
             ),
             Text(
-              data[index]['title'],
+              widget.data[widget.index]["title"],
               maxLines: 1,
               style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -161,7 +200,7 @@ class MostPopularItem extends StatelessWidget {
             Row(
               children: [
                 const Icon(Icons.star_half),
-                Text("${data[index]['star']} | "),
+                Text("${widget.data[widget.index]["star"]} | "),
                 Container(
                   padding: EdgeInsets.all(getProportionateScreenWidth(5)),
                   decoration: BoxDecoration(
@@ -170,7 +209,7 @@ class MostPopularItem extends StatelessWidget {
                           : Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(12)),
                   child: Text(
-                    "${data[index]['sold']} sold",
+                    "${widget.data[widget.index]["sold"]} sold",
                     style: const TextStyle(fontSize: 12),
                   ),
                 ),
@@ -180,7 +219,7 @@ class MostPopularItem extends StatelessWidget {
               height: getProportionateScreenHeight(5),
             ),
             Text(
-              "\$${data[index]['price']}",
+              "\$${widget.data[widget.index]["price"]}",
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: getProportionateScreenWidth(16)),

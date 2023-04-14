@@ -1,6 +1,4 @@
 import 'package:e_commerce_app/features/home/data/simple_data.dart';
-import 'package:e_commerce_app/features/home/presentation/widgets/most_popular_item_cart.dart';
-import 'package:e_commerce_app/features/home/presentation/widgets/most_popular_tab_bar.dart';
 import 'package:e_commerce_app/repository/auth_repository.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/size_config.dart';
 import '../../../../widgets/custom_tab_bar.dart';
+import '../widgets/my_wishlist_item.dart';
 
 class MyWishlistPage extends StatelessWidget {
   const MyWishlistPage({super.key});
@@ -55,7 +54,7 @@ class MyWishlistPage extends StatelessWidget {
                             childAspectRatio: .63,
                             mainAxisSpacing: kDefaultPadding,
                             crossAxisSpacing: kDefaultPadding),
-                    itemBuilder: (context, index) => MostPopularItem(
+                    itemBuilder: (context, index) => MyWishlistItem(
                       data: list,
                       index: index,
                     ),
