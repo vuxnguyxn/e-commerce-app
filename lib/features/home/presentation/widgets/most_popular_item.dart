@@ -7,8 +7,8 @@ import '../../../../repository/auth_repository.dart';
 import '../../../../repository/my_wishlist_repository.dart';
 import '../pages/product_detail_page.dart';
 
-class MyWishlistItem extends StatefulWidget {
-  const MyWishlistItem({
+class MostPopularItem extends StatefulWidget {
+  const MostPopularItem({
     Key? key,
     required this.data,
     required this.index,
@@ -18,11 +18,11 @@ class MyWishlistItem extends StatefulWidget {
   final int index;
 
   @override
-  State<MyWishlistItem> createState() => _MyWishlistItemState();
+  State<MostPopularItem> createState() => _MostPopularItemState();
 }
 
-class _MyWishlistItemState extends State<MyWishlistItem> {
-  bool isFavorites = true;
+class _MostPopularItemState extends State<MostPopularItem> {
+  bool isFavorites = false;
   @override
   Widget build(BuildContext context) {
     final brightness = Theme.of(context).brightness;
@@ -43,7 +43,7 @@ class _MyWishlistItemState extends State<MyWishlistItem> {
               reviews: widget.data[widget.index]["reviews"],
               size: widget.data[widget.index]["size"],
               sold: widget.data[widget.index]["sold"],
-              star: widget.data[widget.index]["star"],
+              star: widget.data[widget.index]["star"] as double,
               id: widget.data[widget.index]["id"]),
         );
       },
@@ -81,12 +81,29 @@ class _MyWishlistItemState extends State<MyWishlistItem> {
                     onTap: () {
                       setState(() {
                         isFavorites = !isFavorites;
-                        if (!isFavorites) {
+                        if (isFavorites) {
                           //set product in my wishlist
-                          MyWishlistRepository().deletedWishlist(
+                          MyWishlistRepository().upLoadWishlist(
                               uid: uid,
-                              id: widget.data[widget.index]["id"],
-                              type: widget.data[widget.index]["type"]);
+                              title: widget.data[widget.index]["title"],
+                              color: widget.data[widget.index]["color"],
+                              description: widget.data[widget.index]
+                                  ["description"],
+                              listImage: widget.data[widget.index]
+                                  ["list-image"],
+                              price: widget.data[widget.index]["price"],
+                              reviews: widget.data[widget.index]["reviews"],
+                              size: widget.data[widget.index]["size"],
+                              sold: widget.data[widget.index]["sold"],
+                              star: widget.data[widget.index]["star"],
+                              type: widget.data[widget.index]["type"],
+                              id: widget.data[widget.index]["id"]);
+                        } else {
+                          MyWishlistRepository().deletedWishlist(
+                            uid: uid,
+                            id: widget.data[widget.index]["id"],
+                            type: widget.data[widget.index]["type"],
+                          );
                         }
                       });
                     },
@@ -99,7 +116,7 @@ class _MyWishlistItemState extends State<MyWishlistItem> {
                         border: Border.all(color: Colors.black45, width: 1),
                         color: Colors.black45,
                       ),
-                      child: widget.data[widget.index]["favorite"]
+                      child: isFavorites
                           ? const Icon(
                               Icons.favorite,
                               color: Colors.red,

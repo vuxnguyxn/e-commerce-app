@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants.dart';
 import '../../data/simple_data.dart';
-import '../widgets/most_popular_item_cart.dart';
+import '../widgets/most_popular_item.dart';
 
 class CategoriesPage extends StatelessWidget {
   const CategoriesPage({super.key});

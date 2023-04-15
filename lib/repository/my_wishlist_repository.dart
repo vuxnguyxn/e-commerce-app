@@ -39,10 +39,13 @@ class MyWishlistRepository {
     required int sold,
     required double star,
     required String id,
+    required String type,
   }) async {
-    DatabaseReference ref = FirebaseDatabase.instance.ref("wishlists/$uid/$id");
-
-    await ref.set({
+    DatabaseReference ref =
+        FirebaseDatabase.instance.ref("wishlists/$uid/wishlist_$type/$id");
+    DatabaseReference refAll =
+        FirebaseDatabase.instance.ref("wishlists/$uid/wishlist_all/$id");
+    Map<String, dynamic> map = {
       "id": id,
       "title": title,
       "description": description,
@@ -54,14 +57,22 @@ class MyWishlistRepository {
       "color": color,
       "star": star,
       "sold": sold,
-    });
+      "type": type,
+    };
+    await ref.set(map);
+    await refAll.set(map);
   }
 
   Future<void> deletedWishlist({
     required String uid,
     required String id,
+    required String type,
   }) async {
-    DatabaseReference ref = FirebaseDatabase.instance.ref("wishlists/$uid/$id");
+    DatabaseReference refAll =
+        FirebaseDatabase.instance.ref("wishlists/$uid/wishlist_all/$id");
+    DatabaseReference ref =
+        FirebaseDatabase.instance.ref("wishlists/$uid/wishlist_$type/$id");
     ref.remove();
+    refAll.remove();
   }
 }

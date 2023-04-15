@@ -18,7 +18,7 @@
   "most_popular": {
     "most_popular_all": {
       "all4ajNoFwdTz": {
-        "type": "all",
+        "type": "bags",
         "color": [
           "green",
           "yellow",
@@ -47,7 +47,7 @@
         "title": "Bear Leather Bag"
       },
       "allWu5pMchikt": {
-        "type": "all",
+        "type": "bags",
         "color": [
           "green",
           "yellow",
@@ -72,11 +72,11 @@
           "41"
         ],
         "sold": 809,
-        "star": 4,
+        "star": 4.0,
         "title": "Snake Leather Bag"
       },
       "clotHSoeTy6701": {
-        "type": "all",
+        "type": "clothes",
         "color": [
           "green",
           "yellow",
@@ -108,7 +108,7 @@
         "title": "Shorts Cotton"
       },
       "clotHSoeTy6702": {
-        "type": "all",
+        "type": "clothes",
         "color": [
           "green",
           "yellow",
@@ -140,7 +140,7 @@
         "title": "Yellow T-shirt"
       },
       "shoesKsjj681dfw": {
-        "type": "all",
+        "type": "shoes",
         "color": [
           "green",
           "yellow",
@@ -172,7 +172,7 @@
         "title": "Fitness I Shoes"
       },
       "shoesKsjj682dfw": {
-        "type": "all",
+        "type": "shoes",
         "color": [
           "green",
           "yellow",
@@ -1662,182 +1662,6 @@
     }
   },
   "products": {
-    "product_all": {
-      "all4ajNoFwdTz": {
-        "type": "all",
-        "color": [
-          "green",
-          "yellow",
-          "blue",
-          "pink",
-          "grey"
-        ],
-        "description": "The Bear Leather Bag that characterizes the PQ Blondie line originates from the House archives. Signature pieces such as this PQ Blondie shoulder and crossbody bag with a top handle reinterprets the emblem as a subtler leather patch detail.",
-        "favorite": false,
-        "id": "all4ajNoFwdTz",
-        "list-image": [
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f"
-        ],
-        "price": 900,
-        "reviews": 2829,
-        "size": [
-          "39",
-          "40",
-          "41"
-        ],
-        "sold": 1000,
-        "star": 4.5,
-        "title": "Bear Leather Bag"
-      },
-      "allJP4Hy1d9yg": {
-        "type": "all",
-        "color": [
-          "green",
-          "yellow",
-          "blue",
-          "pink",
-          "grey"
-        ],
-        "description": "The Bear Leather Bag that characterizes the PQ Blondie line originates from the House archives. Signature pieces such as this PQ Blondie shoulder and crossbody bag with a top handle reinterprets the emblem as a subtler leather patch detail.",
-        "favorite": false,
-        "id": "allJP4Hy1d9yg",
-        "list-image": [
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f"
-        ],
-        "price": 800,
-        "reviews": 2829,
-        "size": [
-          "39",
-          "40",
-          "41"
-        ],
-        "sold": 809,
-        "star": 4,
-        "title": "Snake Leather Bag"
-      },
-      "allPCbnEA5z4x": {
-        "type": "all",
-        "color": [
-          "green",
-          "yellow",
-          "blue",
-          "pink",
-          "grey"
-        ],
-        "description": "The Bear Leather Bag that characterizes the PQ Blondie line originates from the House archives. Signature pieces such as this PQ Blondie shoulder and crossbody bag with a top handle reinterprets the emblem as a subtler leather patch detail.",
-        "favorite": false,
-        "id": "allPCbnEA5z4x",
-        "list-image": [
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f"
-        ],
-        "price": 900,
-        "reviews": 2829,
-        "size": [
-          "39",
-          "40",
-          "41"
-        ],
-        "sold": 1000,
-        "star": 4.5,
-        "title": "Bear Leather Bag"
-      },
-      "allWu5pMchikt": {
-        "type": "all",
-        "color": [
-          "green",
-          "yellow",
-          "blue",
-          "pink",
-          "grey"
-        ],
-        "description": "The Bear Leather Bag that characterizes the PQ Blondie line originates from the House archives. Signature pieces such as this PQ Blondie shoulder and crossbody bag with a top handle reinterprets the emblem as a subtler leather patch detail.",
-        "favorite": false,
-        "id": "allWu5pMchikt",
-        "list-image": [
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f"
-        ],
-        "price": 800,
-        "reviews": 2829,
-        "size": [
-          "39",
-          "40",
-          "41"
-        ],
-        "sold": 809,
-        "star": 4,
-        "title": "Snake Leather Bag"
-      },
-      "alla1C9PgTWCZ": {
-        "type": "all",
-        "color": [
-          "green",
-          "yellow",
-          "blue",
-          "pink",
-          "grey"
-        ],
-        "description": "The Bear Leather Bag that characterizes the PQ Blondie line originates from the House archives. Signature pieces such as this PQ Blondie shoulder and crossbody bag with a top handle reinterprets the emblem as a subtler leather patch detail.",
-        "favorite": false,
-        "id": "alla1C9PgTWCZ",
-        "list-image": [
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f"
-        ],
-        "price": 800,
-        "reviews": 2829,
-        "size": [
-          "39",
-          "40",
-          "41"
-        ],
-        "sold": 809,
-        "star": 4,
-        "title": "Snake Leather Bag"
-      },
-      "allxcyJVAiCsH": {
-        "type": "all",
-        "color": [
-          "green",
-          "yellow",
-          "blue",
-          "pink",
-          "grey"
-        ],
-        "description": "The Bear Leather Bag that characterizes the PQ Blondie line originates from the House archives. Signature pieces such as this PQ Blondie shoulder and crossbody bag with a top handle reinterprets the emblem as a subtler leather patch detail.",
-        "favorite": false,
-        "id": "allxcyJVAiCsH",
-        "list-image": [
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f"
-        ],
-        "price": 900,
-        "reviews": 2829,
-        "size": [
-          "39",
-          "40",
-          "41"
-        ],
-        "sold": 1000,
-        "star": 4.5,
-        "title": "Bear Leather Bag"
-      }
-    },
     "product_bags": {
       "prod4ajNoFwdTz": {
         "type": "bags",
@@ -3292,71 +3116,6 @@
         "sold": 123,
         "star": 4.7,
         "title": "Fitness VI Shoes"
-      }
-    }
-  },
-  "wishlists": {
-    "LnmorMVQYYgUfwvZP1RiObn56Dl2": {
-      "all4ajNoFwdTz": {
-        "type": "all",
-        "color": [
-          "green",
-          "yellow",
-          "blue",
-          "pink",
-          "grey"
-        ],
-        "description": "The Bear Leather Bag that characterizes the PQ Blondie line originates from the House archives. Signature pieces such as this PQ Blondie shoulder and crossbody bag with a top handle reinterprets the emblem as a subtler leather patch detail.",
-        "favorite": true,
-        "id": "all4ajNoFwdTz",
-        "list-image": [
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/bags%2Fbag_1.png?alt=media&token=38819744-b76f-4b6f-b1fb-ea6190685e8f"
-        ],
-        "price": 900,
-        "reviews": 2829,
-        "size": [
-          "39",
-          "40",
-          "41"
-        ],
-        "sold": 1000,
-        "star": 4.5,
-        "title": "Bear Leather Bag"
-      },
-      "shoesKsjj681dfw": {
-        "type": "shoes",
-        "color": [
-          "green",
-          "yellow",
-          "blue",
-          "pink",
-          "grey"
-        ],
-        "description": "The Fitness I Shoes is the best.",
-        "favorite": true,
-        "id": "shoesKsjj681dfw",
-        "list-image": [
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/shoes%2Fshoes2.png?alt=media&token=41429caf-2edb-40be-9608-3f749b1da391",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/shoes%2Fshoes2.png?alt=media&token=41429caf-2edb-40be-9608-3f749b1da391",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/shoes%2Fshoes2.png?alt=media&token=41429caf-2edb-40be-9608-3f749b1da391",
-          "https://firebasestorage.googleapis.com/v0/b/e-commerce-project-e9a41.appspot.com/o/shoes%2Fshoes2.png?alt=media&token=41429caf-2edb-40be-9608-3f749b1da391"
-        ],
-        "price": 56,
-        "reviews": 2829,
-        "size": [
-          "39",
-          "40",
-          "41",
-          "42",
-          "43",
-          "44"
-        ],
-        "sold": 993,
-        "star": 4.4,
-        "title": "Fitness I Shoes"
       }
     }
   }

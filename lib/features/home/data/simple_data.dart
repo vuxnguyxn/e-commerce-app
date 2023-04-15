@@ -66,15 +66,15 @@ class DataTabBar {
 }
 
 List dataTitleMostPopular = [
-  DataTabBar(title: 'All', id: "most_popular_all"),
-  DataTabBar(title: 'Bags', id: "most_popular_bags"),
-  DataTabBar(title: 'Shoes', id: "most_popular_shoes"),
-  DataTabBar(title: 'Gloves', id: "most_popular_gloves"),
-  DataTabBar(title: 'Books', id: "most_popular_books"),
-  DataTabBar(title: 'Clothes', id: "most_popular_clothes"),
-  DataTabBar(title: 'Headphones', id: "most_popular_headphones"),
-  DataTabBar(title: 'Gaming', id: "most_popular_gaming"),
-  DataTabBar(title: 'Helmets', id: "most_popular_helmets"),
+  DataTabBar(title: 'All', id: "all"),
+  DataTabBar(title: 'Bags', id: "bags"),
+  DataTabBar(title: 'Shoes', id: "shoes"),
+  DataTabBar(title: 'Gloves', id: "gloves"),
+  DataTabBar(title: 'Books', id: "books"),
+  DataTabBar(title: 'Clothes', id: "clothes"),
+  DataTabBar(title: 'Headphones', id: "headphones"),
+  DataTabBar(title: 'Gaming', id: "gaming"),
+  DataTabBar(title: 'Helmets', id: "helmets"),
 ];
 
 List dataPriceRange = [
