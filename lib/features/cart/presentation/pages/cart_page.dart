@@ -1,8 +1,12 @@
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
-import 'package:e_commerce_app/features/cart/data/cart_data.dart';
 import 'package:e_commerce_app/features/cart/presentation/pages/check_out_page.dart';
+import 'package:e_commerce_app/provider/total_provider.dart';
+import 'package:e_commerce_app/repository/auth_repository.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../widgets/custom_button_and_icon.dart';
 import '../widgets/cart_item.dart';
@@ -14,6 +18,9 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final uid = AuthRepository().currentUser!.uid;
+    final query = FirebaseDatabase.instance.ref('carts/$uid');
+   
     return Column(
       children: [
         Expanded(
@@ -22,11 +29,21 @@ class CartPage extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               horizontal: getProportionateScreenWidth(kDefaultPadding),
             ),
-            child: ListView.builder(
-              itemCount: dataCart.length,
-              itemBuilder: (context, index) => CartItem(
-                data: dataCart[index],
-                index: index,
+            child: Expanded(
+              child: FirebaseAnimatedList(
+                query: query,
+                itemBuilder: (BuildContext context, DataSnapshot snapshot,
+                    Animation<double> animation, int index) {
+                  Map map = snapshot.value as Map;
+                  map['keys'] = snapshot.key;
+                  //add price in provider 
+                  context
+                      .read<TotalProvider>()
+                      .totalPrice(price: map['price'] * map['quantity']);
+                  return CartItem(
+                    data: map,
+                  );
+                },
               ),
             ),
           ),
@@ -46,10 +63,10 @@ class CartPage extends StatelessWidget {
                         color: Colors.grey.shade500,
                       ),
                     ),
-                    const Text(
-                      "\$800.00",
-                      style:
-                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    Text(
+                      "\$${context.read<TotalProvider>().getTotal}.00",
+                      style: const TextStyle(
+                          fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),

@@ -4,6 +4,7 @@ import 'package:e_commerce_app/blocs/update_profile_bloc/update_profile_bloc.dar
 import 'package:e_commerce_app/core/routes.dart';
 import 'package:e_commerce_app/core/themes.dart';
 import 'package:e_commerce_app/features/splash/splash_screen.dart';
+import 'package:e_commerce_app/provider/total_provider.dart';
 import 'package:e_commerce_app/repository/auth_repository.dart';
 import 'package:e_commerce_app/repository/recent_history_repository.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -46,6 +47,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<RecentHistoryRepository>(
           create: (_) => RecentHistoryRepository(),
+        ),
+        ChangeNotifierProvider<TotalProvider>(
+          create: (_) => TotalProvider(),
         ),
       ],
       child: Consumer<ThemeNotifier>(
