@@ -143,7 +143,11 @@ class Profile extends StatelessWidget {
 
   InkWell logoutItem(BuildContext context) {
     return InkWell(
-      onTap: () => context.read<AuthBloc>().add(AppSignOut()),
+      onTap: () {
+        print("state 1: ${context.read<AuthBloc>().state}");
+        context.read<AuthBloc>().add(AppSignOut());
+        print("state 2: ${context.read<AuthBloc>().state}");
+      },
       borderRadius: BorderRadius.circular(12),
       child: Container(
         padding: EdgeInsets.symmetric(

@@ -17,7 +17,7 @@ class _ScreenControllerState extends State<ScreenController> {
   @override
   void initState() {
     super.initState();
-    context.read<AuthBloc>().add(AppLoader());
+    // context.read<AuthBloc>().add(AppLoader());
   }
   
   @override

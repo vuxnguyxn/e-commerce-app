@@ -70,23 +70,17 @@ class _EmailAndPasswordFormState extends State<SignInForm> {
                 }
                 email = value;
               },
-              //check validator
-              // validator: (value) {
-              //   if (value!.isEmpty && !errors.contains(kEmailNullError)) {
-              //     addError(error: kEmailNullError);
-              //   } else if (!emailValidatorRegExp.hasMatch(value) &&
-              //       !errors.contains(kInvalidEmailError)) {
-              //     addError(error: kInvalidEmailError);
-              //   }
-              //   return null;
-              // },
+
               textInputAction: TextInputAction.next,
               keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 focusedBorder: InputBorder.none,
                 border: InputBorder.none,
-                icon: Icon(Icons.email),
+                icon: const Icon(Icons.email),
+                labelStyle: TextStyle(
+                    color: widget.isDarkMode ? Colors.white : Colors.black),
                 hintText: 'Email',
+                floatingLabelBehavior: FloatingLabelBehavior.never,
               ),
             ),
           ),
@@ -110,15 +104,6 @@ class _EmailAndPasswordFormState extends State<SignInForm> {
                 }
                 password = value;
               },
-              // validator: (value) {
-              //   if (value!.isEmpty && !errors.contains(kPassNullError)) {
-              //     addError(error: kPassNullError);
-              //   } else if (value.length < 6 &&
-              //       !errors.contains(kShortPassError)) {
-              //     addError(error: kShortPassError);
-              //   }
-              //   return null;
-              // },
               textInputAction: TextInputAction.done,
               obscureText: visible,
               decoration: InputDecoration(
@@ -126,6 +111,9 @@ class _EmailAndPasswordFormState extends State<SignInForm> {
                 border: InputBorder.none,
                 icon: const Icon(Icons.lock),
                 hintText: 'Password',
+                labelStyle: TextStyle(
+                    color: widget.isDarkMode ? Colors.white : Colors.black),
+                floatingLabelBehavior: FloatingLabelBehavior.never,
                 suffixIcon: IconButton(
                   onPressed: () {
                     setState(() {

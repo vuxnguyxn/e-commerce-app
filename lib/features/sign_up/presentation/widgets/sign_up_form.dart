@@ -70,16 +70,7 @@ class _EmailAndPasswordFormState extends State<SignUpForm> {
                 }
                 email = value;
               },
-              //check validator
-              // validator: (value) {
-              //   if (value!.isEmpty && !errors.contains(kEmailNullError)) {
-              //     addError(error: kEmailNullError);
-              //   } else if (!emailValidatorRegExp.hasMatch(value) &&
-              //       !errors.contains(kInvalidEmailError)) {
-              //     addError(error: kInvalidEmailError);
-              //   }
-              //   return null;
-              // },
+             
               textInputAction: TextInputAction.next,
               keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(
@@ -110,15 +101,7 @@ class _EmailAndPasswordFormState extends State<SignUpForm> {
                 }
                 password = value;
               },
-              // validator: (value) {
-              //   if (value!.isEmpty && !errors.contains(kPassNullError)) {
-              //     addError(error: kPassNullError);
-              //   } else if (value.length < 6 &&
-              //       !errors.contains(kShortPassError)) {
-              //     addError(error: kShortPassError);
-              //   }
-              //   return null;
-              // },
+             
               textInputAction: TextInputAction.done,
               obscureText: visible,
               decoration: InputDecoration(
