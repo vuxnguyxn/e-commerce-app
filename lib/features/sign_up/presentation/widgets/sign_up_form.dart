@@ -25,23 +25,23 @@ class _EmailAndPasswordFormState extends State<SignUpForm> {
   final formKey = GlobalKey<FormState>();
   String email = '', password = '';
   bool visible = true;
-  final List<String> errors = [];
+  // final List<String> errors = [];
 
-  void addError({required String error}) {
-    if (!errors.contains(error)) {
-      setState(() {
-        errors.add(error);
-      });
-    }
-  }
+  // void addError({required String error}) {
+  //   if (!errors.contains(error)) {
+  //     setState(() {
+  //       errors.add(error);
+  //     });
+  //   }
+  // }
 
-  void removeError({required String error}) {
-    if (errors.contains(error)) {
-      setState(() {
-        errors.remove(error);
-      });
-    }
-  }
+  // void removeError({required String error}) {
+  //   if (errors.contains(error)) {
+  //     setState(() {
+  //       errors.remove(error);
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -62,15 +62,16 @@ class _EmailAndPasswordFormState extends State<SignUpForm> {
               onSaved: (newValue) => email = newValue!,
               //reCheck when chang text
               onChanged: (value) {
-                if (value.isNotEmpty && errors.contains(kEmailNullError)) {
-                  removeError(error: kEmailNullError);
-                } else if (emailValidatorRegExp.hasMatch(value) &&
-                    errors.contains(kInvalidEmailError)) {
-                  removeError(error: kInvalidEmailError);
-                }
+                // if (value.isNotEmpty && errors.contains(kEmailNullError)) {
+                //   removeError(error: kEmailNullError);
+                // } else if (emailValidatorRegExp.hasMatch(value) &&
+                //     errors.contains(kInvalidEmailError)) {
+                //   removeError(error: kInvalidEmailError);
+                // }
                 email = value;
               },
-             
+              style: TextStyle(
+                  color: widget.isDarkMode ? Colors.white : Colors.black),
               textInputAction: TextInputAction.next,
               keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(
@@ -93,15 +94,16 @@ class _EmailAndPasswordFormState extends State<SignUpForm> {
             child: TextFormField(
               onSaved: (newValue) => password = newValue!,
               onChanged: (value) {
-                if (value.isNotEmpty && errors.contains(kPassNullError)) {
-                  removeError(error: kPassNullError);
-                } else if (value.length >= 6 &&
-                    errors.contains(kShortPassError)) {
-                  removeError(error: kShortPassError);
-                }
+                // if (value.isNotEmpty && errors.contains(kPassNullError)) {
+                //   removeError(error: kPassNullError);
+                // } else if (value.length >= 6 &&
+                //     errors.contains(kShortPassError)) {
+                //   removeError(error: kShortPassError);
+                // }
                 password = value;
               },
-             
+              style: TextStyle(
+                  color: widget.isDarkMode ? Colors.white : Colors.black),
               textInputAction: TextInputAction.done,
               obscureText: visible,
               decoration: InputDecoration(
