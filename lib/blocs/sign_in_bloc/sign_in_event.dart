@@ -16,3 +16,9 @@ class SignInLoaded extends SignInEvent {
   @override
   List<Object> get props => [email, password];
 }
+
+class SignOut extends SignInEvent {
+  const SignOut();
+  @override
+  List<Object> get props => [];
+}

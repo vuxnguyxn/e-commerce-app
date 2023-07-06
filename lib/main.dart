@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => AuthBloc(authRepository: authRepository),
+          create: (context) => AuthBloc(authRepository: authRepository)..add(AppLoader()),
         ),
         BlocProvider(
           create: (context) => SignInBloc(authRepository: authRepository),
@@ -59,7 +59,6 @@ class MyApp extends StatelessWidget {
           theme: theme.getTheme(),
           routes: routes,
           initialRoute: SplashScreen.route,
-          // home: const ScreenController(),
         ),
       ),
     );

@@ -32,4 +32,13 @@ class SignInFailed extends SignInState {
   @override
   List<Object> get props => [isLoading];
 }
+class SignOutSuccess extends SignInState {
+   const SignOutSuccess({
+    required isLoading,
+  }) : super(isLoading: isLoading,);
+
+  @override
+  List<Object> get props => [isLoading];
+}
+
 

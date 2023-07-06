@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:e_commerce_app/core/constants.dart';
 import 'package:e_commerce_app/core/size_config.dart';
 import 'package:e_commerce_app/features/profile/presentation/pages/edit_profile_page.dart';
@@ -8,7 +9,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../blocs/auth_bloc/auth_bloc.dart';
 import '../../../../repository/auth_repository.dart';
 import 'address_page.dart';
 
@@ -144,9 +144,7 @@ class Profile extends StatelessWidget {
   InkWell logoutItem(BuildContext context) {
     return InkWell(
       onTap: () {
-        print("state 1: ${context.read<AuthBloc>().state}");
-        context.read<AuthBloc>().add(AppSignOut());
-        print("state 2: ${context.read<AuthBloc>().state}");
+        context.read<SignInBloc>().add(const SignOut());
       },
       borderRadius: BorderRadius.circular(12),
       child: Container(

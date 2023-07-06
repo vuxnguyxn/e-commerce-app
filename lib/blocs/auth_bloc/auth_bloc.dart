@@ -8,6 +8,7 @@ part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthRepository authRepository;
+
   AuthBloc({required this.authRepository}) : super(AuthInitial()) {
     on<AppLoader>((event, emit) async {
       try {
@@ -17,13 +18,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       } catch (_) {
         emit(UnAuthenticated());
       }
-    });
-
-    on<AppSignOut>((event, emit) async {
-      try {
-        await authRepository.signOut();
-        emit(UnAuthenticated());
-      } catch (_) {}
     });
   }
 }

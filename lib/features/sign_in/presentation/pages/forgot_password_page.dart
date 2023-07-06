@@ -78,9 +78,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           color: Colors.blueGrey.withOpacity(.2)),
                       child: const Icon(Icons.message_rounded),
                     ),
-                    Column(
+                    const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           'via SMS:',
                           style: TextStyle(fontSize: 12),
@@ -126,9 +126,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           color: Colors.blueGrey.withOpacity(.2)),
                       child: const Icon(Icons.email_rounded),
                     ),
-                    Column(
+                    const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           'via Email:',
                           style: TextStyle(fontSize: 12),

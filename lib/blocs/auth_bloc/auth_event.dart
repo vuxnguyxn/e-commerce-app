@@ -7,5 +7,4 @@ abstract class AuthEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class AppLoader extends AuthEvent{}
-class AppSignOut extends AuthEvent{}
+class AppLoader extends AuthEvent {}

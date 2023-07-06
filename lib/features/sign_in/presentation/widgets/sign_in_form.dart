@@ -81,6 +81,7 @@ class _EmailAndPasswordFormState extends State<SignInForm> {
                 labelStyle: TextStyle(
                     color: widget.isDarkMode ? Colors.white : Colors.black),
                 hintText: 'Email',
+                labelText: "a@gmail.com",
                 floatingLabelBehavior: FloatingLabelBehavior.never,
               ),
             ),
@@ -114,6 +115,7 @@ class _EmailAndPasswordFormState extends State<SignInForm> {
                 border: InputBorder.none,
                 icon: const Icon(Icons.lock),
                 hintText: 'Password',
+                labelText: "******",
                 floatingLabelBehavior: FloatingLabelBehavior.never,
                 suffixIcon: IconButton(
                   onPressed: () {
@@ -146,9 +148,8 @@ class _EmailAndPasswordFormState extends State<SignInForm> {
                   colorText: widget.isDarkMode ? Colors.black : Colors.white,
                   isLoading: state.isLoading,
                   press: () {
-                    context
-                        .read<SignInBloc>()
-                        .add(SignInLoaded(email: email, password: password));
+                    context.read<SignInBloc>().add(const SignInLoaded(
+                        email: "a@gmail.com", password: "123456"));
                   },
                 ),
               );

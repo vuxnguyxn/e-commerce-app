@@ -19,6 +19,7 @@ class SignIn extends StatelessWidget {
     final brightness = Theme.of(context).brightness;
     bool isDarkMode = brightness == Brightness.dark;
     SizeConfig().init(context);
+
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -76,15 +77,16 @@ class SignIn extends StatelessWidget {
                     title: 'Sign in with password',
                     color: isDarkMode ? Colors.white : Colors.black,
                     colorText: isDarkMode ? Colors.black : Colors.white,
-                    press: () =>
-                        Navigator.pushNamed(context, SignInController.route)),
+                    press: () => Navigator.pushReplacementNamed(
+                        context, SignInController.route)),
               ),
               SizedBox(
                 height: getProportionateScreenWidth(kDefaultPadding * 2),
               ),
               QuestionAndTextInkWell(
                 title: 'Sign Up',
-                press: () => Navigator.pushNamed(context, SignUpController.route),
+                press: () => Navigator.pushReplacementNamed(
+                    context, SignUpController.route),
                 question: "Don't have an account?",
               ),
               SizedBox(

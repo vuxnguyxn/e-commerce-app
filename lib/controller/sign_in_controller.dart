@@ -12,14 +12,15 @@ class SignInController extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignInBloc, SignInState>(builder: (context, state) {
-      if (state is SignInSuccess) {
-        return const HomeScreen();
-      }
-      if (state is SignInFailed) {
-        return const SignInPage();
-      }
-      return const SignInPage();
-    });
+    return BlocBuilder<SignInBloc, SignInState>(
+      builder: (context, state) {
+        if (state is SignInSuccess) {
+          return const HomeScreen();
+        }
+        else {
+          return const SignInPage();
+        }
+      },
+    );
   }
 }
