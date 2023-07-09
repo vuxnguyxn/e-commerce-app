@@ -14,11 +14,15 @@ class TotalProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void totalAllPrice({required int price}){
+  void totalSumAllPrice({required int price}){
     totalAll = totalAll + price;
     notifyListeners();
   }
 
+  void totalSubAllPrice({required int price}){
+    if(totalAll >= price) totalAll = totalAll - price;
+    notifyListeners();
+  }
 
   void reset() {
     total = 0;

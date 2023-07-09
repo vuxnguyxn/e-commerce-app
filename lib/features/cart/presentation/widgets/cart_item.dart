@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/features/cart/presentation/widgets/cart_remove_item.dart';
+import 'package:e_commerce_app/provider/total_provider.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants.dart';
@@ -10,25 +11,45 @@ class CartItem extends StatefulWidget {
   const CartItem({
     super.key,
     required this.data,
+    required this.provider,
   });
 
   final Map data;
+  final TotalProvider provider;
 
   @override
   State<CartItem> createState() => _CartItemState();
 }
 
 class _CartItemState extends State<CartItem> {
+  bool isCheckBox = false;
   @override
   Widget build(BuildContext context) {
     int quantity = widget.data['quantity'];
+    int totalPrice = widget.data['price'] * quantity;
     final brightness = Theme.of(context).brightness;
     bool isDarkMode = brightness == Brightness.dark;
+
     return Container(
       padding: EdgeInsets.symmetric(
           vertical: getProportionateScreenWidth(kDefaultPadding / 2)),
       child: Row(
         children: [
+          Checkbox(
+            value: isCheckBox,
+            onChanged: (bool? newValue) {
+              setState(() {
+                isCheckBox = newValue!;
+                if (isCheckBox) {
+                  widget.provider
+                      .totalSumAllPrice(price: totalPrice);
+                } else {
+                  widget.provider
+                      .totalSubAllPrice(price: totalPrice);
+                }
+              });
+            },
+          ),
           Container(
             padding: EdgeInsets.only(right: getProportionateScreenWidth(5)),
             margin: EdgeInsets.only(right: getProportionateScreenWidth(10)),
@@ -93,6 +114,8 @@ class _CartItemState extends State<CartItem> {
                             onPressed: () {
                               setState(() {
                                 if (quantity > 1) widget.data['quantity']--;
+                                //update total price when change quantity
+                                widget.provider.totalSubAllPrice(price: widget.data['price']);
                               });
                             },
                             icon: const Icon(Icons.remove)),
@@ -104,6 +127,8 @@ class _CartItemState extends State<CartItem> {
                             onPressed: () {
                               setState(() {
                                 if (quantity < 20) widget.data['quantity']++;
+                                //update total price when change quantity
+                                widget.provider.totalSumAllPrice(price: widget.data['price']);
                               });
                             },
                             icon: const Icon(Icons.add)),
